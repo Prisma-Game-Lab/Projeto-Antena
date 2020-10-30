@@ -6,16 +6,17 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public Transform cam;
-    public float playerSpeed;
+    public float movementForce;
+    public float movementSpeed;
+    public Rigidbody rb;
 
     //Velocidade de rotação do player
     public float turnSmoothTime=0.1f;
     private float turnSmoothVelocity;
 
-    void Update()
+    private void FixedUpdate()
     {
         Movement();
-        
     }
 
     private void Movement(){
@@ -39,7 +40,11 @@ public class playerMovement : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
             //Movimenta o player somando moveDir na sua posição
-            transform.position += moveDir * Time.deltaTime * playerSpeed;
+            //transform.position += moveDir * Time.deltaTime * playerSpeed;
+            if (rb.velocity.magnitude <= movementSpeed)
+            {
+                rb.AddForce(moveDir * Time.deltaTime * movementForce * 1000f);
+            }
         }
     }
 }

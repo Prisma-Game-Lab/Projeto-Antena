@@ -2411,7 +2411,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368824876}
-  m_LocalRotation: {x: 0.23127311, y: 0.000000036428574, z: -0.000000008659724, w: 0.9728889}
+  m_LocalRotation: {x: 0.2312731, y: -0.000000036428574, z: 0.000000008659724, w: 0.9728889}
   m_LocalPosition: {x: 0, y: 3.5968, z: -4.388457}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3371,6 +3371,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953081040}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1963081774 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7910807846583995958, guid: 7f15c7763751aee44a33b9137f62fee4,
+    type: 3}
+  m_PrefabInstance: {fileID: 199118681044061197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1981045106
 GameObject:
   m_ObjectHideFlags: 1
@@ -3543,6 +3549,18 @@ PrefabInstance:
       propertyPath: playerSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 674465215, guid: 7f15c7763751aee44a33b9137f62fee4, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1963081774}
+    - target: {fileID: 674465215, guid: 7f15c7763751aee44a33b9137f62fee4, type: 3}
+      propertyPath: movementForce
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 674465215, guid: 7f15c7763751aee44a33b9137f62fee4, type: 3}
+      propertyPath: movementSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 674465217, guid: 7f15c7763751aee44a33b9137f62fee4, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3617,6 +3635,16 @@ PrefabInstance:
       propertyPath: m_Drag
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7910807846583995958, guid: 7f15c7763751aee44a33b9137f62fee4,
+        type: 3}
+      propertyPath: m_Mass
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910807846583995958, guid: 7f15c7763751aee44a33b9137f62fee4,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f15c7763751aee44a33b9137f62fee4, type: 3}
 --- !u!1001 &2466886267590940856
@@ -3629,37 +3657,37 @@ PrefabInstance:
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.24735086
+      value: 0.24735083
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000003297164
+      value: 6.8701717e-10
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000109329354
+      value: -0.0000000026912024
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268798507858, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000022330719
+      value: -0.000000015137342
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268798507858, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000001978494
+      value: -0.000000011041824
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016094145
+      value: 0.000000017572484
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 7.1970166e-11
+      value: -0.000000007055196
       objectReference: {fileID: 0}
     - target: {fileID: 2466886269348329297, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}

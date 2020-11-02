@@ -1419,7 +1419,7 @@ Transform:
   m_GameObject: {fileID: 4340727102988554958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.611, y: 0.6952241, z: -4.8865976}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4603456, y: 0.4603456, z: 0.4603456}
   m_Children:
   - {fileID: 199118682444573845}
   m_Father: {fileID: 0}
@@ -1454,7 +1454,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  playerSpeed: 20
+  movementForce: 15
+  movementSpeed: 7
+  rb: {fileID: 7910807846583995958}
   turnSmoothTime: 0.1
 --- !u!65 &674465217
 BoxCollider:
@@ -1463,7 +1465,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4340727102988554958}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 057af7e53fc108b4e904223b39f2d30e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

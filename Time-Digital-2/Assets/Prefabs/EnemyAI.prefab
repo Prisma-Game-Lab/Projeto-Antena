@@ -1816,11 +1816,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1621195e41269fb45a5bd42854f7e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackModeViewRange: 6
+  disengageAttackDistance: 16
+  attackRange: 2
+  attackForce: 20
   wanderRangeMin: 6
-  wanderRangeMax: 18
+  wanderRangeMax: 20
   chanceToStopWandering: 60
   stopWanderingTimeMin: 2
   stopWanderingTimeMax: 8
+  player: {fileID: 0}
 --- !u!195 &7263560315587542347
 NavMeshAgent:
   m_ObjectHideFlags: 0

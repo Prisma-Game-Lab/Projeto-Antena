@@ -9,6 +9,15 @@ public class EnemyAI : MonoBehaviour
     private NavMeshHit navHit;
 
     [SerializeField]
+    private float attackModeViewRange;
+    [SerializeField]
+    private float disengageAttackDistance;
+    [SerializeField]
+    private float attackRange;
+    [SerializeField]
+    private float attackForce;
+
+    [SerializeField]
     private float wanderRangeMin;
     [SerializeField]
     private float wanderRangeMax;
@@ -19,8 +28,13 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private float stopWanderingTimeMax;
 
+    [SerializeField]
+    private GameObject player;
+
     private float timeToWait;
     private float timer;
+
+    private float currentSpeed;
 
     private Vector3 wanderTargetPosition;
 
@@ -31,10 +45,14 @@ public class EnemyAI : MonoBehaviour
     {
         myState = stateMachine.isReadyToWander;
         navMeshAgent = GetComponent<NavMeshAgent>();
+        currentSpeed = navMeshAgent.speed;
     }
 
     void Update()
     {
+        if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= attackModeViewRange)
+            myState = stateMachine.isAttacking;
+
         if (myState == stateMachine.isReadyToWander)
         {
             wander();
@@ -46,6 +64,26 @@ public class EnemyAI : MonoBehaviour
         }else if (myState == stateMachine.isWaiting)
         {
             waitForTime();
+        }else if (myState == stateMachine.isAttacking)
+        {
+            followAndAttack();
+        }
+    }
+
+    private void followAndAttack()
+    {
+        navMeshAgent.speed = 11f;
+        navMeshAgent.SetDestination(player.transform.position);
+
+        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+
+        if (distanceToPlayer <= attackRange)
+            player.GetComponent<Rigidbody>().AddForce((transform.forward.normalized+Vector3.up*0.1f) * attackForce, ForceMode.Impulse);
+
+        else if (distanceToPlayer >= disengageAttackDistance)
+        {
+            myState = stateMachine.isReadyToWander;
+            navMeshAgent.speed = currentSpeed;
         }
     }
 

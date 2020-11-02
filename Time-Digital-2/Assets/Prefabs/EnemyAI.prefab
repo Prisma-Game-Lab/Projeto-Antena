@@ -1819,7 +1819,7 @@ MonoBehaviour:
   attackModeViewRange: 6
   disengageAttackDistance: 16
   attackRange: 2
-  attackForce: 20
+  attackForce: 15
   wanderRangeMin: 6
   wanderRangeMax: 20
   chanceToStopWandering: 60

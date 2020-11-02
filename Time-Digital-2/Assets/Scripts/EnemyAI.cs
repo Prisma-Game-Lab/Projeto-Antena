@@ -16,6 +16,8 @@ public class EnemyAI : MonoBehaviour
     private float attackRange;
     [SerializeField]
     private float attackForce;
+    [SerializeField]
+    private float attackModeSpeed;
 
     [SerializeField]
     private float wanderRangeMin;
@@ -35,6 +37,7 @@ public class EnemyAI : MonoBehaviour
     private float timer;
 
     private float currentSpeed;
+
 
     private Vector3 wanderTargetPosition;
 
@@ -72,7 +75,7 @@ public class EnemyAI : MonoBehaviour
 
     private void followAndAttack()
     {
-        navMeshAgent.speed = 11f;
+        navMeshAgent.speed = attackModeSpeed;
         navMeshAgent.SetDestination(player.transform.position);
 
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);

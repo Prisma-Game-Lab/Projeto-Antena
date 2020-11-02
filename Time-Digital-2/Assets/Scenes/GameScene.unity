@@ -688,6 +688,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1706701587}
+    - target: {fileID: 7263560315587542346, guid: 33d768fc8e14eeb449913e977d09f368,
+        type: 3}
+      propertyPath: attackForce
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7263560315587542356, guid: 33d768fc8e14eeb449913e977d09f368,
         type: 3}
       propertyPath: m_Name
@@ -3250,7 +3255,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368824876}
-  m_LocalRotation: {x: 0.2635496, y: -0.0000000066392274, z: 0.0000000018138944, w: 0.96464586}
+  m_LocalRotation: {x: 0.2635496, y: 0.0000000066392274, z: -0.0000000018138944, w: 0.96464586}
   m_LocalPosition: {x: -0.0015719, y: 2.967886, z: -3.0435512}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4008,6 +4013,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1706701587}
+    - target: {fileID: 7263560315587542346, guid: 33d768fc8e14eeb449913e977d09f368,
+        type: 3}
+      propertyPath: attackForce
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7263560315587542356, guid: 33d768fc8e14eeb449913e977d09f368,
         type: 3}
       propertyPath: m_Name
@@ -4952,17 +4962,17 @@ PrefabInstance:
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.27948642
+      value: 0.27948645
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000015714773
+      value: 0.000000017326531
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000002040267
+      value: -0.000000007577305
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
@@ -5007,12 +5017,12 @@ PrefabInstance:
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017588363
+      value: -0.000000015822197
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000000770091
+      value: 5.4365973e-10
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
@@ -5208,6 +5218,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1706701587}
+    - target: {fileID: 7263560315587542346, guid: 33d768fc8e14eeb449913e977d09f368,
+        type: 3}
+      propertyPath: attackModeSpeed
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7263560315587542356, guid: 33d768fc8e14eeb449913e977d09f368,
         type: 3}
       propertyPath: m_Name

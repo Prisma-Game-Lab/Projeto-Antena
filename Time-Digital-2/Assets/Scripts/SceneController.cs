@@ -9,10 +9,11 @@ public class SceneController : MonoBehaviour
 
     public static bool gameIsPause = false;
     public GameObject pauseMenuUI;
+    public Scene currentScene;
 
     void Start()
     {
-        
+        currentScene = SceneManager.GetActiveScene();
     }
 
     void Update()

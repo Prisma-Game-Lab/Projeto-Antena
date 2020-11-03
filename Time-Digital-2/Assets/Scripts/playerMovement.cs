@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
@@ -9,10 +10,17 @@ public class playerMovement : MonoBehaviour
     public float movementForce;
     public float movementSpeed;
     public Rigidbody rb;
+    public SceneController sceneController;
 
     //Velocidade de rotação do player
     public float turnSmoothTime=0.1f;
     private float turnSmoothVelocity;
+    
+
+    private void Awake()
+    {
+        
+    }
 
     private void Start()
     {
@@ -53,6 +61,15 @@ public class playerMovement : MonoBehaviour
             {
                 rb.AddForce(moveDir * Time.deltaTime * movementForce * 1000f);
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Enemy"))
+        {
+            Debug.Log("Colisao");
+            sceneController.LoadScene(sceneController.currentScene.name);
         }
     }
 }

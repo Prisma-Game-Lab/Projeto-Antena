@@ -16,7 +16,8 @@ public class playerMovement : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Trava e deixa o cursor invisivel
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void FixedUpdate()

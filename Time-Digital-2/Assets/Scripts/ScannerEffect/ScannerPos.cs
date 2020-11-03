@@ -14,7 +14,7 @@ public sealed class ScannerPos : CustomPostProcessVolumeComponent, IPostProcessC
 
     [Tooltip("Controls the intensity of the effect.")]
 
-    public ClampedFloatParameter intensity = new ClampedFloatParameter(0f, 0f, 1f);
+    public ClampedFloatParameter intensity = new ClampedFloatParameter(1f, 1f, 1f);
 
     Material m_Material;
 
@@ -27,18 +27,19 @@ public sealed class ScannerPos : CustomPostProcessVolumeComponent, IPostProcessC
     {
 
         if (Shader.Find("Hidden/Shader/ScannerPos") != null)
-
+        {
+            Debug.Log("ACHEI O SHADER");
             m_Material = new Material(Shader.Find("Hidden/Shader/ScannerPos"));
+        }
 
     }
 
     public override void Render(CommandBuffer cmd, HDCamera camera, RTHandle source, RTHandle destination)
 
     {
+        Debug.Log(m_Material);
 
-        if (m_Material == null)
-
-            return;
+        if (m_Material == null) return;
 
         m_Material.SetVector("_WorldSpaceScannerPos", ScannerEffect.se.ScannerOrigin.position);
         m_Material.SetFloat("_ScanDistance", ScannerEffect.se.ScanDistance);
@@ -52,6 +53,7 @@ public sealed class ScannerPos : CustomPostProcessVolumeComponent, IPostProcessC
 
     void RaycastCornerBlit(RenderTexture source, RenderTexture dest, Material mat)
     {
+        Debug.Log("NAO DEU MERDA");
         // Compute Frustum Corners
         float camFar = ScannerEffect.se._camera.farClipPlane;
         float camFov = ScannerEffect.se._camera.fieldOfView;

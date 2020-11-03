@@ -157,7 +157,7 @@ MonoBehaviour:
     type: 2}
   m_RenderingPathDefaultCameraFrameSettings:
     bitDatas:
-      data1: 70297877217117
+      data1: 70297877217119
       data2: 4539628425463136256
     lodBias: 1
     lodBiasMode: 0
@@ -349,5 +349,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 78322c7f82657514ebe48203160e3f39, type: 2}
   beforeTransparentCustomPostProcesses: []
   beforePostProcessCustomPostProcesses: []
-  afterPostProcessCustomPostProcesses:
-  - ScannerPos, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  afterPostProcessCustomPostProcesses: []

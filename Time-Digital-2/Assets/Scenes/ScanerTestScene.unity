@@ -506,6 +506,8 @@ GameObject:
   - component: {fileID: 806984907}
   - component: {fileID: 806984910}
   - component: {fileID: 806984912}
+  - component: {fileID: 806984913}
+  - component: {fileID: 806984911}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -594,6 +596,24 @@ MonoBehaviour:
   EffectMaterial: {fileID: 2100000, guid: 6be65596d151d4ce6a0faccad46cb522, type: 2}
   ScanDistance: 0
   _camera: {fileID: 806984908}
+--- !u!114 &806984911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806984906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  fadeRadius: 0
+  customPasses: []
+  injectionPoint: 1
+  references:
+    version: 1
 --- !u!114 &806984912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,6 +718,23 @@ MonoBehaviour:
       data1: 0
       data2: 0
   defaultFrameSettings: 0
+--- !u!114 &806984913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806984906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 0}
 --- !u!1 &1358390603
 GameObject:
   m_ObjectHideFlags: 0

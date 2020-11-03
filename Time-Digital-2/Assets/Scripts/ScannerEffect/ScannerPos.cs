@@ -40,9 +40,6 @@ public sealed class ScannerPos : CustomPostProcessVolumeComponent, IPostProcessC
 
             return;
 
-        m_Material.SetFloat("_Intensity", intensity.value);
-
-        m_Material.SetTexture("_InputTexture", source);
         m_Material.SetVector("_WorldSpaceScannerPos", ScannerEffect.se.ScannerOrigin.position);
         m_Material.SetFloat("_ScanDistance", ScannerEffect.se.ScanDistance);
         RaycastCornerBlit(source, destination, m_Material);

@@ -61,11 +61,14 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
         //Define estado inicial para patrulhar
         myState = stateMachine.isReadyToWander;
-        navMeshAgent = GetComponent<NavMeshAgent>();
         //Guarda velocidade inicial
         currentSpeed = navMeshAgent.speed;
+        //Aumenta velocidade angular de rotação de 120 para 320
+        navMeshAgent.angularSpeed = 320;
     }
 
     void Update()

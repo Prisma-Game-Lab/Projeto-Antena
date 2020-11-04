@@ -1756,7 +1756,7 @@ GameObject:
   - component: {fileID: 1342731780933320166}
   m_Layer: 0
   m_Name: EnemyAI
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1821,7 +1821,7 @@ MonoBehaviour:
   disengageAttackDistance: 16
   attackRange: 2
   attackForce: 1
-  attackModeSpeed: 11
+  attackModeSpeed: 9
   wanderRangeMin: 6
   wanderRangeMax: 20
   chanceToStopWandering: 60

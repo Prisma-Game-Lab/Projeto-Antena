@@ -1458,8 +1458,8 @@ MonoBehaviour:
   movementForce: 15
   movementSpeed: 7
   rb: {fileID: 7910807846583995958}
+  sceneController: {fileID: 0}
   turnSmoothTime: 0.1
-  startPos: {x: 0, y: 0, z: 0}
 --- !u!65 &674465217
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1484,7 +1484,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.97, y: 1, z: 2.83}
+  m_Size: {x: 1.42, y: 0.32, z: 1.53}
   m_Center: {x: 0, y: 0, z: -0.36}
 --- !u!1 &4824314799768955972
 GameObject:

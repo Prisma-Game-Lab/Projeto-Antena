@@ -5,44 +5,26 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    private NavMeshAgent navMeshAgent;
-    private NavMeshHit navHit;
-
-    //Disctancia do player para entrar em modo de ataque
-    [SerializeField]
-    private float attackModeViewRange;
+    //Distancia do player para entrar em modo de ataque
+    public float attackModeViewRange;
     //Distancia para sair do modo de ataque
-    [SerializeField]
-    private float disengageAttackDistance;
+    public float disengageAttackDistance;
     //Distancia para realizar o ataque
-    [SerializeField]
-    private float attackRange;
+    public float attackRange;
     //Força aplicada no ataque (placeholder)
-    [SerializeField]
-    private float attackForce;
+    public float attackForce;
     //Velocidade de perseguição
-    [SerializeField]
-    private float attackModeSpeed;
-
+    public float attackModeSpeed;
     //Distancia mínima de uma patrulha
-    [SerializeField]
-    private float wanderRangeMin;
+    public float wanderRangeMin;
     //Distancia máxima de uma patrulha
-    [SerializeField]
-    private float wanderRangeMax;
+    public float wanderRangeMax;
     //Chance de parar e esperar um tempo depois de terminar uma patrulha
-    [SerializeField]
-    private float chanceToStopWandering;
+    public float chanceToStopWandering;
     //Tempo mínimo esperado antes de fazer uma nova patrulha
-    [SerializeField]
-    private float stopWanderingTimeMin;
+    public float stopWanderingTimeMin;
     //Tempo máximo esperado antes de fazer uma nova patrulha
-    [SerializeField]
-    private float stopWanderingTimeMax;
-
-    //Referencia ao player
-    [SerializeField]
-    private GameObject player;
+    public float stopWanderingTimeMax;
 
     //Contadores de tempo
     private float timeToWait;
@@ -59,8 +41,17 @@ public class EnemyAI : MonoBehaviour
     //Guarda estado atual
     stateMachine myState;
 
+    private NavMeshAgent navMeshAgent;
+    private NavMeshHit navHit;
+
+    //Referencia ao script playerMovement
+    private playerMovement player;
+
     void Start()
     {
+        //Guarda referencia para a instancia do script playerMovement
+        player = playerMovement.current;
+
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         //Define estado inicial para patrulhar
@@ -74,7 +65,7 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         //Se já não estiver em modo de ataque checa se a distancia entre este objeto e o player é menor ou igual a attackModeViewRange 
-        if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= attackModeViewRange)
+        if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= attackModeViewRange && player.isMoving)
             myState = stateMachine.isAttacking;
         //Se estiver preparado para pratulhar, patrulha
         if (myState == stateMachine.isReadyToWander)
@@ -110,7 +101,10 @@ public class EnemyAI : MonoBehaviour
 
         //Checa se o player esta no alcance do ataque e ataca 
         if (distanceToPlayer <= attackRange)
-            player.GetComponent<Rigidbody>().AddForce((transform.forward.normalized+Vector3.up*0.1f) * attackForce, ForceMode.Impulse);
+        {
+            //Ataque
+            //player.rb.AddForce((transform.forward.normalized+Vector3.up*0.1f) * attackForce, ForceMode.Impulse);
+        }
 
         //Checa se player esta muito longe, caso esteja, muda de estado para voltar a patrulhar e retoma velocidade inicial
         else if (distanceToPlayer >= disengageAttackDistance)

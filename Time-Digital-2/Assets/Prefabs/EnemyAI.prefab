@@ -1753,7 +1753,6 @@ GameObject:
   - component: {fileID: 6408628669375359579}
   - component: {fileID: 7263560315587542346}
   - component: {fileID: 7263560315587542347}
-  - component: {fileID: 1342731780933320166}
   m_Layer: 0
   m_Name: EnemyAI
   m_TagString: Enemy
@@ -1803,8 +1802,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.38744283, y: 0.3, z: 1.13}
-  m_Center: {x: -0.0019340515, y: -0.13066322, z: -0.45842883}
+  m_Size: {x: 0.38744283, y: 0.30000004, z: 1.4034597}
+  m_Center: {x: -0.0019340611, y: -0.13066322, z: -0.43268478}
 --- !u!114 &7263560315587542346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1820,13 +1819,13 @@ MonoBehaviour:
   attackModeViewRange: 6
   disengageAttackDistance: 16
   attackRange: 2
-  attackForce: 1
+  attackForce: 0
   attackModeSpeed: 9
-  wanderRangeMin: 6
+  wanderRangeMin: 8
   wanderRangeMax: 20
-  chanceToStopWandering: 60
+  chanceToStopWandering: 20
   stopWanderingTimeMin: 2
-  stopWanderingTimeMax: 8
+  stopWanderingTimeMax: 6
   player: {fileID: 0}
 --- !u!195 &7263560315587542347
 NavMeshAgent:
@@ -1850,19 +1849,6 @@ NavMeshAgent:
   m_BaseOffset: 0.41
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &1342731780933320166
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7263560315587542356}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.31, z: 1.38}
-  m_Center: {x: 0, y: 0, z: -0.35}
 --- !u!1 &7617482987335801643
 GameObject:
   m_ObjectHideFlags: 0

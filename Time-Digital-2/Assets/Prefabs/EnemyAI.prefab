@@ -2364,14 +2364,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1621195e41269fb45a5bd42854f7e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackModeViewRange: 6
-  disengageAttackDistance: 16
+  attackModeViewRange: 7
+  disengageAttackDistance: 15
   attackRange: 2
   attackForce: 0
-  attackModeSpeed: 9
+  attackModeSpeed: 11
   wanderRangeMin: 8
   wanderRangeMax: 20
-  chanceToStopWandering: 20
+  chanceToStopWandering: 25
   stopWanderingTimeMin: 2
   stopWanderingTimeMax: 6
 --- !u!195 &7263560315587542347

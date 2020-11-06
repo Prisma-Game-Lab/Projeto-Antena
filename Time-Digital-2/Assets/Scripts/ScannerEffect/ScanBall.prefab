@@ -106,6 +106,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0f4c6c8b5b54191b42e390465e4a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanVelocity: 0.25
-  enemyLight: {fileID: 0}
+  scanVelocity: 15
   maxDistance: 50

@@ -11,7 +11,7 @@ public class Scaler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scaleChange = new Vector3(scanVelocity, scanVelocity, scanVelocity);
+        scaleChange = new Vector3(scanVelocity * Time.deltaTime, scanVelocity * Time.deltaTime, scanVelocity * Time.deltaTime);
     }
 
     // Update is called once per frame

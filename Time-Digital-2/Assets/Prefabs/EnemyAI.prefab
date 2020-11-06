@@ -2570,7 +2570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackModeViewRange: 7
-  disengageAttackDistance: 15
+  disengageAttackDistance: 10
   attackRange: 2
   attackForce: 0
   attackModeSpeed: 11

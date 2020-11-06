@@ -1766,6 +1766,7 @@ GameObject:
   - component: {fileID: 674465215}
   - component: {fileID: 674465217}
   - component: {fileID: 9078237238304043306}
+  - component: {fileID: 1706701592}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1819,7 +1820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  movementForce: 7
+  movementForce: 9
   movementSpeed: 5
   rb: {fileID: 7910807846583995958}
   sceneController: {fileID: 0}
@@ -1850,6 +1851,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a3d012528205542b493c2dd306098e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1706701592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340727102988554958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a255d7d289514d449daffe003569fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanBall: {fileID: 7286365288761944895, guid: 3661cb3d9f24945a69396ad3a10a3da1,
+    type: 3}
+  player: {fileID: 4340727102988554958}
+  sonarCooldown: 2.5
 --- !u!1 &4824314799768955972
 GameObject:
   m_ObjectHideFlags: 0

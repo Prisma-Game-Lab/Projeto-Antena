@@ -6,6 +6,9 @@ public class Scaler : MonoBehaviour
 {
     public float scanVelocity = 0.3f;
     private Vector3 scaleChange;
+    public GameObject enemyLight;
+
+    public float maxDistance;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +19,10 @@ public class Scaler : MonoBehaviour
     void Update()
     {
         transform.localScale += scaleChange;
+
+        if (this.transform.localScale.x >= maxDistance)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

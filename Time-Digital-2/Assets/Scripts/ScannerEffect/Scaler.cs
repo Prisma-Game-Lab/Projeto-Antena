@@ -6,7 +6,6 @@ public class Scaler : MonoBehaviour
 {
     public float scanVelocity = 0.3f;
     private Vector3 scaleChange;
-    public GameObject enemyLight;
 
     public float maxDistance;
     // Start is called before the first frame update

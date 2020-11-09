@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/MainMenu.unity
     guid: 11d0cb690e98e5a49b4137e4847e1240
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/Scenes/Teste LD Luca.unity
     guid: 74ae192d81cfbe54dbbd05456b05454d
   m_configObjects: {}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAIRandom : MonoBehaviour
 {
     //Distancia do player para entrar em modo de ataque
     public float attackModeViewRange;

@@ -3295,7 +3295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798946420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.38177592, z: -0.448}
+  m_LocalPosition: {x: 0, y: 0.248, z: -0.448}
   m_LocalScale: {x: 0.46729, y: 0.46729, z: 0.46729}
   m_Children: []
   m_Father: {fileID: 674465214}
@@ -4459,7 +4459,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-72026
+  m_Name: pb_Mesh19522
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5860,8 +5860,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368824876}
-  m_LocalRotation: {x: 0.32631418, y: -0.000000019558456, z: 0.000000006751785, w: 0.94526136}
-  m_LocalPosition: {x: -11.867, y: 1.9973716, z: 0.7703656}
+  m_LocalRotation: {x: 0.33500022, y: -0.0000000305407, z: 0.00000001085857, w: 0.94221807}
+  m_LocalPosition: {x: -11.867, y: 1.9973717, z: 0.7703657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9320,25 +9320,55 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2466886268141372991, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 1.7973715
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886268141372991, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -2.1396344
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886268141372991, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_XAxis.m_MaxSpeed
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886268141372991, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_XDamping
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886268141372991, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_YDamping
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886268141372991, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_ZDamping
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3419214
+      value: 0.35055584
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016514468
+      value: -0.0000000018263138
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000006648076
+      value: 0.000000033306037
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9397286
+      value: 0.93654186
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
@@ -9353,22 +9383,22 @@ PrefabInstance:
     - target: {fileID: 2466886268798507858, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000010620641
+      value: -0.000000015240616
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268798507858, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000011407922
+      value: -0.000000013945694
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268798507858, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.32239825
+      value: 0.3310968
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268798507858, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.94660413
+      value: 0.9435968
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268798507858, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
@@ -9378,12 +9408,12 @@ PrefabInstance:
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000038931263
+      value: 0.0000000012406451
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000021300706
+      value: -0.000000003783801
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
@@ -9403,12 +9433,12 @@ PrefabInstance:
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.30280435
+      value: 0.31156307
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.95305276
+      value: 0.9502255
       objectReference: {fileID: 0}
     - target: {fileID: 2466886269348329297, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
@@ -9534,6 +9564,71 @@ PrefabInstance:
         type: 3}
       propertyPath: m_DampingWhenOccluded
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886269348329300, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_OptimalTargetDistance
+      value: 1.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886269555958994, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 1.7973715
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886269555958994, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -2.1396344
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886269555958994, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_XDamping
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886269555958994, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_XAxis.m_MaxSpeed
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886269555958994, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_YDamping
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886269555958994, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_ZDamping
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886269692088327, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 1.7973715
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886269692088327, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -2.1396344
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886269692088327, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_XDamping
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886269692088327, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_XAxis.m_MaxSpeed
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886269692088327, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_YDamping
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466886269692088327, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+        type: 3}
+      propertyPath: m_ZDamping
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d9d690c7e103b040bf72d5e9f91f6ba, type: 3}

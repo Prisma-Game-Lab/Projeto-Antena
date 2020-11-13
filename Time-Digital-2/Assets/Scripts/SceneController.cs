@@ -10,6 +10,7 @@ public class SceneController : MonoBehaviour
     public static bool gameIsPause = false;
     public GameObject pauseMenuUI;
     public Scene currentScene;
+    public GameObject settingsMenu;
 
     void Start()
     {
@@ -57,5 +58,17 @@ public class SceneController : MonoBehaviour
     {
         Debug.Log("Quitting Game...");
         Application.Quit();
+    }
+
+    public void OpenSettingsMenu(GameObject menuToDisable)
+    {
+        settingsMenu.SetActive(true);
+        menuToDisable.SetActive(false);
+    }
+
+    public void OpenMenu(GameObject menuToEnable)
+    {
+        settingsMenu.SetActive(false);
+        menuToEnable.SetActive(true);
     }
 }

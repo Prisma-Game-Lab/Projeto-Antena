@@ -12,9 +12,4 @@ public class SettingsMenu : MonoBehaviour
     {
         audioMixer.SetFloat("volume", volume);
     }
-
-    public void Go()
-    {
-        SceneManager.LoadScene("GameScene");
-    }
 }

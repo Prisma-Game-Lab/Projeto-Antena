@@ -8530,6 +8530,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.29599974
       objectReference: {fileID: 0}
+    - target: {fileID: 4141352159267027300, guid: 7f15c7763751aee44a33b9137f62fee4,
+        type: 3}
+      propertyPath: m_Name
+      value: andando
+      objectReference: {fileID: 0}
     - target: {fileID: 4340727102988554958, guid: 7f15c7763751aee44a33b9137f62fee4,
         type: 3}
       propertyPath: m_Name
@@ -8637,12 +8642,12 @@ PrefabInstance:
     - target: {fileID: 2466886268798507858, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000028230858
+      value: -0.00000002823086
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268798507858, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000009549732
+      value: 0.000000009549733
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268798507858, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}

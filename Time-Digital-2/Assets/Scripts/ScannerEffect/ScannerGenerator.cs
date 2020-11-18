@@ -7,7 +7,9 @@ public class ScannerGenerator : MonoBehaviour
     public GameObject scanBall;
     public GameObject player;
     public float sonarCooldown;
-    private bool canUseSonar = true;
+
+    [HideInInspector]
+    public bool canUseSonar = true;
 
     // Update is called once per frame
     void Update()

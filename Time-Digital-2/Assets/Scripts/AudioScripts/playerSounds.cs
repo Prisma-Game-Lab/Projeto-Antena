@@ -10,21 +10,21 @@ public class playerSounds : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pm = this.GetComponent<playerMovement>();
-        andando = this.GetComponentInChildren<AudioSource>();
-        andando.loop = true;
+        //pm = this.GetComponent<playerMovement>();
+        //andando = this.GetComponentInChildren<AudioSource>();
+        //andando.loop = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!andando.isPlaying && pm.isMoving)
-        {
-            andando.Play();
-        }
-        else if (andando.isPlaying && !pm.isMoving)
-        {
-            andando.Pause();
-        }
+        //if (!andando.isPlaying && pm.isMoving)
+        //{
+        //    andando.Play();
+        //}
+        //else if (andando.isPlaying && !pm.isMoving)
+        //{
+        //    andando.Pause();
+        //}
     }
 }

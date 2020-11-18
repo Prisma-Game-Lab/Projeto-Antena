@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     //Distancia máxima de uma patrulha
     public float wanderRangeMax;
     //Chance de parar e esperar um tempo depois de terminar uma patrulha
-    public float chanceToStopWandering;
+    public float chanceStopWandering;
     //Tempo mínimo esperado antes de fazer uma nova patrulha
     public float stopWanderingTimeMin;
     //Tempo máximo esperado antes de fazer uma nova patrulha
@@ -138,7 +138,7 @@ public class EnemyAI : MonoBehaviour
         {
             //Calcula as chances da AI mudar de estado para esperar um tempo antes de iniciar nova patrulha
             float randomPorcentage = Random.Range(0f, 100f);
-            if (chanceToStopWandering >= randomPorcentage)
+            if (chanceStopWandering >= randomPorcentage)
             {
                 //Caso deva esperar, predefine o tempo que se deve esperar antes de iniciar nova patrulha
                 timeToWait = Random.Range(stopWanderingTimeMin, stopWanderingTimeMax);

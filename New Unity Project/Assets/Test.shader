@@ -1,10 +1,6 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Unlit/OutlineShader"
+﻿Shader "Unlit/Test"
 {
-   Properties
+      Properties
     {
         [PowerSlider(3.0)]
         _WireframeVal ("Wireframe width", Range(0., 0.5)) = 0.05
@@ -20,6 +16,8 @@ Shader "Unlit/OutlineShader"
         {
             Cull Front
             CGPROGRAM
+#pragma target 5.0
+#pragma require integers 2darray instancing
             #pragma vertex vert
             #pragma fragment frag
             #pragma geometry geom
@@ -90,6 +88,8 @@ Shader "Unlit/OutlineShader"
         {
             Cull Back
             CGPROGRAM
+#pragma target 5.0
+#pragma require integers 2darray instancing
             #pragma vertex vert
             #pragma fragment frag
             #pragma geometry geom

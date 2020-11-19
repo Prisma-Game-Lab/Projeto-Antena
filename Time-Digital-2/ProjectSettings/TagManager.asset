@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Enemy
   - Scanner
-  - SafeSpot
   layers:
   - Default
   - TransparentFX

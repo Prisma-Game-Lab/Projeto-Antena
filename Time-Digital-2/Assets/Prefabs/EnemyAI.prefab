@@ -2731,7 +2731,6 @@ MonoBehaviour:
   followSpeed: 11
   pathPoints: []
   path: {fileID: 0}
-  myState: 0
 --- !u!195 &7263560315587542347
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2779,8 +2778,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLightTime: 3
-  normalMaterial: {fileID: 2100000, guid: 7f41349f6d97fe141ba17ca21f745cbf, type: 2}
-  spottedMaterial: {fileID: 2100000, guid: 3275c2cd5dbef49abb352423be9157c2, type: 2}
+  normalMaterial: {fileID: 0}
+  spottedMaterial: {fileID: 0}
 --- !u!1 &7617482987335801643
 GameObject:
   m_ObjectHideFlags: 0

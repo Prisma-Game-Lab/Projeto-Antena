@@ -6,66 +6,62 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     //Distancia do player para entrar em modo de ataque
-    public float attackModeViewRange;
+    public float viewRange;
     //Distancia para sair do modo de ataque
-    public float disengageAttackDistance;
+    public float disengageDistance;
     //Distancia para realizar o ataque
     public float attackRange;
-    //Força aplicada no ataque (placeholder)
-    public float attackForce;
+    //Velocidade de patrulhamento
+    public float wanderSpeed;
     //Velocidade de perseguição
-    public float attackModeSpeed;
-    //Distancia mínima de uma patrulha
-    public float wanderRangeMin;
-    //Distancia máxima de uma patrulha
-    public float wanderRangeMax;
-    //Chance de parar e esperar um tempo depois de terminar uma patrulha
-    public float chanceStopWandering;
-    //Tempo mínimo esperado antes de fazer uma nova patrulha
-    public float stopWanderingTimeMin;
-    //Tempo máximo esperado antes de fazer uma nova patrulha
-    public float stopWanderingTimeMax;
+    public float followSpeed;
+    //Lista do caminho que a AI deve fazer
+    public List<AIPath> pathPoints = new List<AIPath>();
 
-    //Contadores de tempo
+    [Tooltip("Segue um caminho baseado nas posições dos filhos desse GameObject, ordem da hierarquia representa a ordem do caminho a ser seguido.")]
+    public GameObject path;
+
+
+    private int pathIndex;
+    //Contador de tempo
     private float timeToWait;
     private float timer;
-
-    //Guarda velocidade inicial
-    private float currentSpeed;
-
-    //Posição de destino de uma patrulha
-    private Vector3 wanderTargetPosition;
-
+    //Posição do destino de uma patrulha
+    private Vector3 navMeshPosition;
     //Estados que definem comportamentos da AI
-    private enum stateMachine { isWaiting, isReadyToWander, isMoving, isAttacking}
-    //Guarda estado atual
+    private enum stateMachine { isWaiting, isReadyToWander, isMoving, isAttacking }
     stateMachine myState;
+    //Referencia ao script playerMovement
+    private playerMovement player;
 
     private NavMeshAgent navMeshAgent;
     private NavMeshHit navHit;
 
-    //Referencia ao script playerMovement
-    private playerMovement player;
-
     void Start()
     {
+        if (path != null)
+        {
+            //Preenche as posições da lista do caminho
+            fillPathPoints();
+        }
+        
         //Guarda referencia para a instancia do script playerMovement
         player = playerMovement.current;
-
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         //Define estado inicial para patrulhar
         myState = stateMachine.isReadyToWander;
-        //Guarda velocidade inicial
-        currentSpeed = navMeshAgent.speed;
-        //Aumenta velocidade angular de rotação de 120 para 320
+        //Define velocidade inicial de patrulhamento
+        navMeshAgent.speed = wanderSpeed;
+        //Velocidade angular de rotação
         navMeshAgent.angularSpeed = 320;
+        pathIndex = 0;
     }
 
     void Update()
     {
-        //Se já não estiver em modo de ataque checa se a distancia entre este objeto e o player é menor ou igual a attackModeViewRange 
-        if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= attackModeViewRange && player.isMoving)
+        //Se já não estiver em modo de ataque checa se a distancia entre este objeto e o player é menor ou igual a ViewRange 
+        if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= viewRange && player.isMoving)
             myState = stateMachine.isAttacking;
         //Se estiver preparado para pratulhar, patrulha
         if (myState == stateMachine.isReadyToWander)
@@ -73,9 +69,9 @@ public class EnemyAI : MonoBehaviour
             wander();
         }
         //Se estiver patrulhando checa se ja chegou ao seu destino
-        else if (myState == stateMachine.isMoving){
+        else if (myState == stateMachine.isMoving)
+        {
             checkIfReachedDestination();
-
         }
         //Se estiver esperando entre uma patrulha e outra, calcula o tempo que tem que esperar
         else if (myState == stateMachine.isWaiting)
@@ -89,11 +85,30 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    //Preenche a lista do caminho com as posições dos gameObjects filhos de path 
+    private void fillPathPoints()
+    {
+        int i = 0;
+        int pathPointsCount = pathPoints.Count;
+        //Preenche lista do caminho
+        for (; i < pathPointsCount && i < path.transform.childCount; i++)
+        {
+            pathPoints[i].destinationPos = path.transform.GetChild(i).transform.position;
+        }
+        //Caso tenha mais elementos na lista do caminho do que filhos de path, elimina o excesso
+        if (pathPointsCount > path.transform.childCount)
+        {
+            for (; i < pathPointsCount; pathPointsCount--)
+            {
+                pathPoints.RemoveAt(i);
+            }
+        }
+    }
     //Persegue e ataca o player se estiver a uma distancia minima, muda comportamento caso esteja muito longe do player
     private void followAndAttack()
     {
         //Aumenta velocidade e persegue o player
-        navMeshAgent.speed = attackModeSpeed;
+        navMeshAgent.speed = followSpeed;
         navMeshAgent.SetDestination(player.transform.position);
 
         //Guarda a distancia do player
@@ -103,21 +118,21 @@ public class EnemyAI : MonoBehaviour
         if (distanceToPlayer <= attackRange)
         {
             //Ataque
-            //player.rb.AddForce((transform.forward.normalized+Vector3.up*0.1f) * attackForce, ForceMode.Impulse);
+            //player.rb.AddForce((transform.forward.normalized+Vector3.up*0.1f)*5f, ForceMode.Impulse);
         }
 
         //Checa se player esta muito longe, caso esteja, muda de estado para voltar a patrulhar e retoma velocidade inicial
-        else if (distanceToPlayer >= disengageAttackDistance)
+        else if (distanceToPlayer >= disengageDistance)
         {
             myState = stateMachine.isReadyToWander;
-            navMeshAgent.speed = currentSpeed;
+            navMeshAgent.speed = wanderSpeed;
         }
     }
 
     //Calcula quanto tempo se deve esperar e muda de estado para voltar patrulhar
     private void waitForTime()
     {
-        //Se esperou o tempo pre definido
+        //Conta o tempo predefinido
         timer += Time.deltaTime;
         if (timer >= timeToWait)
         {
@@ -130,23 +145,33 @@ public class EnemyAI : MonoBehaviour
     //Checa se já chegou ao destino
     private void checkIfReachedDestination()
     {
-        //Guarda distancia do destino
-        float destinationDistance = Vector3.Distance(transform.position, wanderTargetPosition);
-
-        //Checa se chegou minimamente perto do destino
-        if (destinationDistance <= 0.8f)
+        //Pega o index atual
+        int index;
+        if (pathPoints.Count > 0)
         {
-            //Calcula as chances da AI mudar de estado para esperar um tempo antes de iniciar nova patrulha
-            float randomPorcentage = Random.Range(0f, 100f);
-            if (chanceStopWandering >= randomPorcentage)
+            if (pathIndex == 0)
+                index = pathPoints.Count - 1;
+            else
+                index = pathIndex - 1;
+        }
+        else index = 0;
+
+        //Pega distancia do destino
+        float destinationDistance = Vector3.Distance(transform.position, pathPoints[index].destinationPos);
+        //Checa se chegou minimamente perto do destino
+        if (destinationDistance <= 1f)
+        {
+            //Caso deva esperar, pega o tempo que se deve esperar antes de iniciar nova patrulha
+            if (pathPoints[index].shouldWait)
             {
-                //Caso deva esperar, predefine o tempo que se deve esperar antes de iniciar nova patrulha
-                timeToWait = Random.Range(stopWanderingTimeMin, stopWanderingTimeMax);
+                timeToWait = pathPoints[index].waitTime;
                 myState = stateMachine.isWaiting;
             }
             //Caso contrário inicia direto uma nova patrulha
             else
+            {
                 myState = stateMachine.isReadyToWander;
+            }
         }
     }
 
@@ -154,10 +179,10 @@ public class EnemyAI : MonoBehaviour
     private void wander()
     {
         //Se posição aleatória em volta da posição atual for válida
-        if (RandomWanderTarget(transform.position, out wanderTargetPosition))
+        if (RandomWanderTarget(transform.position, out navMeshPosition))
         {
             //Marca posição aleatória como destino e muda de estado
-            navMeshAgent.SetDestination(wanderTargetPosition);
+            navMeshAgent.SetDestination(navMeshPosition);
             myState = stateMachine.isMoving;
         }
     }
@@ -165,13 +190,26 @@ public class EnemyAI : MonoBehaviour
     //Recebe posição atual (centro) e retorna posição aleatória em torno dessa posição
     private bool RandomWanderTarget(Vector3 center, out Vector3 result)
     {
-        //Define alcance da posição aleatória da patrulha
-        float wanderRange = Random.Range(wanderRangeMin, wanderRangeMax);
-        //Calcula posição aleatória em torno da posição atual com o alcance definido anteriormente
-        Vector3 randomPosition = center + UnityEngine.Random.insideUnitSphere * wanderRange;
+        Vector3 nextPosition;
+        //Se lista do caminho nao for vazia
+        if (pathPoints.Count > 0)
+        {
+            //Pega posição do próximo destino
+            nextPosition = pathPoints[pathIndex].destinationPos;
+            pathIndex++;
 
-        //Se posição aleatória for válida no NavMesh
-        if(NavMesh.SamplePosition(randomPosition, out navHit, 1.0f, NavMesh.AllAreas))
+            //Se passou do ultimo elemento do caminho, volta para o primeiro
+            if (pathIndex >= pathPoints.Count)
+            {
+                pathIndex = 0;
+            }
+            print(pathIndex);
+            print(myState);
+        }
+        else nextPosition = center;
+
+        //Se posição do destino for válida no NavMesh
+        if (pathPoints.Count>0 && NavMesh.SamplePosition(nextPosition, out navHit, 1.0f, NavMesh.AllAreas) && path!=null)
         {
             //Retorna true e a posição no NavMesh
             result = navHit.position;
@@ -179,7 +217,7 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            //Caso contrário não achei uma posição válida, retorna posição atual e false
+            //Caso contrário não é uma posição válida, retorna posição atual e false
             result = center;
             return false;
         }

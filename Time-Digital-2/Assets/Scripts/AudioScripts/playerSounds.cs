@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerSounds : MonoBehaviour
 {
     public AudioSource andando;
-    public AudioSource morte;
+    //public AudioSource morte;
     public AudioSource cooldown;
 
     public GameObject sonarList;

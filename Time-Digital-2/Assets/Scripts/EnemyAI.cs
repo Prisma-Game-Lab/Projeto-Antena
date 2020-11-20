@@ -29,13 +29,17 @@ public class EnemyAI : MonoBehaviour
     //Posição do destino de uma patrulha
     private Vector3 navMeshPosition;
     //Estados que definem comportamentos da AI
-    private enum stateMachine { isWaiting, isReadyToWander, isMoving, isAttacking }
-    stateMachine myState;
+
+    public enum stateMachine { isWaiting, isReadyToWander, isMoving, isAttacking }
+    [HideInInspector]
+    public stateMachine myState;
     //Referencia ao script playerMovement
     private playerMovement player;
 
     private NavMeshAgent navMeshAgent;
     private NavMeshHit navHit;
+
+    public AudioSource morte;
 
     void Start()
     {
@@ -119,6 +123,9 @@ public class EnemyAI : MonoBehaviour
         {
             //Ataque
             //player.rb.AddForce((transform.forward.normalized+Vector3.up*0.1f)*5f, ForceMode.Impulse);
+
+            //Debug.Log("Morreu!\n");
+            //morte.Play(); -> nao funciona pq a cena restarta
         }
 
         //Checa se player esta muito longe, caso esteja, muda de estado para voltar a patrulhar e retoma velocidade inicial

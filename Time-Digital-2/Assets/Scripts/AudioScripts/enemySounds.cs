@@ -4,20 +4,31 @@ using UnityEngine;
 
 public class enemySounds : MonoBehaviour
 {
-    private AudioSource [] audioList;
-    private const int qntAudio = 4;
+
+    public GameObject formigaAudioListGameObject;
+    private AudioSource [] formigaAudioList;
+    //private const int qntAudio = 4;
     private bool isPlayingAny = false;
+
+    public AudioSource perseguicao;
+    private bool isPlayingPerseguicao = false;
+
+    private EnemyAI eAI;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioList = new AudioSource[qntAudio];
-        for (int i = 0; i < qntAudio; i++)
+        int qntChildren = transform.childCount;
+        formigaAudioList = new AudioSource[qntChildren];
+
+        for (int i = 0; i < qntChildren; ++i)
         {
-            string name = string.Concat("formiga", (i+1).ToString());
-            audioList[i] = GetChildrenAudioSource(name);
-            audioList[i].loop = false;
+            formigaAudioList[i] = formigaAudioListGameObject.transform.GetChild(i).GetComponent<AudioSource>();
+            formigaAudioList[i].loop = false;
+            //print("For loop: " + transform.GetChild(i));
         }
+
+        eAI = this.GetComponent<EnemyAI>();
     }
 
     // Update is called once per frame
@@ -25,7 +36,7 @@ public class enemySounds : MonoBehaviour
     {
 
         isPlayingAny = false;
-        foreach (AudioSource audio in audioList)
+        foreach (AudioSource audio in formigaAudioList)
         {
             if (audio.isPlaying)
             {
@@ -36,24 +47,25 @@ public class enemySounds : MonoBehaviour
         
         if (!isPlayingAny)
         {
-            int i = (int) Random.Range(0, audioList.Length);
-            audioList[i].Play();
+            int i = (int) Random.Range(0, formigaAudioList.Length);
+            formigaAudioList[i].Play();
         }
-    }
 
-    AudioSource GetChildrenAudioSource(string name)
-    {
-        Transform trans = this.transform;
-        Transform audios = trans.Find("Audios");
-        Transform childTrans = audios.Find(name);
-
-        if (childTrans != null)
+        if (eAI.myState == EnemyAI.stateMachine.isAttacking)
         {
-            return childTrans.gameObject.GetComponent<AudioSource>();
+            if (!isPlayingPerseguicao)
+            {
+                isPlayingPerseguicao = true;
+                perseguicao.Play();
+            }
         }
-
-        Debug.Log(string.Concat(name, " failed!\n"));
-        return null;
-        
+        else
+        {
+            if (isPlayingPerseguicao)
+            {
+                isPlayingPerseguicao = false;
+                perseguicao.Stop();
+            }
+        }
     }
 }

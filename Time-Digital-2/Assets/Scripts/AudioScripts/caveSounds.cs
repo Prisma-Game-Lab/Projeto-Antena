@@ -8,7 +8,7 @@ public class caveSounds : MonoBehaviour
     public AudioSource cave3;
 
     private float timer = 0.0f;
-    private float timeLimit = 0.0f;
+    private float timeLimit = 30.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class caveSounds : MonoBehaviour
     {
         if (timer >= timeLimit)
         {
-            timeLimit = Random.Range(40.0f, 50.0f);
+            timeLimit = Random.Range(40.0f, 60.0f);
             timer = 0.0f;
 
             int i = (int)Random.Range(0, 2);

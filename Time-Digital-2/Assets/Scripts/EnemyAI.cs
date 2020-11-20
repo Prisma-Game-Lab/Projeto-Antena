@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     [Tooltip("Segue um caminho baseado nas posições dos filhos desse GameObject, ordem da hierarquia representa a ordem do caminho a ser seguido.")]
     public GameObject path;
 
-
+    private bool stopAttack;
     private int pathIndex;
     //Contador de tempo
     private float timeToWait;
@@ -48,7 +48,6 @@ public class EnemyAI : MonoBehaviour
             //Preenche as posições da lista do caminho
             fillPathPoints();
         }
-        
         //Guarda referencia para a instancia do script playerMovement
         player = playerMovement.current;
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -65,7 +64,7 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         //Se já não estiver em modo de ataque checa se a distancia entre este objeto e o player é menor ou igual a ViewRange 
-        if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= viewRange && player.isMoving)
+        if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= viewRange && player.isMoving && !player.isSafe)
             myState = stateMachine.isAttacking;
         //Se estiver preparado para pratulhar, patrulha
         if (myState == stateMachine.isReadyToWander)
@@ -111,12 +110,21 @@ public class EnemyAI : MonoBehaviour
     //Persegue e ataca o player se estiver a uma distancia minima, muda comportamento caso esteja muito longe do player
     private void followAndAttack()
     {
+
         //Aumenta velocidade e persegue o player
         navMeshAgent.speed = followSpeed;
         navMeshAgent.SetDestination(player.transform.position);
 
         //Guarda a distancia do player
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+
+        //Se o player entrar em um esconderijo e estiver seguro, muda o estado para esperar e continuar a patrulha
+        if (player.isSafe)
+        {
+            navMeshAgent.speed = wanderSpeed;
+            timeToWait = 4f;
+            myState = stateMachine.isWaiting;
+        }
 
         //Checa se o player esta no alcance do ataque e ataca 
         if (distanceToPlayer <= attackRange)
@@ -154,8 +162,10 @@ public class EnemyAI : MonoBehaviour
     {
         //Pega o index atual
         int index;
+        //Se o tiver algum caminho a fazer
         if (pathPoints.Count > 0)
         {
+            //Calcula o index de pathIndex-1
             if (pathIndex == 0)
                 index = pathPoints.Count - 1;
             else
@@ -210,13 +220,11 @@ public class EnemyAI : MonoBehaviour
             {
                 pathIndex = 0;
             }
-            print(pathIndex);
-            print(myState);
         }
         else nextPosition = center;
 
         //Se posição do destino for válida no NavMesh
-        if (pathPoints.Count>0 && NavMesh.SamplePosition(nextPosition, out navHit, 1.0f, NavMesh.AllAreas) && path!=null)
+        if (pathPoints.Count > 0 && NavMesh.SamplePosition(nextPosition, out navHit, 1.0f, NavMesh.AllAreas) && path != null)
         {
             //Retorna true e a posição no NavMesh
             result = navHit.position;
@@ -229,5 +237,4 @@ public class EnemyAI : MonoBehaviour
             return false;
         }
     }
-
 }

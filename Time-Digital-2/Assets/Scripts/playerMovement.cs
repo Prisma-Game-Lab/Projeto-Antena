@@ -95,7 +95,7 @@ public class playerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        //Encontrou um esconderijo
+        //Entrou num esconderijo
         if (collision.gameObject.CompareTag("SafeSpot"))
         {
             Debug.Log("Entrou esconderijo");
@@ -106,6 +106,7 @@ public class playerMovement : MonoBehaviour
         //Foi atacado e morreu
         else if (collision.gameObject.CompareTag("Enemy"))
         {
+            //Morte
             collision.gameObject.GetComponent<EnemyAI>().morte.Play();
             isDead = true;
         }
@@ -118,9 +119,9 @@ public class playerMovement : MonoBehaviour
     }
     private void OnTriggerExit(Collider collision)
     {
+        //Saiu do esconderijo
         if (collision.gameObject.CompareTag("SafeSpot"))
         {
-            Debug.Log("Saiu esconderijo");
             thirdPersonCam.SetActive(thirdPersonMode);
             firstPersonCam.SetActive(!thirdPersonMode);
             isSafe = false;

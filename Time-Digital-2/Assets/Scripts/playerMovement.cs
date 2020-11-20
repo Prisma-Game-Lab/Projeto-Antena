@@ -11,6 +11,8 @@ public class playerMovement : MonoBehaviour
     public float movementForce;
     public float movementSpeed;
 
+    public AudioSource morte;
+
     [HideInInspector]
     public bool isMoving;
     [HideInInspector]
@@ -107,7 +109,8 @@ public class playerMovement : MonoBehaviour
         else if (collision.gameObject.CompareTag("Enemy"))
         {
             //Morte
-            collision.gameObject.GetComponent<EnemyAI>().morte.Play();
+            //collision.gameObject.GetComponent<EnemyAI>().morte.Play();
+            morte.Play();
             isDead = true;
         }
         //Encontrou um checkpoint

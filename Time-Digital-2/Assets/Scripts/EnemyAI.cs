@@ -17,7 +17,7 @@ public class EnemyAI : MonoBehaviour
     public enum stateMachine { isWaiting, isReadyToWander, isMoving, isAttacking }
     [HideInInspector]
     public stateMachine myState;
-    public AudioSource morte;
+   
 
     //Contador de tempo
     private float timeToWait;

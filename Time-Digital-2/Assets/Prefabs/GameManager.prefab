@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4368107276125832349}
   - component: {fileID: 4368107276125832290}
   m_Layer: 0
-  m_Name: SceneController
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,3 +46,4 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 0}
   currentScene:
     m_Handle: 0
+  settingsMenu: {fileID: 0}

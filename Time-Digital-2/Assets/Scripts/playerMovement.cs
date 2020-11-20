@@ -15,6 +15,8 @@ public class playerMovement : MonoBehaviour
     public bool isMoving;
     [HideInInspector]
     public bool isSafe;
+    [HideInInspector]
+    public bool isDead;
 
     public static playerMovement current;
 
@@ -23,6 +25,7 @@ public class playerMovement : MonoBehaviour
     private float turnSmoothVelocity;
     private Rigidbody playerRb;
     private bool thirdPersonMode;
+    public Vector3 lastCheckpointPos;
 
     
     private void Awake()
@@ -33,22 +36,22 @@ public class playerMovement : MonoBehaviour
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        lastCheckpointPos = transform.position;
         //Trava e deixa o cursor invisivel
         //Cursor.lockState = CursorLockMode.Locked;
         isMoving = false;
         isSafe = false;
         thirdPersonMode = true;
+        isDead = false;
 
         thirdPersonCam.SetActive(thirdPersonMode);
         firstPersonCam.SetActive(!thirdPersonMode);
-
     }
 
     private void FixedUpdate()
     {
-        Movement();
-        if (!thirdPersonCam.activeSelf)
-            transform.rotation = Quaternion.AngleAxis(mainCam.transform.rotation.eulerAngles.y * Time.fixedDeltaTime * 50, Vector3.up);
+        if(!isDead)
+            Movement();
     }
 
     private void Movement()
@@ -71,7 +74,7 @@ public class playerMovement : MonoBehaviour
 
             //Transição de rotação suave
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            if(thirdPersonCam.activeSelf)
+            if (thirdPersonCam.activeSelf)
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             //Calcula direção baseada no angulo de rotação para ser uma direção relativa a camera
@@ -86,25 +89,31 @@ public class playerMovement : MonoBehaviour
                 playerRb.velocity = playerRb.velocity.normalized * movementSpeed;
             }
         }
+        if (!thirdPersonCam.activeSelf)
+            transform.rotation = Quaternion.AngleAxis(mainCam.transform.rotation.eulerAngles.y * Time.fixedDeltaTime * 50, Vector3.up);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log("Colisao");
-            sceneController.LoadScene(sceneController.currentScene.name);
-        }
-
-    }
     private void OnTriggerEnter(Collider collision)
     {
+        //Encontrou um esconderijo
         if (collision.gameObject.CompareTag("SafeSpot"))
         {
             Debug.Log("Entrou esconderijo");
             thirdPersonCam.SetActive(!thirdPersonMode);
             firstPersonCam.SetActive(thirdPersonMode);
             isSafe = true;
+        }
+        //Foi atacado e morreu
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<EnemyAI>().morte.Play();
+            isDead = true;
+        }
+        //Encontrou um checkpoint
+        else if (collision.gameObject.CompareTag("CheckPoint"))
+        {
+            lastCheckpointPos = collision.gameObject.transform.position;
+            collision.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
     private void OnTriggerExit(Collider collision)

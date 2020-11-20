@@ -2270,14 +2270,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23df07eb76e132d4c80938cd454f34ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCam: {fileID: 0}
-  thirdPersonCam: {fileID: 0}
-  firstPersonCam: {fileID: 0}
-  sceneController: {fileID: 0}
+  mainCam: {fileID: 434657048468111379, guid: cde310c243f0a0a4baa613545d8d98b5, type: 3}
+  thirdPersonCam: {fileID: 2466886269348329297, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
+    type: 3}
+  firstPersonCam: {fileID: 5749050338137740696, guid: 1ca2c472ac276f841b0216829e54a3ea,
+    type: 3}
+  sceneController: {fileID: 4368107276125832290, guid: 7c5f1e24a7dc1d041a4a7e954e363689,
+    type: 3}
   movementForce: 9
   movementSpeed: 5
   isMoving: 0
   isSafe: 0
+  isDead: 0
 --- !u!65 &674465217
 BoxCollider:
   m_ObjectHideFlags: 0

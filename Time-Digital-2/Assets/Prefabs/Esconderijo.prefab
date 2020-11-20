@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4299022229199055762}
   m_Layer: 0
   m_Name: Esconderijo
-  m_TagString: SafeSpot
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_TagString: CheckPoint
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -42,5 +42,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 1, z: 4}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.629875, y: 1, z: 1}
+  m_Center: {x: -0.037506104, y: 0, z: 0.09880686}

@@ -5,17 +5,22 @@ using UnityEngine;
 public class ScannerGenerator : MonoBehaviour
 {
     public GameObject scanBall;
-    public GameObject player;
+    public playerMovement player;
     public float sonarCooldown;
 
     [HideInInspector]
     public bool canUseSonar = true;
 
+    private void Start()
+    {
+        player = playerMovement.current;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (canUseSonar) {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && !player.isDead)
             {
                 StartCoroutine(SonarCooldown());
                 Instantiate(scanBall, player.transform.position, Quaternion.identity);

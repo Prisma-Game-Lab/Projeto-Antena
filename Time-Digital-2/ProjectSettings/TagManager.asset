@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Scanner
+  - SafeSpot
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

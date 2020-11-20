@@ -149,7 +149,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2466886268679015726}
-  m_LocalRotation: {x: 0.15863214, y: 0.000000015111969, z: -0.0000000024276536, w: 0.9873378}
+  m_LocalRotation: {x: 0.15863213, y: -0.000000021648685, z: 0.0000000068596724, w: 0.98733777}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -297,8 +297,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2466886268968741765}
-  m_LocalRotation: {x: 0.112569705, y: 0.000000018638147, z: -0.0000000021115159,
-    w: 0.9936438}
+  m_LocalRotation: {x: 0.11256969, y: 0.00000002174189, z: -0.000000005692604, w: 0.9936439}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -402,7 +401,8 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 6911722726902223466, guid: 7f15c7763751aee44a33b9137f62fee4,
+    type: 3}
   m_CommonLens: 1
   m_Lens:
     FieldOfView: 50
@@ -490,9 +490,9 @@ MonoBehaviour:
     m_Radius: 1.9
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
-  - {fileID: 2466886268679015727}
-  - {fileID: 2466886268798507857}
-  - {fileID: 2466886268968741766}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &2466886269348329300
 MonoBehaviour:
   m_ObjectHideFlags: 0

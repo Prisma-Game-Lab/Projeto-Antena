@@ -9587,12 +9587,12 @@ PrefabInstance:
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000021741888
+      value: 0.000000021741881
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000005692555
+      value: -0.000000005692518
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
@@ -9682,6 +9682,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Esconderijo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299022229199055761, guid: af8b89a0e9b2014409e123289c1ec9aa,
+        type: 3}
+      propertyPath: m_TagString
+      value: SafeSpot
       objectReference: {fileID: 0}
     - target: {fileID: 4299022229199055762, guid: af8b89a0e9b2014409e123289c1ec9aa,
         type: 3}

@@ -8,6 +8,7 @@ TagManager:
   - Scanner
   - SafeSpot
   - CheckPoint
+  - Scene
   layers:
   - Default
   - TransparentFX

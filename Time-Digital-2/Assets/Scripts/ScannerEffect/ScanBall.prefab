@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0f4c6c8b5b54191b42e390465e4a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanVelocity: 15
-  maxDistance: 120
+  scanVelocity: 24
+  maxDistance: 60
 --- !u!54 &-6883397372698760943
 Rigidbody:
   m_ObjectHideFlags: 0

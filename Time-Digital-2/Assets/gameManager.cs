@@ -38,6 +38,7 @@ public class gameManager : MonoBehaviour
     //Reinicia os inimigos e a posição e estado do player
     private IEnumerator resetLevel()
     {
+        Debug.Log(respawnTime);
         yield return new WaitForSeconds(respawnTime);
         resetEnemys();
         player.isDead = false;

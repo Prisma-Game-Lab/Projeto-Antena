@@ -19,6 +19,8 @@ public class playerMovement : MonoBehaviour
     public bool isSafe;
     [HideInInspector]
     public bool isDead;
+    [HideInInspector]
+    public Vector3 lastCheckpointPos;
 
     public static playerMovement current;
 
@@ -27,7 +29,7 @@ public class playerMovement : MonoBehaviour
     private float turnSmoothVelocity;
     private Rigidbody playerRb;
     private bool thirdPersonMode;
-    public Vector3 lastCheckpointPos;
+    
 
     
     private void Awake()

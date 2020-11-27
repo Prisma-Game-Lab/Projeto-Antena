@@ -9,6 +9,8 @@ TagManager:
   - SafeSpot
   - CheckPoint
   - Scene
+  - key
+  - door
   layers:
   - Default
   - TransparentFX

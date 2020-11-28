@@ -14,6 +14,9 @@ public class playerKeyHolder : MonoBehaviour
         {
             for (int i = 0; i < keysHolding.Count; i++)
             {
+                
+                Debug.Log("Testando chave: ");
+                Debug.Log(keysHolding[i].keyPassword);
                 if (keysHolding[i].keyPassword == door.doorPassword)
                 {
                     door.openDoor = true;
@@ -30,6 +33,9 @@ public class playerKeyHolder : MonoBehaviour
             keyConfig key = other.gameObject.GetComponent<keyConfig>();
             if (key != null)
             {
+                
+                Debug.Log("Senha da chave: ");
+                Debug.Log(key.keyPassword);
                 keysHolding.Add(key);
                 Destroy(other.gameObject);
             }
@@ -37,6 +43,10 @@ public class playerKeyHolder : MonoBehaviour
         else if (other.gameObject.CompareTag("door"))
         {
             doorConfig door = other.gameObject.GetComponent<doorConfig>();
+            
+            Debug.Log("Senha da porta: ");
+            Debug.Log(door.doorPassword);
+
             checkKeyCode(door);
         }
     }

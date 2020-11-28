@@ -112,7 +112,8 @@ public class playerMovement : MonoBehaviour
         {
             //Morte
             //collision.gameObject.GetComponent<EnemyAI>().morte.Play();
-            morte.Play();
+            //morte.Play();
+            AudioManager.sharedInstance.PlayRequest(morte, AudioManager.SoundType.Morte);
             isDead = true;
         }
         //Encontrou um checkpoint

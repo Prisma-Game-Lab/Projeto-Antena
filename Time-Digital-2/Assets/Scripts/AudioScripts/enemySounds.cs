@@ -56,7 +56,9 @@ public class enemySounds : MonoBehaviour
             if (!isPlayingPerseguicao)
             {
                 isPlayingPerseguicao = true;
-                perseguicao.Play();
+                //perseguicao.Play();
+                //FindObjectOfType<AudioManager>().PlayRequest(perseguicao, AudioManager.SoundType.Perseguicao);
+                AudioManager.sharedInstance.PlayRequest(perseguicao, AudioManager.SoundType.Perseguicao);
             }
         }
         else
@@ -64,7 +66,9 @@ public class enemySounds : MonoBehaviour
             if (isPlayingPerseguicao)
             {
                 isPlayingPerseguicao = false;
-                perseguicao.Stop();
+                //perseguicao.Stop();
+                //FindObjectOfType<AudioManager>().StopRequest(AudioManager.SoundType.Perseguicao);
+                AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.Perseguicao);
             }
         }
     }

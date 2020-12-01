@@ -7651,6 +7651,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2758280601d268b4ba71e36e83c7050f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 0928d2401f30e2043ac3118518d1efac, type: 2}
+  normal: {fileID: 24500006, guid: 0928d2401f30e2043ac3118518d1efac, type: 2}
+  perseguicao: {fileID: -3048823684963148298, guid: 0928d2401f30e2043ac3118518d1efac,
+    type: 2}
 --- !u!4 &1525934030
 Transform:
   m_ObjectHideFlags: 0
@@ -10583,12 +10587,12 @@ PrefabInstance:
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000021000773
+      value: -0.00000002100078
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -8.491521e-10
+      value: -8.4911966e-10
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}

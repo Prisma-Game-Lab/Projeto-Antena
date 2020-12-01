@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class AudioManager : MonoBehaviour
     private Dictionary<SoundType, int> soundRequest;
     private Dictionary<SoundType, AudioSource> soundCurrentAudioSource;
     public static AudioManager sharedInstance;
+
+    public AudioMixer audioMixer;
+    public AudioMixerSnapshot normal;
+    public AudioMixerSnapshot perseguicao;
+
 
     void Awake()
     {
@@ -42,6 +48,8 @@ public class AudioManager : MonoBehaviour
             soundRequest[soundType] = 0;
             soundCurrentAudioSource[soundType] = null;
         }
+
+        //audioMixer = Resources.Load<AudioMixer>("audioMixer");
     }
 
 
@@ -55,6 +63,8 @@ public class AudioManager : MonoBehaviour
             //Debug.Log("Play");
             soundCurrentAudioSource[type] = audioSource;
             soundCurrentAudioSource[type].Play();
+
+            perseguicao.TransitionTo(1.0f);
 
             if (!audioSource.loop)
             {
@@ -73,6 +83,8 @@ public class AudioManager : MonoBehaviour
             //Debug.Log("Stop");
             soundCurrentAudioSource[type].Stop();
             soundCurrentAudioSource[type] = null;
+
+            normal.TransitionTo(1.0f);
         }
 
     }
@@ -82,4 +94,23 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
         StopRequest(type);
     }
+
+/*
+    private void Update() {
+        if (audioMixer != null){
+            //audioMixer.SetFloat("MasterVol", -80.0f);
+            float f;
+            if (audioMixer.GetFloat("PlayerVol", out f))
+            {
+                Debug.Log(f);
+                audioMixer.SetFloat("PlayerVol", f - 0.01f);
+            }
+            //AudioMixerGroup[] audioMixGroup = audioMixer.FindMatchingGroups("Master");
+        }
+    }
+*/
+
+    
+
+
 }

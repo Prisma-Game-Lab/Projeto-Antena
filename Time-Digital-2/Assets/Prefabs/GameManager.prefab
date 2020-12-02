@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4368107276125832349}
   - component: {fileID: 4368107276125832290}
+  - component: {fileID: 1820356418}
+  - component: {fileID: 5976373251964926994}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,3 +49,32 @@ MonoBehaviour:
   currentScene:
     m_Handle: 0
   settingsMenu: {fileID: 0}
+--- !u!114 &1820356418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368107276125832291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94aaf213965021d4380c7489f8e2d762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnTime: 3
+--- !u!114 &5976373251964926994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368107276125832291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2758280601d268b4ba71e36e83c7050f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 0928d2401f30e2043ac3118518d1efac, type: 2}
+  normal: {fileID: 24500006, guid: 0928d2401f30e2043ac3118518d1efac, type: 2}
+  perseguicao: {fileID: -3048823684963148298, guid: 0928d2401f30e2043ac3118518d1efac,
+    type: 2}

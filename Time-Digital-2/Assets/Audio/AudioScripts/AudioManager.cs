@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
     private Dictionary<SoundType, AudioSource> soundCurrentAudioSource;
     public static AudioManager sharedInstance;
 
-    public AudioMixer audioMixer;
+    public AudioMixer sfxMixer;
     public AudioMixerSnapshot normal;
     public AudioMixerSnapshot perseguicao;
 
@@ -84,7 +84,7 @@ public class AudioManager : MonoBehaviour
             soundCurrentAudioSource[type].Stop();
             soundCurrentAudioSource[type] = null;
 
-            normal.TransitionTo(1.0f);
+            normal.TransitionTo(1.0f); 
         }
 
     }

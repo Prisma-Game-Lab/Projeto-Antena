@@ -2060,12 +2060,12 @@ PrefabInstance:
     - target: {fileID: 434657048468111376, guid: cde310c243f0a0a4baa613545d8d98b5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000000726103
+      value: -0.00000000726103
       objectReference: {fileID: 0}
     - target: {fileID: 434657048468111376, guid: cde310c243f0a0a4baa613545d8d98b5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000010281727
+      value: 0.0000000010281727
       objectReference: {fileID: 0}
     - target: {fileID: 434657048468111376, guid: cde310c243f0a0a4baa613545d8d98b5,
         type: 3}
@@ -3614,6 +3614,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5976373251964926994, guid: 7c5f1e24a7dc1d041a4a7e954e363689,
+        type: 3}
+      propertyPath: sfxMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 0928d2401f30e2043ac3118518d1efac,
+        type: 2}
+    - target: {fileID: 5976373251964926994, guid: 7c5f1e24a7dc1d041a4a7e954e363689,
+        type: 3}
+      propertyPath: perseguicao
+      value: 
+      objectReference: {fileID: 24500006, guid: 0928d2401f30e2043ac3118518d1efac,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c5f1e24a7dc1d041a4a7e954e363689, type: 3}
 --- !u!114 &696732212 stripped
@@ -3948,7 +3960,7 @@ AudioSource:
   m_GameObject: {fileID: 772540278}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 2475616364430604722, guid: 0928d2401f30e2043ac3118518d1efac,
+  OutputAudioMixerGroup: {fileID: 5290602021926671071, guid: 0928d2401f30e2043ac3118518d1efac,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c7b1d9807ef9b9543a80590da7c93860, type: 3}
   m_PlayOnAwake: 0
@@ -5420,7 +5432,7 @@ AudioSource:
   m_GameObject: {fileID: 1065186463}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 2475616364430604722, guid: 0928d2401f30e2043ac3118518d1efac,
+  OutputAudioMixerGroup: {fileID: 5290602021926671071, guid: 0928d2401f30e2043ac3118518d1efac,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: b73f198e4f2887441af6d971b4f433c9, type: 3}
   m_PlayOnAwake: 0
@@ -6659,7 +6671,7 @@ AudioSource:
   m_GameObject: {fileID: 1359570796}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 2475616364430604722, guid: 0928d2401f30e2043ac3118518d1efac,
+  OutputAudioMixerGroup: {fileID: 5290602021926671071, guid: 0928d2401f30e2043ac3118518d1efac,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 32f2361311d8e084dbef5aacd8664eea, type: 3}
   m_PlayOnAwake: 1
@@ -8303,6 +8315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625360837c7f2804c837b1a9fa370c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keysHolding: []
 --- !u!1 &1719643724
 GameObject:
   m_ObjectHideFlags: 0
@@ -10158,17 +10171,17 @@ PrefabInstance:
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.15863214
+      value: 0.15863213
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000014554342
+      value: -0.000000021648685
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268679015712, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000010430551
+      value: 0.0000000068596697
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268798507858, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
@@ -10193,7 +10206,7 @@ PrefabInstance:
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -8.490695e-10
+      value: -8.4904594e-10
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}

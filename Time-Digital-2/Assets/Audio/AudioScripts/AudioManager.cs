@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     {
         Morte,
         Perseguicao,
+        Proximidade
     }
 
     /*private static Dictionary<SoundType, int> soundRequest = new Dictionary<SoundType, int> {
@@ -17,13 +18,19 @@ public class AudioManager : MonoBehaviour
         {SoundType.Perseguicao , 0}
     };*/
 
-    private Dictionary<SoundType, int> soundRequest;
-    private Dictionary<SoundType, AudioSource> soundCurrentAudioSource;
     public static AudioManager sharedInstance;
 
+
+    private Dictionary<SoundType, int> soundRequest;
+    private Dictionary<SoundType, AudioSource> soundCurrentAudioSource;
+    private Dictionary<SoundType, AudioMixerSnapshot> soundSnapshot;
+  
+
+    public float transitionDuration;
     public AudioMixer sfxMixer;
     public AudioMixerSnapshot normal;
-    public AudioMixerSnapshot perseguicao;
+    public AudioMixerSnapshot persegMorte;
+    public AudioMixerSnapshot proximidade;
 
 
     void Awake()
@@ -49,6 +56,12 @@ public class AudioManager : MonoBehaviour
             soundCurrentAudioSource[soundType] = null;
         }
 
+        soundSnapshot = new Dictionary<SoundType, AudioMixerSnapshot>{
+            [SoundType.Morte] = persegMorte,
+            [SoundType.Perseguicao] = persegMorte,
+            [SoundType.Proximidade] = proximidade
+        };
+
         //audioMixer = Resources.Load<AudioMixer>("audioMixer");
     }
 
@@ -61,11 +74,23 @@ public class AudioManager : MonoBehaviour
         if (soundRequest[type] == 1)
         {
             //Debug.Log("Play");
+            if (soundSnapshot.ContainsKey(type)){
+                soundSnapshot[type].TransitionTo(transitionDuration);
+            }
+            else{
+                Debug.Log("SoundType sem Snapshot Correspondente!");
+                normal.TransitionTo(transitionDuration);
+            }
+
+            if (audioSource == null)
+            {
+                Debug.Log("AudioSource nulo!");
+                return;
+            }
+
             soundCurrentAudioSource[type] = audioSource;
             soundCurrentAudioSource[type].Play();
-
-            perseguicao.TransitionTo(1.0f);
-
+            
             if (!audioSource.loop)
             {
                 StartCoroutine(WaitForSound(audioSource.clip.length, type));
@@ -81,12 +106,17 @@ public class AudioManager : MonoBehaviour
         if (soundRequest[type] == 0)
         {
             //Debug.Log("Stop");
+            normal.TransitionTo(transitionDuration); 
+
+            if (soundCurrentAudioSource[type] == null)
+            {
+                Debug.Log("AudioSource nulo!");
+                return;
+            }
+
             soundCurrentAudioSource[type].Stop();
             soundCurrentAudioSource[type] = null;
-
-            normal.TransitionTo(1.0f); 
         }
-
     }
 
     private IEnumerator WaitForSound(float duration, SoundType type)

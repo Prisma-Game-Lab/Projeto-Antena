@@ -74,7 +74,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2758280601d268b4ba71e36e83c7050f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionDuration: 1
   sfxMixer: {fileID: 24100000, guid: 0928d2401f30e2043ac3118518d1efac, type: 2}
   normal: {fileID: 24500006, guid: 0928d2401f30e2043ac3118518d1efac, type: 2}
-  perseguicao: {fileID: -3048823684963148298, guid: 0928d2401f30e2043ac3118518d1efac,
+  persegMorte: {fileID: -7825714334890643161, guid: 0928d2401f30e2043ac3118518d1efac,
+    type: 2}
+  proximidade: {fileID: -7490092978579388664, guid: 0928d2401f30e2043ac3118518d1efac,
     type: 2}

@@ -21,7 +21,7 @@ public class SonarColisionObject : MonoBehaviour
         Renderer renderer = scenarioObject.GetComponent<Renderer>();
         Material material = renderer.material;
         
-        Debug.Log(material.name);
+        //Debug.Log(material.name);
         material.SetFloat("Vector1_C0B001A6", 1.0f);
         yield return new WaitForSeconds(outlineLightTime);
         float i = 1.0f;

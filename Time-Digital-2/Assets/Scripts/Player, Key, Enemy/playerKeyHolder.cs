@@ -5,7 +5,9 @@ using UnityEngine;
 public class playerKeyHolder : MonoBehaviour
 {
     //Lista com todas as chaves ja pegas pelo player
-    private List<keyConfig> keysHolding = new List<keyConfig>();
+    [HideInInspector]
+    public List<keyConfig> keysHolding = new List<keyConfig>();
+
 
     //checa se alguma chave tem a mesma senha da porta
     private void checkKeyCode(doorConfig door)
@@ -17,6 +19,7 @@ public class playerKeyHolder : MonoBehaviour
                 if (keysHolding[i].keyPassword == door.doorPassword)
                 {
                     door.openDoor = true;
+                    keysHolding.RemoveAt(i);
                 }
             }
         }
@@ -31,7 +34,7 @@ public class playerKeyHolder : MonoBehaviour
             if (key != null)
             {
                 keysHolding.Add(key);
-                Destroy(other.gameObject);
+                other.gameObject.SetActive(false);
             }
         } //Se for uma porta checa se alguma chave do player abre ela
         else if (other.gameObject.CompareTag("door"))

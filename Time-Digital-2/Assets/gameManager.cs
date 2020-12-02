@@ -41,9 +41,21 @@ public class gameManager : MonoBehaviour
         Debug.Log(respawnTime);
         yield return new WaitForSeconds(respawnTime);
         resetEnemys();
-        player.isDead = false;
+        resetKeys();
         player.transform.position = player.lastCheckpointPos;
+        player.isDead = false;
         oneTime = true;
+    }
+    private void resetKeys()
+    {
+        if (player.keys.keysHolding != null)
+        {
+            for (int i = 0; i < player.keys.keysHolding.Count; i++)
+            {
+                player.keys.keysHolding[i].gameObject.SetActive(true);
+            }
+            player.keys.keysHolding.Clear();
+        }
     }
     //Reinicia posição, estado e caminho dos inimigos
     private void resetEnemys()

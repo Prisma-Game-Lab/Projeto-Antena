@@ -21,6 +21,8 @@ public class playerMovement : MonoBehaviour
     public bool isDead;
     [HideInInspector]
     public Vector3 lastCheckpointPos;
+    [HideInInspector]
+    public playerKeyHolder keys;
 
     public static playerMovement current;
 
@@ -39,6 +41,7 @@ public class playerMovement : MonoBehaviour
 
     private void Start()
     {
+        keys = GetComponent<playerKeyHolder>();
         playerRb = GetComponent<Rigidbody>();
         lastCheckpointPos = transform.position;
         //Trava e deixa o cursor invisivel

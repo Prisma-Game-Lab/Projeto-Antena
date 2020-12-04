@@ -133,6 +133,14 @@ public class playerMovement : MonoBehaviour
             AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.SafeSpot);
         }
     }
+
+    private void OnTriggerStay(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("SafeSpot"))
+        {
+            isSafe = true;
+        }
+    }
     private void OnTriggerEnter(Collider collision)
     {
         //Entrou num esconderijo

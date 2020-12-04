@@ -32,6 +32,11 @@ public class EnemyAI : MonoBehaviour
     public EnemyFollowPath pathManager;
     private Collider[] attackBox;
 
+    public AudioSource proximidade;
+
+    public float proximidadeDist;
+    private bool hasPlayed = false;
+
     void Start()
     {
         pathManager = GetComponent<EnemyFollowPath>();
@@ -56,16 +61,19 @@ public class EnemyAI : MonoBehaviour
         if (myState == stateMachine.isReadyToWander)
         {
             wander();
+            checkProximidade();
         }
         //Se estiver patrulhando checa se ja chegou ao seu destino
         else if (myState == stateMachine.isMoving)
         {
             checkIfReachedDestination();
+            checkProximidade();
         }
         //Se estiver esperando entre uma patrulha e outra, calcula o tempo que tem que esperar
         else if (myState == stateMachine.isWaiting)
         {
             waitForTime();
+            checkProximidade();
         }
         //Se estiver em modo de ataque, executa comportamento de ataque
         else if (myState == stateMachine.isAttacking)
@@ -167,5 +175,23 @@ public class EnemyAI : MonoBehaviour
             result = center;
             return false;
         }
+    }
+
+    //se proximidade for menor q proximidadeDist (definida no editor) set audioManager pro modo proximidade
+    private void checkProximidade()
+    {
+        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+
+        if (distanceToPlayer <= proximidadeDist && !hasPlayed)
+        {
+            AudioManager.sharedInstance.PlayRequest(proximidade, AudioManager.SoundType.Proximidade);
+            hasPlayed = true;
+        }
+        else if (distanceToPlayer > proximidadeDist && hasPlayed)
+        {
+            AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.Proximidade);
+            hasPlayed = false;
+        }
+
     }
 }

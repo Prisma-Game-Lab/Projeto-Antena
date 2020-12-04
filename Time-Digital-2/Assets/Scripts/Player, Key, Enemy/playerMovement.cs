@@ -12,6 +12,7 @@ public class playerMovement : MonoBehaviour
     public float movementSpeed;
 
     public AudioSource morte;
+    public AudioSource safeSpot;
 
     [HideInInspector]
     public bool isMoving;
@@ -21,6 +22,8 @@ public class playerMovement : MonoBehaviour
     public bool isDead;
     [HideInInspector]
     public Vector3 lastCheckpointPos;
+    [HideInInspector]
+    public playerKeyHolder keys;
 
     public static playerMovement current;
 
@@ -39,6 +42,7 @@ public class playerMovement : MonoBehaviour
 
     private void Start()
     {
+        keys = GetComponent<playerKeyHolder>();
         playerRb = GetComponent<Rigidbody>();
         lastCheckpointPos = transform.position;
         //Trava e deixa o cursor invisivel
@@ -106,14 +110,18 @@ public class playerMovement : MonoBehaviour
             thirdPersonCam.SetActive(!thirdPersonMode);
             firstPersonCam.SetActive(thirdPersonMode);
             isSafe = true;
+
+            AudioManager.sharedInstance.PlayRequest(safeSpot, AudioManager.SoundType.SafeSpot);
         }
         //Foi atacado e morreu
         else if (collision.gameObject.CompareTag("Enemy"))
         {
             //Morte
             //collision.gameObject.GetComponent<EnemyAI>().morte.Play();
-            morte.Play();
+            //morte.Play();
+            AudioManager.sharedInstance.PlayRequest(morte, AudioManager.SoundType.Morte);
             isDead = true;
+            gameObject.GetComponent<ScannerGenerator>().canUseSonar = true;
         }
         //Encontrou um checkpoint
         else if (collision.gameObject.CompareTag("CheckPoint"))
@@ -130,6 +138,8 @@ public class playerMovement : MonoBehaviour
             thirdPersonCam.SetActive(thirdPersonMode);
             firstPersonCam.SetActive(!thirdPersonMode);
             isSafe = false;
+
+            AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.SafeSpot);
         }
     }
 }

@@ -11,13 +11,13 @@ public class Scaler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scaleChange = new Vector3(scanVelocity * Time.deltaTime, scanVelocity * Time.deltaTime, scanVelocity * Time.deltaTime);
+        scaleChange = new Vector3(scanVelocity, scanVelocity, scanVelocity);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.localScale += scaleChange;
+        transform.localScale += scaleChange * Time.deltaTime;
 
         if (this.transform.localScale.x >= maxDistance)
         {

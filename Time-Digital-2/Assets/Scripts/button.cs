@@ -21,14 +21,19 @@ public class button : MonoBehaviour
     {
         foreach (GameObject door in doors)
         {
-            door.SetActive(false);
+            //door.SetActive(false);
+            door.transform.GetChild(0).gameObject.SetActive(false);
+            door.transform.GetChild(1).gameObject.SetActive(false);
+            StartCoroutine(door.GetComponent<doorSounds>().PlayAlarme(openTime));
         }
         print("Porta aberta");
         yield return new WaitForSeconds(openTime);
 
         foreach (GameObject door in doors)
         {
-            door.SetActive(true);
+            //door.SetActive(true);
+            door.transform.GetChild(0).gameObject.SetActive(true);
+            door.transform.GetChild(1).gameObject.SetActive(true);
         }
         print("Porta fechada");
     }

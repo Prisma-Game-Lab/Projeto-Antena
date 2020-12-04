@@ -2635,6 +2635,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4726588233009859845, guid: 323832b8fa71ee1449d48f1c40476723,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 6879843109255817136, guid: 323832b8fa71ee1449d48f1c40476723,
         type: 3}
       propertyPath: m_Name
@@ -3651,13 +3656,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1820356418, guid: 7c5f1e24a7dc1d041a4a7e954e363689, type: 3}
+      propertyPath: fadeImage
+      value: 
+      objectReference: {fileID: 1947747672}
+    - target: {fileID: 1820356418, guid: 7c5f1e24a7dc1d041a4a7e954e363689, type: 3}
       propertyPath: eButton
       value: 
       objectReference: {fileID: 906568224}
-    - target: {fileID: 1820356418, guid: 7c5f1e24a7dc1d041a4a7e954e363689, type: 3}
-      propertyPath: respawnTime
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4368107276125832290, guid: 7c5f1e24a7dc1d041a4a7e954e363689,
         type: 3}
       propertyPath: pauseMenuUI
@@ -9493,6 +9498,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941515962}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1947747672 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1947747672, guid: d78f9b84ab807864ca43d1d36a297c33,
+    type: 3}
+  m_PrefabInstance: {fileID: 7125679604302085951}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1981045106
 GameObject:
   m_ObjectHideFlags: 1
@@ -10083,7 +10094,7 @@ PrefabInstance:
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11256971
+      value: 0.112569705
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
@@ -10446,6 +10457,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4726588233009859845, guid: 323832b8fa71ee1449d48f1c40476723,
+        type: 3}
+      propertyPath: DopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726588233009859845, guid: 323832b8fa71ee1449d48f1c40476723,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6879843109255817136, guid: 323832b8fa71ee1449d48f1c40476723,
         type: 3}
       propertyPath: m_Name
@@ -10520,11 +10541,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7125679603462626591, guid: d78f9b84ab807864ca43d1d36a297c33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7125679603565199909, guid: d78f9b84ab807864ca43d1d36a297c33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10634,11 +10650,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: playerUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7125679603565199913, guid: d78f9b84ab807864ca43d1d36a297c33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d78f9b84ab807864ca43d1d36a297c33, type: 3}

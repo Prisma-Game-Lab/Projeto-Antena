@@ -54,6 +54,8 @@ public class playerMovement : MonoBehaviour
         thirdPersonMode = true;
         isDead = false;
 
+        
+
         thirdPersonCam.SetActive(thirdPersonMode);
         firstPersonCam.SetActive(!thirdPersonMode);
     }
@@ -66,7 +68,7 @@ public class playerMovement : MonoBehaviour
         }
     }
     private void FixedUpdate()
-    {
+    {      
         if(!isDead)
             Movement();
     }

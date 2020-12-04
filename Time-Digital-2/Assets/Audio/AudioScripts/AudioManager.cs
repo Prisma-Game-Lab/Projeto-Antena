@@ -10,7 +10,8 @@ public class AudioManager : MonoBehaviour
     {
         Morte,
         Perseguicao,
-        Proximidade
+        Proximidade,
+        SafeSpot
     }
 
     /*private static Dictionary<SoundType, int> soundRequest = new Dictionary<SoundType, int> {
@@ -31,6 +32,7 @@ public class AudioManager : MonoBehaviour
     public AudioMixerSnapshot normal;
     public AudioMixerSnapshot persegMorte;
     public AudioMixerSnapshot proximidade;
+    public AudioMixerSnapshot safeSpot;
 
 
     void Awake()
@@ -59,7 +61,8 @@ public class AudioManager : MonoBehaviour
         soundSnapshot = new Dictionary<SoundType, AudioMixerSnapshot>{
             [SoundType.Morte] = persegMorte,
             [SoundType.Perseguicao] = persegMorte,
-            [SoundType.Proximidade] = proximidade
+            [SoundType.Proximidade] = proximidade,
+            [SoundType.SafeSpot] = safeSpot
         };
 
         //audioMixer = Resources.Load<AudioMixer>("audioMixer");

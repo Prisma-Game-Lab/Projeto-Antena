@@ -12,6 +12,7 @@ public class playerMovement : MonoBehaviour
     public float movementSpeed;
 
     public AudioSource morte;
+    public AudioSource safeSpot;
 
     [HideInInspector]
     public bool isMoving;
@@ -109,6 +110,8 @@ public class playerMovement : MonoBehaviour
             thirdPersonCam.SetActive(!thirdPersonMode);
             firstPersonCam.SetActive(thirdPersonMode);
             isSafe = true;
+
+            AudioManager.sharedInstance.PlayRequest(safeSpot, AudioManager.SoundType.SafeSpot);
         }
         //Foi atacado e morreu
         else if (collision.gameObject.CompareTag("Enemy"))
@@ -134,6 +137,8 @@ public class playerMovement : MonoBehaviour
             thirdPersonCam.SetActive(thirdPersonMode);
             firstPersonCam.SetActive(!thirdPersonMode);
             isSafe = false;
+
+            AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.SafeSpot);
         }
     }
 }

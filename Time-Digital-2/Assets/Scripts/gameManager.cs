@@ -13,6 +13,7 @@ public class gameManager : MonoBehaviour
     private bool canHide;
     private playerMovement player;
     private List<EnemyAI> enemys;
+    private SceneController sceneController;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class gameManager : MonoBehaviour
         canHide = false;
         oneTime = true;
         player = playerMovement.current;
+        sceneController = this.GetComponent<SceneController>();
         enemys = new List<EnemyAI>();
         fillEnemysList();
     }
@@ -93,5 +95,11 @@ public class gameManager : MonoBehaviour
         {
             enemys.Add(enemysObject[i].GetComponent<EnemyAI>());
         }
+    }
+
+    public void GoToLastRespawn()
+    {
+        player.gameObject.transform.position = player.lastCheckpointPos;
+        sceneController.Resume();
     }
 }

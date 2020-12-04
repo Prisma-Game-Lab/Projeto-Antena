@@ -34,6 +34,9 @@ public class AudioManager : MonoBehaviour
     public AudioMixerSnapshot proximidade;
     public AudioMixerSnapshot safeSpot;
 
+    private AudioMixerSnapshot currentSnapshot;
+
+    Dictionary<AudioMixerSnapshot, int> snapshotPriority;
 
     void Awake()
     {
@@ -65,6 +68,13 @@ public class AudioManager : MonoBehaviour
             [SoundType.SafeSpot] = safeSpot
         };
 
+        snapshotPriority = new Dictionary<AudioMixerSnapshot, int>{
+            [normal] = 4,
+            [persegMorte] = 2,
+            [proximidade] = 3,
+            [safeSpot] = 1
+        };
+
         //audioMixer = Resources.Load<AudioMixer>("audioMixer");
     }
 
@@ -78,11 +88,12 @@ public class AudioManager : MonoBehaviour
         {
             //Debug.Log("Play");
             if (soundSnapshot.ContainsKey(type)){
-                soundSnapshot[type].TransitionTo(transitionDuration);
+                //soundSnapshot[type].TransitionTo(transitionDuration);
+                SetSnapshot(soundSnapshot[type]);
             }
             else{
                 Debug.Log("SoundType sem Snapshot Correspondente!");
-                normal.TransitionTo(transitionDuration);
+                //normal.TransitionTo(transitionDuration);
             }
 
             if (audioSource == null)
@@ -109,7 +120,8 @@ public class AudioManager : MonoBehaviour
         if (soundRequest[type] == 0)
         {
             //Debug.Log("Stop");
-            normal.TransitionTo(transitionDuration); 
+            //normal.TransitionTo(transitionDuration); 
+            SetSnapshot(normal);
 
             if (soundCurrentAudioSource[type] == null)
             {
@@ -128,20 +140,30 @@ public class AudioManager : MonoBehaviour
         StopRequest(type);
     }
 
-/*
-    private void Update() {
-        if (audioMixer != null){
-            //audioMixer.SetFloat("MasterVol", -80.0f);
-            float f;
-            if (audioMixer.GetFloat("PlayerVol", out f))
+    private void SetSnapshot(AudioMixerSnapshot snap)
+    {
+        if (currentSnapshot == null)
+        {
+            currentSnapshot = snap;
+            return;
+        }
+
+        if (snapshotPriority.ContainsKey(snap))
+        {
+            if (snapshotPriority[snap] < snapshotPriority[currentSnapshot])
             {
-                Debug.Log(f);
-                audioMixer.SetFloat("PlayerVol", f - 0.01f);
+                currentSnapshot = snap;
             }
-            //AudioMixerGroup[] audioMixGroup = audioMixer.FindMatchingGroups("Master");
         }
     }
-*/
+
+    private void FixedUpdate() {
+        if (currentSnapshot != null)
+        {
+            currentSnapshot.TransitionTo(transitionDuration);
+            currentSnapshot = null;
+        }
+    }
 
     
 

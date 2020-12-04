@@ -34,6 +34,7 @@ public class playerMovement : MonoBehaviour
     private float turnSmoothVelocity;
     private Rigidbody playerRb;
     private bool thirdPersonMode;
+    private int triggerCount;
 
 
 
@@ -44,6 +45,7 @@ public class playerMovement : MonoBehaviour
 
     private void Start()
     {
+        triggerCount = 0;
         keys = GetComponent<playerKeyHolder>();
         playerRb = GetComponent<Rigidbody>();
         lastCheckpointPos = transform.position;
@@ -109,30 +111,7 @@ public class playerMovement : MonoBehaviour
         if (!thirdPersonCam.activeSelf)
             transform.rotation = Quaternion.AngleAxis(mainCam.transform.rotation.eulerAngles.y * Time.fixedDeltaTime * 50, Vector3.up);
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("SafeSpot"))
-        {
-            Debug.Log("Entrou esconderijo");
-            thirdPersonCam.SetActive(!thirdPersonMode);
-            firstPersonCam.SetActive(thirdPersonMode);
-            isSafe = true;
 
-            AudioManager.sharedInstance.PlayRequest(safeSpot, AudioManager.SoundType.SafeSpot);
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("SafeSpot"))
-        {
-            thirdPersonCam.SetActive(thirdPersonMode);
-            firstPersonCam.SetActive(!thirdPersonMode);
-            isSafe = false;
-
-            AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.SafeSpot);
-        }
-    }
     private void OnTriggerEnter(Collider collision)
     {
         //Entrou num esconderijo
@@ -142,8 +121,9 @@ public class playerMovement : MonoBehaviour
             thirdPersonCam.SetActive(!thirdPersonMode);
             firstPersonCam.SetActive(thirdPersonMode);
             isSafe = true;
-
             AudioManager.sharedInstance.PlayRequest(safeSpot, AudioManager.SoundType.SafeSpot);
+            triggerCount++;
+            print(triggerCount);
         }
         //Foi atacado e morreu
         else if (collision.gameObject.CompareTag("Enemy"))
@@ -165,19 +145,21 @@ public class playerMovement : MonoBehaviour
             button = collision.gameObject;
 
         }
-
     }
-
     private void OnTriggerExit(Collider collision)
     {
         //Saiu do esconderijo
         if (collision.gameObject.CompareTag("SafeSpot"))
         {
-            thirdPersonCam.SetActive(thirdPersonMode);
-            firstPersonCam.SetActive(!thirdPersonMode);
-            isSafe = false;
-
-            AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.SafeSpot);
+            triggerCount--;
+            if (triggerCount <= 0)
+            {
+                thirdPersonCam.SetActive(thirdPersonMode);
+                firstPersonCam.SetActive(!thirdPersonMode);
+                isSafe = false;
+                AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.SafeSpot);
+            }
+            print(triggerCount);
         }
         else if (collision.gameObject.CompareTag("button"))
         {
@@ -186,4 +168,3 @@ public class playerMovement : MonoBehaviour
         }
     }
 }
-

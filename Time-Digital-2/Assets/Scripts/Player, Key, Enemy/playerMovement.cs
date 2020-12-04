@@ -159,7 +159,7 @@ public class playerMovement : MonoBehaviour
             //Morte
             AudioManager.sharedInstance.PlayRequest(morte, AudioManager.SoundType.Morte);
             isDead = true;
-            gameObject.GetComponent<ScannerGenerator>().canUseSonar = true;
+            //gameObject.GetComponent<ScannerGenerator>().canUseSonar = true;
         }
         //Encontrou um checkpoint
         else if (collision.gameObject.CompareTag("CheckPoint"))

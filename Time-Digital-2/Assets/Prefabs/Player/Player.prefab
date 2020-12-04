@@ -2333,7 +2333,7 @@ MonoBehaviour:
   scanBall: {fileID: 7286365288761944895, guid: 3661cb3d9f24945a69396ad3a10a3da1,
     type: 3}
   player: {fileID: 0}
-  sonarCooldown: 2.5
+  sonarCooldown: 8
   sonarCooldownObject: {fileID: 3240876158501852734}
   sonarOnMaterial: {fileID: 2100000, guid: 488a39b260a6049aa8ab493f46196591, type: 2}
   sonarOffMaterial: {fileID: 2100000, guid: 7f41349f6d97fe141ba17ca21f745cbf, type: 2}

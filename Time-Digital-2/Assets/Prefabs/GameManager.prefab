@@ -61,8 +61,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94aaf213965021d4380c7489f8e2d762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeImage: {fileID: 0}
+  fadeSmoth: 0
   eButton: {fileID: 0}
-  respawnTime: 3
+  respawnTime: 1
 --- !u!114 &5976373251964926994
 MonoBehaviour:
   m_ObjectHideFlags: 0

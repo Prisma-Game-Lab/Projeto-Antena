@@ -165,7 +165,9 @@ public class playerMovement : MonoBehaviour
             button = collision.gameObject;
 
         }
+
     }
+
     private void OnTriggerExit(Collider collision)
     {
         //Saiu do esconderijo
@@ -184,3 +186,4 @@ public class playerMovement : MonoBehaviour
         }
     }
 }
+

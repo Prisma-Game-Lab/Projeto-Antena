@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
 {
     public static gameManager current;
+    public GameObject fadeImage;
+    public float fadeSmoth;
 
     public GameObject eButton;
     public float respawnTime;
@@ -14,6 +17,7 @@ public class gameManager : MonoBehaviour
     private playerMovement player;
     private List<EnemyAI> enemys;
     private SceneController sceneController;
+    
 
     private void Awake()
     {
@@ -57,8 +61,9 @@ public class gameManager : MonoBehaviour
     //Reinicia os inimigos e a posição e estado do player
     private IEnumerator resetLevel()
     {
-        Debug.Log(respawnTime);
+        fadeImage.SetActive(true);
         yield return new WaitForSeconds(respawnTime);
+        fadeImage.SetActive(false);
         resetEnemys();
         resetKeys();
         player.transform.position = player.lastCheckpointPos;

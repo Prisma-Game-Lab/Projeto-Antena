@@ -109,7 +109,30 @@ public class playerMovement : MonoBehaviour
         if (!thirdPersonCam.activeSelf)
             transform.rotation = Quaternion.AngleAxis(mainCam.transform.rotation.eulerAngles.y * Time.fixedDeltaTime * 50, Vector3.up);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("SafeSpot"))
+        {
+            Debug.Log("Entrou esconderijo");
+            thirdPersonCam.SetActive(!thirdPersonMode);
+            firstPersonCam.SetActive(thirdPersonMode);
+            isSafe = true;
 
+            AudioManager.sharedInstance.PlayRequest(safeSpot, AudioManager.SoundType.SafeSpot);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("SafeSpot"))
+        {
+            thirdPersonCam.SetActive(thirdPersonMode);
+            firstPersonCam.SetActive(!thirdPersonMode);
+            isSafe = false;
+
+            AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.SafeSpot);
+        }
+    }
     private void OnTriggerEnter(Collider collision)
     {
         //Entrou num esconderijo

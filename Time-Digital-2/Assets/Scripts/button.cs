@@ -24,7 +24,7 @@ public class button : MonoBehaviour
             //door.SetActive(false);
             door.transform.GetChild(0).gameObject.SetActive(false);
             door.transform.GetChild(1).gameObject.SetActive(false);
-            door.GetComponent<doorSounds>().playAlarme();
+            StartCoroutine(door.GetComponent<doorSounds>().PlayAlarme(openTime));
         }
         print("Porta aberta");
         yield return new WaitForSeconds(openTime);

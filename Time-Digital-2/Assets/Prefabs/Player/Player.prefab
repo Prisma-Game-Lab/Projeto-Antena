@@ -2330,6 +2330,9 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 0}
   sonarCooldown: 2.5
+  sonarCooldownObject: {fileID: 3240876158501852734}
+  sonarOnMaterial: {fileID: 2100000, guid: 488a39b260a6049aa8ab493f46196591, type: 2}
+  sonarOffMaterial: {fileID: 2100000, guid: 7f41349f6d97fe141ba17ca21f745cbf, type: 2}
   canUseSonar: 1
 --- !u!1 &4824314799768955972
 GameObject:

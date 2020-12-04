@@ -37,6 +37,13 @@ public class playerSounds : MonoBehaviour
 
     void UpdateAndando()
     {
+        if (pm.isDead)
+        {
+            if (andando.isPlaying)
+                andando.Pause();
+            return;
+        }
+    
         if (!andando.isPlaying && pm.isMoving)
         {
             andando.Play();

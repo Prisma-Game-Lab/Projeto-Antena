@@ -6,8 +6,11 @@ public class gameManager : MonoBehaviour
 {
     public static gameManager current;
 
+    public GameObject eButton;
     public float respawnTime;
     private bool oneTime;
+    private bool canShow;
+    private bool canHide;
     private playerMovement player;
     private List<EnemyAI> enemys;
 
@@ -18,6 +21,8 @@ public class gameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canShow = true;
+        canHide = false;
         oneTime = true;
         player = playerMovement.current;
         enemys = new List<EnemyAI>();
@@ -34,7 +39,19 @@ public class gameManager : MonoBehaviour
             StartCoroutine("resetLevel");
             oneTime = false;
         }
-    }
+        if (player.button && canShow)
+        {
+            canShow = false;
+            eButton.SetActive(true);
+            canHide = true;
+        }
+        else if (!player.button && canHide)
+        {
+            canHide = false;
+            eButton.SetActive(false);
+            canShow = true;
+        }
+        }
     //Reinicia os inimigos e a posição e estado do player
     private IEnumerator resetLevel()
     {

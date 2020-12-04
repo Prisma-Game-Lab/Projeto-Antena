@@ -11,6 +11,7 @@ TagManager:
   - Scene
   - key
   - door
+  - button
   layers:
   - Default
   - TransparentFX

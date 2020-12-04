@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461b47c7adeeff74cb11a3d837d8eb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorPassword: 5
+  doorPassword: 0
   openDoor: 0
 --- !u!1 &6879843109476672307
 GameObject:

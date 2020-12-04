@@ -24,6 +24,8 @@ public class playerMovement : MonoBehaviour
     public Vector3 lastCheckpointPos;
     [HideInInspector]
     public playerKeyHolder keys;
+    [HideInInspector]
+    public GameObject button;
 
     public static playerMovement current;
 
@@ -32,9 +34,9 @@ public class playerMovement : MonoBehaviour
     private float turnSmoothVelocity;
     private Rigidbody playerRb;
     private bool thirdPersonMode;
-    
 
-    
+
+
     private void Awake()
     {
         current = this;
@@ -55,7 +57,14 @@ public class playerMovement : MonoBehaviour
         thirdPersonCam.SetActive(thirdPersonMode);
         firstPersonCam.SetActive(!thirdPersonMode);
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown("e") && button)
+        {
+            print("pressionado");
+            button.GetComponent<button>().buttonPressed = true;
+        }
+    }
     private void FixedUpdate()
     {
         if(!isDead)
@@ -117,8 +126,6 @@ public class playerMovement : MonoBehaviour
         else if (collision.gameObject.CompareTag("Enemy"))
         {
             //Morte
-            //collision.gameObject.GetComponent<EnemyAI>().morte.Play();
-            //morte.Play();
             AudioManager.sharedInstance.PlayRequest(morte, AudioManager.SoundType.Morte);
             isDead = true;
             gameObject.GetComponent<ScannerGenerator>().canUseSonar = true;
@@ -128,6 +135,12 @@ public class playerMovement : MonoBehaviour
         {
             lastCheckpointPos = collision.gameObject.transform.position;
             collision.gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
+        else if (collision.gameObject.CompareTag("button"))
+        {
+            print("botao em area");
+            button = collision.gameObject;
+
         }
     }
     private void OnTriggerExit(Collider collision)
@@ -140,6 +153,11 @@ public class playerMovement : MonoBehaviour
             isSafe = false;
 
             AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.SafeSpot);
+        }
+        else if (collision.gameObject.CompareTag("button"))
+        {
+            print("botao saiu da area");
+            button = null;
         }
     }
 }

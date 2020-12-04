@@ -1335,6 +1335,18 @@ Transform:
   m_Father: {fileID: 1303871209}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &296704301 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1820356418, guid: 7c5f1e24a7dc1d041a4a7e954e363689,
+    type: 3}
+  m_PrefabInstance: {fileID: 696732211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94aaf213965021d4380c7489f8e2d762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &298434691
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,6 +3654,10 @@ PrefabInstance:
       propertyPath: eButton
       value: 
       objectReference: {fileID: 906568224}
+    - target: {fileID: 1820356418, guid: 7c5f1e24a7dc1d041a4a7e954e363689, type: 3}
+      propertyPath: respawnTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4368107276125832290, guid: 7c5f1e24a7dc1d041a4a7e954e363689,
         type: 3}
       propertyPath: pauseMenuUI
@@ -5783,6 +5799,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 696732212}
+    - target: {fileID: 5180612324790696034, guid: c7db217331f5dea42af4c9ed8f9bde90,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 296704301}
+    - target: {fileID: 5180612324790696034, guid: c7db217331f5dea42af4c9ed8f9bde90,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToLastRespawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7db217331f5dea42af4c9ed8f9bde90, type: 3}
 --- !u!1 &1207229987 stripped

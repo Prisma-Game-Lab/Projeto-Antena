@@ -24,12 +24,14 @@ public class SceneController : MonoBehaviour
             if(gameIsPause)
             {
                 //Trava e deixa o cursor invisivel
-                //Cursor.lockState = CursorLockMode.Locked;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 Resume();
             } else
             {
                 //Destrava e deixa o cursor visivel
-                //Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 Pause();
             }
         }

@@ -48,7 +48,8 @@ public class playerMovement : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         lastCheckpointPos = transform.position;
         //Trava e deixa o cursor invisivel
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         isMoving = false;
         isSafe = false;
         thirdPersonMode = true;

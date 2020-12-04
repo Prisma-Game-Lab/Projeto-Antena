@@ -12,6 +12,7 @@ TagManager:
   - key
   - door
   - button
+  - tutorial
   layers:
   - Default
   - TransparentFX

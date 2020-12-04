@@ -95,7 +95,7 @@ public class EnemyAI : MonoBehaviour
         if (player.isSafe)
         {
             navMeshAgent.speed = wanderSpeed;
-            timeToWait = 4f;
+            timeToWait = 3f;
             myState = stateMachine.isWaiting;
             attackBox[1].enabled = false;
         }

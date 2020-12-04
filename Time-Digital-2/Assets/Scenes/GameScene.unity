@@ -422,6 +422,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 130159141396999113, guid: 33d768fc8e14eeb449913e977d09f368,
+        type: 3}
+      propertyPath: enemyLightTime
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 512102906874527216, guid: 33d768fc8e14eeb449913e977d09f368,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1883,6 +1888,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 130159141396999113, guid: 33d768fc8e14eeb449913e977d09f368,
+        type: 3}
+      propertyPath: enemyLightTime
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 512102906874527216, guid: 33d768fc8e14eeb449913e977d09f368,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2206,7 +2216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46008e22fdd5045ffbff2c9dd18f24ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineLightTime: 7
+  outlineLightTime: 4
   smothFade: 0.02
 --- !u!1 &458033636
 GameObject:
@@ -2500,7 +2510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &495873219
 Light:
   m_ObjectHideFlags: 0
@@ -2721,6 +2731,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 130159141396999113, guid: 33d768fc8e14eeb449913e977d09f368,
+        type: 3}
+      propertyPath: enemyLightTime
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 512102906874527216, guid: 33d768fc8e14eeb449913e977d09f368,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2988,6 +3003,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 130159141396999113, guid: 33d768fc8e14eeb449913e977d09f368,
+        type: 3}
+      propertyPath: enemyLightTime
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 512102906874527216, guid: 33d768fc8e14eeb449913e977d09f368,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3427,7 +3447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46008e22fdd5045ffbff2c9dd18f24ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineLightTime: 7
+  outlineLightTime: 4
   smothFade: 0.02
 --- !u!1 &677992493
 GameObject:
@@ -4794,7 +4814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46008e22fdd5045ffbff2c9dd18f24ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineLightTime: 7
+  outlineLightTime: 4
   smothFade: 0.02
 --- !u!1 &945893671
 GameObject:
@@ -4903,7 +4923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46008e22fdd5045ffbff2c9dd18f24ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineLightTime: 7
+  outlineLightTime: 4
   smothFade: 0.02
 --- !u!1 &960361226
 GameObject:
@@ -6777,6 +6797,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 130159141396999113, guid: 33d768fc8e14eeb449913e977d09f368,
+        type: 3}
+      propertyPath: enemyLightTime
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 512102906874527216, guid: 33d768fc8e14eeb449913e977d09f368,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8308,6 +8333,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 199118681044061197}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1706701591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 674465215, guid: 7f15c7763751aee44a33b9137f62fee4,
+    type: 3}
+  m_PrefabInstance: {fileID: 199118681044061197}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706701587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23df07eb76e132d4c80938cd454f34ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1706701593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9079,6 +9116,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 130159141396999113, guid: 33d768fc8e14eeb449913e977d09f368,
+        type: 3}
+      propertyPath: enemyLightTime
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 512102906874527216, guid: 33d768fc8e14eeb449913e977d09f368,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9859,6 +9901,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1706701592, guid: 7f15c7763751aee44a33b9137f62fee4, type: 3}
+      propertyPath: sonarCooldown
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706701592, guid: 7f15c7763751aee44a33b9137f62fee4, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1706701591}
     - target: {fileID: 73086882850270163, guid: 7f15c7763751aee44a33b9137f62fee4,
         type: 3}
       propertyPath: m_Layer
@@ -10188,20 +10238,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.0000000010430551
       objectReference: {fileID: 0}
-    - target: {fileID: 2466886268798507858, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.13558766
-      objectReference: {fileID: 0}
-    - target: {fileID: 2466886268798507858, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 3.0309668e-17
-      objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11256969
+      value: 0.1125697
       objectReference: {fileID: 0}
     - target: {fileID: 2466886268968741767, guid: 7d9d690c7e103b040bf72d5e9f91f6ba,
         type: 3}
@@ -10465,6 +10505,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 130159141396999113, guid: 33d768fc8e14eeb449913e977d09f368,
+        type: 3}
+      propertyPath: enemyLightTime
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 512102906874527216, guid: 33d768fc8e14eeb449913e977d09f368,
         type: 3}
       propertyPath: m_LocalPosition.x

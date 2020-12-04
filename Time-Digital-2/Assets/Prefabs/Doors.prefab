@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6879843107976849419}
   - component: {fileID: 6879843107976849418}
   - component: {fileID: 6879843107976849429}
+  - component: {fileID: 1127828071}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 96d7516e849684f9ea0fcf70998bd9fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,6 +94,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1127828071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6879843107976849431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46008e22fdd5045ffbff2c9dd18f24ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineLightTime: 5
+  smothFade: 0.02
 --- !u!1 &6879843109255817136
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +181,7 @@ GameObject:
   - component: {fileID: 6879843109476672311}
   - component: {fileID: 6879843109476672310}
   - component: {fileID: 6879843109476672305}
+  - component: {fileID: 1781240157}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -213,7 +229,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 96d7516e849684f9ea0fcf70998bd9fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -247,3 +263,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1781240157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6879843109476672307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46008e22fdd5045ffbff2c9dd18f24ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineLightTime: 5
+  smothFade: 0.02

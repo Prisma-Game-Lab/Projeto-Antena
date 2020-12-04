@@ -12,14 +12,46 @@ public class SonarCollision : MonoBehaviour
     {
         if (other.CompareTag("Scanner"))
         {
-            GameObject body = this.gameObject.transform.GetChild(1).gameObject;
-            
+   
+            if (this.gameObject.CompareTag("Enemy"))
+            {
 
-            StartCoroutine(disableEnemyLight(body));
+                GameObject body = this.gameObject.transform.GetChild(1).gameObject;
+
+                StartCoroutine(DisableEnemyLight(body));
+            }
+            else if(this.gameObject.CompareTag("key"))
+            {
+                Debug.Log("OBAAAA");
+                GameObject body = this.gameObject.transform.GetChild(0).gameObject;
+
+                StartCoroutine(DisableKeyLight(body));
+            }
+
         }
     }
 
-    private IEnumerator disableEnemyLight(GameObject body)
+    private IEnumerator DisableKeyLight(GameObject body)
+    {
+        Debug.Log("OBAAAA22222222");
+        GameObject bodyPart = body.gameObject;
+        Renderer renderer = bodyPart.GetComponent<Renderer>();
+        if (renderer)
+        {
+            renderer.material = spottedMaterial;
+
+        }
+        yield return new WaitForSeconds(enemyLightTime);
+
+        if (renderer)
+        {
+            renderer.material = normalMaterial;
+
+        }
+
+    }
+
+    private IEnumerator DisableEnemyLight(GameObject body)
     {
         for (int i = 0; i < body.transform.childCount - 1; i++)
         {

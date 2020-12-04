@@ -18,10 +18,20 @@ public class SonarColisionObject : MonoBehaviour
 
     private IEnumerator DisableObjectOutline(GameObject scenarioObject)
     {
-        Renderer renderer = scenarioObject.GetComponent<Renderer>();
-        Material material = renderer.material;
+        Renderer renderer;
+        Material material;
+
+        if (scenarioObject.CompareTag("key"))
+        {
+            Debug.Log("OBAAAA");
+            renderer = scenarioObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
+            material = renderer.material;
+        }else
+        {
+            renderer = scenarioObject.GetComponent<Renderer>();
+            material = renderer.material;
+        }
         
-        //Debug.Log(material.name);
         material.SetFloat("Vector1_C0B001A6", 1.0f);
         yield return new WaitForSeconds(outlineLightTime);
         float i = 1.0f;

@@ -23,7 +23,6 @@ public class SonarColisionObject : MonoBehaviour
 
         if (scenarioObject.CompareTag("key"))
         {
-            Debug.Log("OBAAAA");
             renderer = scenarioObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
             material = renderer.material;
         }else

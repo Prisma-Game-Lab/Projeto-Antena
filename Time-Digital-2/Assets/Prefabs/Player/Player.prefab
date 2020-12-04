@@ -2219,6 +2219,7 @@ GameObject:
   - component: {fileID: 674465217}
   - component: {fileID: 9078237238304043306}
   - component: {fileID: 1706701592}
+  - component: {fileID: 6005837036426823893}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2288,6 +2289,7 @@ MonoBehaviour:
   isDead: 0
   lastCheckpointPos: {x: 0, y: 0, z: 0}
   keys: {fileID: 0}
+  button: {fileID: 0}
 --- !u!65 &674465217
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2336,6 +2338,19 @@ MonoBehaviour:
   sonarOnMaterial: {fileID: 2100000, guid: 488a39b260a6049aa8ab493f46196591, type: 2}
   sonarOffMaterial: {fileID: 2100000, guid: 7f41349f6d97fe141ba17ca21f745cbf, type: 2}
   canUseSonar: 1
+--- !u!114 &6005837036426823893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340727102988554958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625360837c7f2804c837b1a9fa370c76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keysHolding: []
 --- !u!1 &4824314799768955972
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,17 +23,22 @@ public class playerMovement : MonoBehaviour
     [HideInInspector]
     public Vector3 lastCheckpointPos;
     [HideInInspector]
+    public Quaternion lastCheckpointRot;
+    [HideInInspector]
     public playerKeyHolder keys;
     [HideInInspector]
     public GameObject button;
+    [HideInInspector]
+    public Rigidbody playerRb;
 
     public static playerMovement current;
 
     //Velocidade de rotação do player
     private float turnSmoothTime=0.1f;
     private float turnSmoothVelocity;
-    private Rigidbody playerRb;
     private bool thirdPersonMode;
+
+    
 
 
 
@@ -47,16 +52,16 @@ public class playerMovement : MonoBehaviour
         keys = GetComponent<playerKeyHolder>();
         playerRb = GetComponent<Rigidbody>();
         lastCheckpointPos = transform.position;
+        lastCheckpointRot = transform.rotation;
         //Trava e deixa o cursor invisivel
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         isMoving = false;
         isSafe = false;
         thirdPersonMode = true;
         isDead = false;
 
         
-
         thirdPersonCam.SetActive(thirdPersonMode);
         firstPersonCam.SetActive(!thirdPersonMode);
     }
@@ -168,6 +173,7 @@ public class playerMovement : MonoBehaviour
         else if (collision.gameObject.CompareTag("CheckPoint"))
         {
             lastCheckpointPos = collision.gameObject.transform.position;
+            lastCheckpointRot = transform.rotation;
             collision.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
         else if (collision.gameObject.CompareTag("button"))

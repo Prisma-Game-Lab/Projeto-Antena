@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class gameManager : MonoBehaviour
+public class Manager : MonoBehaviour
 {
-    public static gameManager current;
+    public static Manager current;
     public GameObject fadeImage;
     public float fadeSmoth;
 
@@ -17,7 +17,7 @@ public class gameManager : MonoBehaviour
     private playerMovement player;
     private List<EnemyAI> enemys;
     private SceneController sceneController;
-    
+
 
     private void Awake()
     {
@@ -33,16 +33,22 @@ public class gameManager : MonoBehaviour
         sceneController = this.GetComponent<SceneController>();
         enemys = new List<EnemyAI>();
         fillEnemysList();
+        print("penis");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = playerMovement.current;
+        }
         //Se player morreu, rodar uma só vez
         if (player.isDead && oneTime)
         {
+            print("restartou");
             //Respanwna player e reinicia level sem resetar a scene
-            StartCoroutine("resetLevel");
+            StartCoroutine("resetLevel", respawnTime);
             oneTime = false;
         }
         if (player.button && canShow)
@@ -57,18 +63,20 @@ public class gameManager : MonoBehaviour
             eButton.SetActive(false);
             canShow = true;
         }
-        }
+    }
     //Reinicia os inimigos e a posição e estado do player
-    private IEnumerator resetLevel()
+    private IEnumerator resetLevel(float time)
     {
+        player.playerRb.velocity = Vector3.zero;
         fadeImage.SetActive(true);
-        yield return new WaitForSeconds(respawnTime);
-        fadeImage.SetActive(false);
+        yield return new WaitForSeconds(time);
         resetEnemys();
         resetKeys();
         player.transform.position = player.lastCheckpointPos;
+        player.transform.rotation = player.lastCheckpointRot;
         player.isDead = false;
         oneTime = true;
+        fadeImage.SetActive(false);
     }
     private void resetKeys()
     {
@@ -104,7 +112,8 @@ public class gameManager : MonoBehaviour
 
     public void GoToLastRespawn()
     {
-        player.gameObject.transform.position = player.lastCheckpointPos;
+        StartCoroutine("resetLevel", 0f);
         sceneController.Resume();
     }
 }
+

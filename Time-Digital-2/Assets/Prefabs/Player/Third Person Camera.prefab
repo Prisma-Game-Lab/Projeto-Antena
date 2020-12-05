@@ -78,8 +78,8 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 0
-    m_MaxSpeed: 160
+    Value: 90
+    m_MaxSpeed: 200
     m_AccelTime: 0.05
     m_DecelTime: 0.05
     m_InputAxisName: Mouse X
@@ -149,7 +149,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2466886268679015726}
-  m_LocalRotation: {x: 0.15863213, y: -0.000000021648685, z: 0.0000000068596697, w: 0.98733777}
+  m_LocalRotation: {x: 0.11217019, y: 0.69815314, z: -0.11217049, w: 0.69815314}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -223,7 +223,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2466886268798507856}
-  m_LocalRotation: {x: 0.13558766, y: 3.0309668e-17, z: -2.2147852e-16, w: 0.9907654}
+  m_LocalRotation: {x: 0.09587542, y: 0.70057684, z: -0.09587545, w: 0.70057684}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -297,7 +297,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2466886268968741765}
-  m_LocalRotation: {x: 0.11256969, y: -0.000000021000787, z: -8.4906815e-10, w: 0.9936439}
+  m_LocalRotation: {x: 0.0795993, y: 0.7026122, z: -0.07959925, w: 0.7026123}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -452,8 +452,8 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 0
-    m_MaxSpeed: 160
+    Value: 90
+    m_MaxSpeed: 200
     m_AccelTime: 0.05
     m_DecelTime: 0.05
     m_InputAxisName: Mouse X
@@ -600,8 +600,8 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 0
-    m_MaxSpeed: 160
+    Value: 90
+    m_MaxSpeed: 200
     m_AccelTime: 0.05
     m_DecelTime: 0.05
     m_InputAxisName: Mouse X
@@ -725,8 +725,8 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 0
-    m_MaxSpeed: 160
+    Value: 90
+    m_MaxSpeed: 200
     m_AccelTime: 0.05
     m_DecelTime: 0.05
     m_InputAxisName: Mouse X

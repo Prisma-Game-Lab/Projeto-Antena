@@ -47,8 +47,9 @@ public class enemySounds : MonoBehaviour
         
         if (!isPlayingAny)
         {
-            int i = (int) Random.Range(0, formigaAudioList.Length);
-            formigaAudioList[i].Play();
+            int i = (int)Random.Range(0, formigaAudioList.Length);
+            if(formigaAudioList[i].isActiveAndEnabled)
+                formigaAudioList[i].Play();
         }
 
         if (eAI.myState == EnemyAI.stateMachine.isAttacking)

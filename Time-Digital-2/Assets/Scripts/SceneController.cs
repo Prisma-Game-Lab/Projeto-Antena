@@ -24,14 +24,14 @@ public class SceneController : MonoBehaviour
             if(gameIsPause)
             {
                 //Trava e deixa o cursor invisivel
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                //Cursor.lockState = CursorLockMode.Locked;
+                //Cursor.visible = false;
                 Resume();
             } else
             {
                 //Destrava e deixa o cursor visivel
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
+                //Cursor.visible = true;
+                //Cursor.lockState = CursorLockMode.None;
                 Pause();
             }
         }
@@ -47,11 +47,12 @@ public class SceneController : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        settingsMenu.SetActive(false);
         Time.timeScale = 1f;
         gameIsPause = false;
     }
 
-    public void LoadScene(string sceneName)
+    public void LoadScene(int sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }

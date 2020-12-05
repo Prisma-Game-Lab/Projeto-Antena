@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class AIJustWander : MonoBehaviour
 {
-    //Distancia do player para entrar em modo de ataque
-    public float viewRange;
-    //Distancia para sair do modo de ataque
-    public float disengageDistance;
     //Velocidade de patrulhamento
     public float wanderSpeed;
     //Velocidade de perseguição
@@ -17,33 +13,21 @@ public class EnemyAI : MonoBehaviour
     public enum stateMachine { isWaiting, isReadyToWander, isMoving, isAttacking }
     [HideInInspector]
     public stateMachine myState;
-   
 
     //Contador de tempo
     private float timeToWait;
     private float timer;
     //Posição do destino de uma patrulha
     private Vector3 navMeshPosition;
-    //Referencia ao script playerMovement
-    private playerMovement player;
     private NavMeshAgent navMeshAgent;
     private NavMeshHit navHit;
     [HideInInspector]
     public EnemyFollowPath pathManager;
-    private Collider[] attackBox;
-
-    public AudioSource proximidade;
-
-    public float proximidadeDist;
-    private bool hasPlayed = false;
 
     void Start()
     {
         pathManager = GetComponent<EnemyFollowPath>();
-        attackBox = GetComponents<BoxCollider>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        //Guarda referencia para a instancia do script playerMovement
-        player = playerMovement.current;
         //Define estado inicial para patrulhar
         myState = stateMachine.isReadyToWander;
         //Define velocidade inicial de patrulhamento
@@ -51,69 +35,25 @@ public class EnemyAI : MonoBehaviour
         //Velocidade angular de rotação
         navMeshAgent.angularSpeed = 320;
     }
-
     void Update()
     {
-        if (player == null)
-        {
-            print("player null");
-        }
-        //Se já não estiver em modo de ataque checa se a distancia entre este objeto e o player é menor ou igual a ViewRange 
-        if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= viewRange && player.isMoving && !player.isSafe)
-            myState = stateMachine.isAttacking;
-        //Se estiver preparado para pratulhar, patrulha
         if (myState == stateMachine.isReadyToWander)
         {
             wander();
-            checkProximidade();
         }
         //Se estiver patrulhando checa se ja chegou ao seu destino
         else if (myState == stateMachine.isMoving)
         {
             checkIfReachedDestination();
-            checkProximidade();
         }
         //Se estiver esperando entre uma patrulha e outra, calcula o tempo que tem que esperar
         else if (myState == stateMachine.isWaiting)
         {
             waitForTime();
-            checkProximidade();
-        }
-        //Se estiver em modo de ataque, executa comportamento de ataque
-        else if (myState == stateMachine.isAttacking)
-        {
-            followAndAttack();
         }
     }
-    //Persegue e ataca o player se estiver a uma distancia minima, muda comportamento caso esteja muito longe do player
-    private void followAndAttack()
-    {
-        attackBox[1].enabled = true;
-        //Aumenta velocidade e persegue o player
-        navMeshAgent.speed = followSpeed;
-        navMeshAgent.SetDestination(player.transform.position);
-
-        //Guarda a distancia do player
-        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-        //Se o player entrar em um esconderijo e estiver seguro, muda o estado para esperar e continuar a patrulha
-        if (player.isSafe)
-        {
-            navMeshAgent.speed = wanderSpeed;
-            timeToWait = 3f;
-            myState = stateMachine.isWaiting;
-            attackBox[1].enabled = false;
-        }
-        //Checa se player esta muito longe ou morto, caso esteja, muda de estado para voltar a patrulhar e retoma velocidade inicial
-        else if (distanceToPlayer >= disengageDistance || player.isDead)
-        {
-            myState = stateMachine.isReadyToWander;
-            navMeshAgent.speed = wanderSpeed;
-            attackBox[1].enabled = false;
-        }
-    }
-
-    //Calcula quanto tempo se deve esperar e muda de estado para voltar patrulhar
-    private void waitForTime()
+//Calcula quanto tempo se deve esperar e muda de estado para voltar patrulhar
+private void waitForTime()
     {
         //Conta o tempo predefinido
         timer += Time.deltaTime;
@@ -179,23 +119,5 @@ public class EnemyAI : MonoBehaviour
             result = center;
             return false;
         }
-    }
-
-    //se proximidade for menor q proximidadeDist (definida no editor) set audioManager pro modo proximidade
-    private void checkProximidade()
-    {
-        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-
-        if (distanceToPlayer <= proximidadeDist && !hasPlayed)
-        {
-            AudioManager.sharedInstance.PlayRequest(proximidade, AudioManager.SoundType.Proximidade);
-            hasPlayed = true;
-        }
-        else if (distanceToPlayer > proximidadeDist && hasPlayed)
-        {
-            AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.Proximidade);
-            hasPlayed = false;
-        }
-
     }
 }

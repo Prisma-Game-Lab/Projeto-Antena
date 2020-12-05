@@ -50,7 +50,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         soundRequest = new Dictionary<SoundType, int>();
         soundCurrentAudioSource = new Dictionary<SoundType, AudioSource>();

@@ -196,7 +196,6 @@ public class playerMovement : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("button"))
         {
-            print("botao saiu da area");
             button = null;
         }
     }

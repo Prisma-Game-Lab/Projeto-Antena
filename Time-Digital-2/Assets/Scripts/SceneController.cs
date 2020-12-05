@@ -7,18 +7,20 @@ using System;
 public class SceneController : MonoBehaviour
 {
 
-    public static bool gameIsPause = false;
+    public bool gameIsPause;
     public GameObject pauseMenuUI;
     public Scene currentScene;
     public GameObject settingsMenu;
 
     void Start()
     {
+        gameIsPause = false;
         currentScene = SceneManager.GetActiveScene();
     }
 
     void Update()
     {
+        print(gameIsPause);
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(gameIsPause)
@@ -54,6 +56,7 @@ public class SceneController : MonoBehaviour
 
     public void LoadScene(int sceneName)
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
     }
 
@@ -73,5 +76,10 @@ public class SceneController : MonoBehaviour
     {
         settingsMenu.SetActive(false);
         menuToEnable.SetActive(true);
+    }
+    public void back()
+    {
+        settingsMenu.SetActive(false);
+        pauseMenuUI.SetActive(true);
     }
 }

@@ -8,20 +8,24 @@ public class button : MonoBehaviour
     public List<GameObject> doors = new List<GameObject>();
     [HideInInspector]
     public bool buttonPressed = false;
+    private bool oneTime = true;
 
     private void Update()
     {
-        if (buttonPressed)
+        if (buttonPressed && oneTime)
         {
+            oneTime = false;
             buttonPressed = false;
             StartCoroutine("closeDoors");
+        }else if (buttonPressed)
+        {
+            buttonPressed = false;
         }
     }
     private IEnumerator closeDoors()
     {
         foreach (GameObject door in doors)
         {
-            //door.SetActive(false);
             door.transform.GetChild(0).gameObject.SetActive(false);
             door.transform.GetChild(1).gameObject.SetActive(false);
             StartCoroutine(door.GetComponent<doorSounds>().PlayAlarme(openTime));
@@ -35,6 +39,7 @@ public class button : MonoBehaviour
             door.transform.GetChild(0).gameObject.SetActive(true);
             door.transform.GetChild(1).gameObject.SetActive(true);
         }
+        oneTime = true;
         print("Porta fechada");
     }
 }

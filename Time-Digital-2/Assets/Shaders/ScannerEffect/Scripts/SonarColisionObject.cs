@@ -47,9 +47,9 @@ public class SonarColisionObject : MonoBehaviour
 
     private IEnumerator DisableObjectOutline(GameObject scenarioObject)
     {
-        material.SetFloat("Vector1_C0B001A6", 1.0f);
+        material.SetFloat("Vector1_C0B001A6", 0.5f);
         yield return new WaitForSeconds(outlineLightTime);
-        float i = 1.0f;
+        float i = 0.5f;
         while(i > 0)
         {
             i -= smothFade;

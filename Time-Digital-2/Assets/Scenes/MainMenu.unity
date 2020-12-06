@@ -415,7 +415,6 @@ MonoBehaviour:
     type: 3}
   sceneController: {fileID: 4368107276125832290, guid: 7c5f1e24a7dc1d041a4a7e954e363689,
     type: 3}
-  movementForce: 9
   movementSpeed: 5
   morte: {fileID: 4462787432271189499}
   safeSpot: {fileID: 7493037626909823237}
@@ -427,26 +426,13 @@ MonoBehaviour:
   keys: {fileID: 0}
   button: {fileID: 0}
   playerRb: {fileID: 0}
---- !u!65 &135042033
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4340727103528109310}
-  m_Material: {fileID: 13400000, guid: 057af7e53fc108b4e904223b39f2d30e, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.38744283, y: 0.4761977, z: 1.2134889}
-  m_Center: {x: -0.0019340458, y: -0.18876202, z: -0.10013003}
 --- !u!43 &164725474
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh122204
+  m_Name: pb_Mesh23878
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7127,7 +7113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322533555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.66, y: 0, z: 2.85}
+  m_LocalPosition: {x: -3.66, y: 0, z: 3.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2118037238}
@@ -7139,7 +7125,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh122288
+  m_Name: pb_Mesh23984
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7302,7 +7288,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh122256
+  m_Name: pb_Mesh23944
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7477,7 +7463,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh122300
+  m_Name: pb_Mesh23996
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7736,7 +7722,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584801045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.66, y: 0, z: 1.73}
+  m_LocalPosition: {x: 4.66, y: 0, z: 2.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2118037238}
@@ -11360,7 +11346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055264036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.98, y: 0, z: -1.6}
+  m_LocalPosition: {x: 2.66, y: 0, z: -1.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2118037238}
@@ -17666,26 +17652,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &1166353704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4340727103528109310}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a255d7d289514d449daffe003569fd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanBall: {fileID: 7286365288761944895, guid: 3661cb3d9f24945a69396ad3a10a3da1,
-    type: 3}
-  player: {fileID: 0}
-  sonarCooldown: 8
-  sonarCooldownObject: {fileID: 3240876157967925262}
-  sonarOnMaterial: {fileID: 2100000, guid: 488a39b260a6049aa8ab493f46196591, type: 2}
-  sonarOffMaterial: {fileID: 2100000, guid: 7f41349f6d97fe141ba17ca21f745cbf, type: 2}
-  canUseSonar: 1
 --- !u!1 &1216974795
 GameObject:
   m_ObjectHideFlags: 0
@@ -21296,7 +21262,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh122216
+  m_Name: pb_Mesh23890
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21749,7 +21715,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh122358
+  m_Name: pb_Mesh24054
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26845,10 +26811,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6911722727443219546}
   - component: {fileID: 135041935}
-  - component: {fileID: 135042033}
-  - component: {fileID: 9078237237768546074}
-  - component: {fileID: 1166353704}
   - component: {fileID: 6005837036964290277}
+  - component: {fileID: 4340727103528109311}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -26856,6 +26820,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!143 &4340727103528109311
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340727103528109310}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &4346538370132847587
 Transform:
   m_ObjectHideFlags: 0
@@ -29823,6 +29805,7 @@ MonoBehaviour:
   wanderSpeed: 1.5
   followSpeed: 0
   myState: 0
+  navMeshAgent: {fileID: 0}
   pathManager: {fileID: 0}
   proximidade: {fileID: 0}
   proximidadeDist: 0
@@ -31391,13 +31374,13 @@ MonoBehaviour:
   pathPoints:
   - destinationPos: {x: 0, y: 0, z: 0}
     shouldWait: 1
-    waitTime: 4
+    waitTime: 5
   - destinationPos: {x: 0, y: 0, z: 0}
     shouldWait: 0
     waitTime: 0
   - destinationPos: {x: 0, y: 0, z: 0}
     shouldWait: 1
-    waitTime: 2
+    waitTime: 4
   - destinationPos: {x: 0, y: 0, z: 0}
     shouldWait: 1
     waitTime: 3
@@ -31407,6 +31390,7 @@ MonoBehaviour:
   path: {fileID: 2118037237}
   pathIndex: 0
   initialPos: {x: 0, y: 0, z: 0}
+  initialRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &8573879603485015821
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31751,6 +31735,7 @@ MonoBehaviour:
   path: {fileID: 2118037237}
   pathIndex: 0
   initialPos: {x: 0, y: 0, z: 0}
+  initialRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &8851720903422648733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31768,6 +31753,7 @@ MonoBehaviour:
   wanderSpeed: 1.5
   followSpeed: 1.5
   myState: 0
+  navMeshAgent: {fileID: 0}
   pathManager: {fileID: 0}
   proximidade: {fileID: 0}
   proximidadeDist: 0
@@ -32032,21 +32018,6 @@ Transform:
   m_Father: {fileID: 1805340741090213282}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 145.161, y: -90, z: -13.497009}
---- !u!114 &9078237237768546074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4340727103528109310}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86a3d012528205542b493c2dd306098e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  andando: {fileID: 9046852455610291164}
-  cooldown: {fileID: 5395413673821024046}
-  sonarList: {fileID: 544764966200110439}
 --- !u!4 &9082546763799423598
 Transform:
   m_ObjectHideFlags: 0

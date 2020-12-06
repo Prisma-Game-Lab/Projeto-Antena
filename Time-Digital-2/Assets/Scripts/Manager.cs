@@ -33,7 +33,6 @@ public class Manager : MonoBehaviour
         sceneController = this.GetComponent<SceneController>();
         enemys = new List<EnemyAI>();
         fillEnemysList();
-        print("penis");
     }
 
     // Update is called once per frame
@@ -94,9 +93,10 @@ public class Manager : MonoBehaviour
     {
         for (int i = 0; i < enemys.Count; i++)
         {
-            enemys[i].transform.position = enemys[i].pathManager.initialPos;
             enemys[i].pathManager.pathIndex = 0;
+            enemys[i].transform.position = enemys[i].pathManager.initialPos;
             enemys[i].myState = EnemyAI.stateMachine.isReadyToWander;
+            //enemys[i].navMeshAgent.speed = enemys[i].wanderSpeed;
         }
     }
     //Preenche lista do tipo EnemyAI
@@ -110,10 +110,10 @@ public class Manager : MonoBehaviour
         }
     }
 
-    public void GoToLastRespawn()
+    public void Respawn()
     {
-        StartCoroutine("resetLevel", 0f);
         sceneController.Resume();
+        player.isDead = true;
     }
 }
 

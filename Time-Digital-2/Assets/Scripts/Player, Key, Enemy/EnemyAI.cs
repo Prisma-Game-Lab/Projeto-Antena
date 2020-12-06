@@ -17,7 +17,9 @@ public class EnemyAI : MonoBehaviour
     public enum stateMachine { isWaiting, isReadyToWander, isMoving, isAttacking }
     [HideInInspector]
     public stateMachine myState;
-   
+    [HideInInspector]
+    public NavMeshAgent navMeshAgent;
+
 
     //Contador de tempo
     private float timeToWait;
@@ -26,7 +28,7 @@ public class EnemyAI : MonoBehaviour
     private Vector3 navMeshPosition;
     //Referencia ao script playerMovement
     private playerMovement player;
-    private NavMeshAgent navMeshAgent;
+    
     private NavMeshHit navHit;
     [HideInInspector]
     public EnemyFollowPath pathManager;
@@ -106,7 +108,8 @@ public class EnemyAI : MonoBehaviour
         //Checa se player esta muito longe ou morto, caso esteja, muda de estado para voltar a patrulhar e retoma velocidade inicial
         else if (distanceToPlayer >= disengageDistance || player.isDead)
         {
-            myState = stateMachine.isReadyToWander;
+            myState = stateMachine.isWaiting;
+            timeToWait = 2f;
             navMeshAgent.speed = wanderSpeed;
             attackBox[1].enabled = false;
         }

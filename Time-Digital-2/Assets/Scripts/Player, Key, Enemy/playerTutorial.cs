@@ -9,15 +9,14 @@ public class playerTutorial : MonoBehaviour
         if (other.gameObject.CompareTag("tutorial"))
         {
             other.GetComponent<tutorialObject>().Object.SetActive(true);
+            Destroy(other.gameObject, 20f);
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("tutorial"))
         {
-            GameObject tutorial = other.GetComponent<tutorialObject>().Object;
-            tutorial.SetActive(false);
-            Destroy(tutorial,5f);
+            other.GetComponent<tutorialObject>().Object.SetActive(false);
         }
     }
 }

@@ -8,7 +8,6 @@ public class playerMovement : MonoBehaviour
     public GameObject firstPersonCam;
     public SceneController sceneController;
 
-    public float movementForce;
     public float movementSpeed;
 
     public AudioSource morte;
@@ -37,8 +36,9 @@ public class playerMovement : MonoBehaviour
     private float turnSmoothTime=0.1f;
     private float turnSmoothVelocity;
     private bool thirdPersonMode;
-
-    
+    private int triggerCount;
+    private CharacterController controller;
+    private Vector3 moveDir;
 
 
 
@@ -51,6 +51,7 @@ public class playerMovement : MonoBehaviour
     {
         keys = GetComponent<playerKeyHolder>();
         playerRb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
         lastCheckpointPos = transform.position;
         lastCheckpointRot = transform.rotation;
         //Trava e deixa o cursor invisivel
@@ -60,10 +61,10 @@ public class playerMovement : MonoBehaviour
         isSafe = false;
         thirdPersonMode = true;
         isDead = false;
-
-        
+        Physics.gravity *= 2;
         thirdPersonCam.SetActive(thirdPersonMode);
         firstPersonCam.SetActive(!thirdPersonMode);
+        triggerCount = 0;
     }
     private void Update()
     {
@@ -74,9 +75,11 @@ public class playerMovement : MonoBehaviour
         }
     }
     private void FixedUpdate()
-    {      
-        if(!isDead)
+    {
+        if (!isDead)
             Movement();
+        else
+            transform.position = lastCheckpointPos;
     }
 
     private void Movement()
@@ -88,7 +91,6 @@ public class playerMovement : MonoBehaviour
 
         //Guarda o input em um vetor direção
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
         //Se o player esta se movendo
         if (direction.magnitude >= 0.1f)
         {
@@ -96,24 +98,17 @@ public class playerMovement : MonoBehaviour
 
             //Calcula o angulo que o player precisa rotacionar, baseado na direção dos inputs
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCam.transform.eulerAngles.y;
-
-            //Transição de rotação suave
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+
             if (thirdPersonCam.activeSelf)
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             //Calcula direção baseada no angulo de rotação para ser uma direção relativa a camera
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        }else
+            moveDir = Vector3.zero;
+        controller.SimpleMove(moveDir.normalized * Time.fixedDeltaTime * movementSpeed * 10f);
 
-            //Adiciona força no player
-            playerRb.AddForce(moveDir * Time.deltaTime * movementForce * 1000f);
-            //Se velocidade atual maior que velocidade maxima
-            if (playerRb.velocity.magnitude >= movementSpeed)
-            {
-                //Velocidade atual é igual a máxima
-                playerRb.velocity = playerRb.velocity.normalized * movementSpeed;
-            }
-        }
         if (!thirdPersonCam.activeSelf)
             transform.rotation = Quaternion.AngleAxis(mainCam.transform.rotation.eulerAngles.y * Time.fixedDeltaTime * 50, Vector3.up);
     }
@@ -154,6 +149,7 @@ public class playerMovement : MonoBehaviour
         //Entrou num esconderijo
         if (collision.gameObject.CompareTag("SafeSpot"))
         {
+            triggerCount++;
             Debug.Log("Entrou esconderijo");
             thirdPersonCam.SetActive(!thirdPersonMode);
             firstPersonCam.SetActive(thirdPersonMode);
@@ -188,11 +184,14 @@ public class playerMovement : MonoBehaviour
         //Saiu do esconderijo
         if (collision.gameObject.CompareTag("SafeSpot"))
         {
-            thirdPersonCam.SetActive(thirdPersonMode);
-            firstPersonCam.SetActive(!thirdPersonMode);
-            isSafe = false;
-
-            AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.SafeSpot);
+            triggerCount--;
+            if (triggerCount <= 0)
+            {
+                thirdPersonCam.SetActive(thirdPersonMode);
+                firstPersonCam.SetActive(!thirdPersonMode);
+                isSafe = false;
+                AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.SafeSpot);
+            }
         }
         else if (collision.gameObject.CompareTag("button"))
         {

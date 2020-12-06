@@ -20,7 +20,6 @@ public class SceneController : MonoBehaviour
 
     void Update()
     {
-        print(gameIsPause);
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(gameIsPause)

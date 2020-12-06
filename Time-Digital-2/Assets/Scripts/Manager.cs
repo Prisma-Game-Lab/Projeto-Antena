@@ -95,8 +95,8 @@ public class Manager : MonoBehaviour
         {
             enemys[i].pathManager.pathIndex = 0;
             enemys[i].transform.position = enemys[i].pathManager.initialPos;
+            enemys[i].transform.rotation = enemys[i].pathManager.initialRot;
             enemys[i].myState = EnemyAI.stateMachine.isReadyToWander;
-            //enemys[i].navMeshAgent.speed = enemys[i].wanderSpeed;
         }
     }
     //Preenche lista do tipo EnemyAI

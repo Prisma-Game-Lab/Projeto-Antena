@@ -2739,7 +2739,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
@@ -2769,10 +2769,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewRange: 7
-  disengageDistance: 9
+  disengageDistance: 8
   wanderSpeed: 3.5
-  followSpeed: 11
+  followSpeed: 7.5
   myState: 0
+  navMeshAgent: {fileID: 0}
   pathManager: {fileID: 0}
   proximidade: {fileID: 2024329697636408020}
   proximidadeDist: 20
@@ -2793,14 +2794,12 @@ MonoBehaviour:
     shouldWait: 0
     waitTime: 0
   - destinationPos: {x: 0, y: 0, z: 0}
-    shouldWait: 0
-    waitTime: 0
-  - destinationPos: {x: 0, y: 0, z: 0}
-    shouldWait: 0
-    waitTime: 0
+    shouldWait: 1
+    waitTime: 2
   path: {fileID: 0}
   pathIndex: 0
   initialPos: {x: 0, y: 0, z: 0}
+  initialRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!195 &7263560315587542347
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2812,9 +2811,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.6
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 50
   avoidancePriority: 50
-  m_AngularSpeed: 200
+  m_AngularSpeed: 350
   m_StoppingDistance: 0.1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -2849,7 +2848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf4b6da52096d748984c6edecbc8358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLightTime: 3
+  enemyLightTime: 5
   normalMaterial: {fileID: 2100000, guid: 7f41349f6d97fe141ba17ca21f745cbf, type: 2}
   spottedMaterial: {fileID: 2100000, guid: 3275c2cd5dbef49abb352423be9157c2, type: 2}
 --- !u!65 &685408199

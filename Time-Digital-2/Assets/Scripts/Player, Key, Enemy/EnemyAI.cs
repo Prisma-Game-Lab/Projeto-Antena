@@ -56,13 +56,11 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (player == null)
-        {
-            print("player null");
-        }
         //Se já não estiver em modo de ataque checa se a distancia entre este objeto e o player é menor ou igual a ViewRange 
-        if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= viewRange && player.isMoving && !player.isSafe)
+        if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= viewRange && !player.isSafe)
+        {
             myState = stateMachine.isAttacking;
+        }
         //Se estiver preparado para pratulhar, patrulha
         if (myState == stateMachine.isReadyToWander)
         {

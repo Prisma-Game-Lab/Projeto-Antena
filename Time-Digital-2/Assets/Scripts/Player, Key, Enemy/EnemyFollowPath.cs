@@ -12,6 +12,8 @@ public class EnemyFollowPath : MonoBehaviour
     public int pathIndex;
     [HideInInspector]
     public Vector3 initialPos;
+    [HideInInspector]
+    public Quaternion initialRot;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class EnemyFollowPath : MonoBehaviour
         }
         pathIndex = 0;
         initialPos = transform.position;
+        initialRot = transform.rotation;
     }
 
     //Preenche a lista do caminho com as posições dos gameObjects filhos de path 

@@ -8,7 +8,10 @@ public class playerTutorial : MonoBehaviour
     {
         if (other.gameObject.CompareTag("tutorial"))
         {
-            other.GetComponent<tutorialObject>().Object.SetActive(true);
+            tutorialObject tutorialScript = other.GetComponent<tutorialObject>();
+            tutorialScript.Object.SetActive(true);
+            if (tutorialScript.lightObject!=null)
+                tutorialScript.lightObject.SetActive(true);
             Destroy(other.gameObject, 20f);
         }
     }

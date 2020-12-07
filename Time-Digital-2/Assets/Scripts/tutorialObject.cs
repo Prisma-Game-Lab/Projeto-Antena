@@ -5,4 +5,5 @@ using UnityEngine;
 public class tutorialObject : MonoBehaviour
 {
     public GameObject Object;
+    public GameObject lightObject;
 }

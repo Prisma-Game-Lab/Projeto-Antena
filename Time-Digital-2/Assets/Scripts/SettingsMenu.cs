@@ -6,10 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public AudioMixer audioMixer;
+    public AudioMixer musicAudio;
+    public AudioMixer effectsAudio;
 
-   public void SetVolume (float volume)
+   public void SetEffectsAudio (float volume)
     {
-        audioMixer.SetFloat("volume", volume);
+        effectsAudio.SetFloat("volume", volume);
+    }
+
+    public void SetMusicAudio(float volume)
+    {
+        musicAudio.SetFloat("volume", volume);
     }
 }

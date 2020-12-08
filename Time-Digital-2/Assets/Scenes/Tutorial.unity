@@ -7502,6 +7502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 5503720288317936642}
+  lightObject: {fileID: 0}
 --- !u!65 &424562466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11974,6 +11975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 5503720288809000008}
+  lightObject: {fileID: 0}
 --- !u!65 &705772101
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15284,6 +15286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 1670354019}
+  lightObject: {fileID: 0}
 --- !u!65 &942359863
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20077,6 +20080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 1621147281}
+  lightObject: {fileID: 0}
 --- !u!65 &1309584157
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21773,6 +21777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 5503720288325299471}
+  lightObject: {fileID: 0}
 --- !u!65 &1380701319
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25110,6 +25115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 1156693461}
+  lightObject: {fileID: 0}
 --- !u!65 &1554932427
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25758,6 +25764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 262659770}
+  lightObject: {fileID: 0}
 --- !u!65 &1581455150
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33204,6 +33211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 2790436600742470239}
+  lightObject: {fileID: 0}
 --- !u!65 &1995780509
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36062,7 +36070,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5561265258266093173}
         m_MethodName: SetVolume
         m_Mode: 0
         m_Arguments:

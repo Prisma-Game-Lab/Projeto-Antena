@@ -6,8 +6,8 @@ public class playerMovement : MonoBehaviour
     public GameObject mainCam;
     public GameObject thirdPersonCam;
     public GameObject firstPersonCam;
-    public SceneController sceneController;
-
+    public Light safeSpotLight;
+    public float flashLight_Intensity;
     public float movementSpeed;
 
     public AudioSource morte;
@@ -151,6 +151,8 @@ public class playerMovement : MonoBehaviour
         {
             triggerCount++;
             Debug.Log("Entrou esconderijo");
+            safeSpotLight.enabled = true;
+            safeSpotLight.intensity = flashLight_Intensity;
             thirdPersonCam.SetActive(!thirdPersonMode);
             firstPersonCam.SetActive(thirdPersonMode);
             isSafe = true;
@@ -187,6 +189,7 @@ public class playerMovement : MonoBehaviour
             triggerCount--;
             if (triggerCount <= 0)
             {
+                safeSpotLight.enabled = false;
                 thirdPersonCam.SetActive(thirdPersonMode);
                 firstPersonCam.SetActive(!thirdPersonMode);
                 isSafe = false;

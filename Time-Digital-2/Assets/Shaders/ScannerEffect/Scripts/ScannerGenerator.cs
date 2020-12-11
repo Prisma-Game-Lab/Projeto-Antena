@@ -11,6 +11,7 @@ public class ScannerGenerator : MonoBehaviour
     public Material sonarOnMaterial;
     public Material sonarOffMaterial;
     private Renderer sonarCooldownObjectRenderer;
+    public GameObject luz1,luz2,luz3;
 
     [HideInInspector]
     public bool canUseSonar = true;
@@ -41,8 +42,14 @@ public class ScannerGenerator : MonoBehaviour
     {
         canUseSonar = false;
         sonarCooldownObjectRenderer.material = sonarOffMaterial;
+        luz1.SetActive(false);
+        luz2.SetActive(false);
+        luz3.SetActive(false);
         yield return new WaitForSeconds(sonarCooldown);
         canUseSonar = true;
         sonarCooldownObjectRenderer.material = sonarOnMaterial;
+        luz1.SetActive(true);
+        luz2.SetActive(true);
+        luz3.SetActive(true);
     }
 }

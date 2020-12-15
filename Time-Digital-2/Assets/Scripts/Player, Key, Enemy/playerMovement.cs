@@ -180,6 +180,7 @@ public class playerMovement : MonoBehaviour
             lastCheckpointPos = collision.gameObject.transform.position;
             lastCheckpointRot = transform.rotation;
             collision.gameObject.GetComponent<BoxCollider>().enabled = false;
+            Player.SavePlayer();
         }
         else if (collision.gameObject.CompareTag("button"))
         {

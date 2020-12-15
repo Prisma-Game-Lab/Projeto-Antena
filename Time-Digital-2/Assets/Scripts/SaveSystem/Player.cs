@@ -14,7 +14,7 @@ public class Player
    }
 
 
-   public void SavePlayer()
+   public static void SavePlayer()
    {
         SaveSystem.SaveGame(this);
    }

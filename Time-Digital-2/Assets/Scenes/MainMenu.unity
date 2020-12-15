@@ -433,11 +433,12 @@ MonoBehaviour:
     type: 3}
   firstPersonCam: {fileID: 5749050338137740696, guid: 1ca2c472ac276f841b0216829e54a3ea,
     type: 3}
-  sceneController: {fileID: 4368107276125832290, guid: 7c5f1e24a7dc1d041a4a7e954e363689,
-    type: 3}
+  safeSpotLight: {fileID: 0}
+  flashLight_Intensity: 0
   movementSpeed: 5
   morte: {fileID: 4462787432271189499}
   safeSpot: {fileID: 7493037626909823237}
+  enableMovement: 0
   isMoving: 0
   isSafe: 0
   isDead: 0
@@ -452,7 +453,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19946
+  m_Name: pb_Mesh132370
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7145,7 +7146,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20048
+  m_Name: pb_Mesh132474
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7308,7 +7309,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20008
+  m_Name: pb_Mesh132434
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7471,7 +7472,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20060
+  m_Name: pb_Mesh132486
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21310,7 +21311,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19958
+  m_Name: pb_Mesh132382
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21561,6 +21562,17 @@ MonoBehaviour:
           m_StringArgument: Tutorial
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 216490582}
+        m_MethodName: NewSaveGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1487671700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21803,7 +21815,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20116
+  m_Name: pb_Mesh132544
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -31960,7 +31972,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1013e6a16eb8fbe4188d9840a4faafb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: ab1878f4f8298e6458a49f08ae56d462, type: 2}
+  musicAudio: {fileID: 0}
+  effectsAudio: {fileID: 0}
 --- !u!33 &8502252189435071231
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -52,4 +52,10 @@ public class menuHandler : MonoBehaviour
         settingsMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
+
+    public void NewSaveGame()
+    {
+        Player newPlayer = new Player();
+        SaveSystem.SaveGame(newPlayer);
+    }
 }

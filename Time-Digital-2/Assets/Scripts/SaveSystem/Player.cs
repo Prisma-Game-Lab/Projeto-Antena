@@ -14,9 +14,9 @@ public class Player
    }
 
 
-   public void SavePlayer(Player player)
+   public void SavePlayer()
    {
-        SaveSystem.SaveGame(player);
+        SaveSystem.SaveGame(this);
    }
 
 

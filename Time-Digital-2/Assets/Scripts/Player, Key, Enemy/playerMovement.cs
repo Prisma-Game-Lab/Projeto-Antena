@@ -13,6 +13,8 @@ public class playerMovement : MonoBehaviour
     public AudioSource morte;
     public AudioSource safeSpot;
 
+    public bool enableMovement = false; 
+
     [HideInInspector]
     public bool isMoving;
     [HideInInspector]
@@ -74,12 +76,17 @@ public class playerMovement : MonoBehaviour
             button.GetComponent<button>().buttonPressed = true;
         }
     }
+
     private void FixedUpdate()
     {
-        if (!isDead)
-            Movement();
-        else
-            transform.position = lastCheckpointPos;
+        if (enableMovement)
+        {
+            if (!isDead)
+                Movement();
+            else
+                transform.position = lastCheckpointPos;
+        }
+      
     }
 
     private void Movement()

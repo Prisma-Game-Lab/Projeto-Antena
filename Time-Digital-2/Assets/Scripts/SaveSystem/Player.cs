@@ -7,14 +7,10 @@ public class Player
    public Vector3 position;
    public int checkpointsCount;
 
-   public Player GetNewPlayer()
+   public Player()
    {
-        Player newPlayer = new Player
-        {
-            checkpointsCount = 0
-        };
-
-        return newPlayer;
+        checkpointsCount = 0;
+        position = Vector3.zero;
    }
 
 

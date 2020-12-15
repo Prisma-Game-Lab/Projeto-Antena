@@ -35,6 +35,17 @@ public static class SaveSystem
             Debug.LogError("Save file not found in" + path);
             return null;
         }
-        
+
+    }
+
+    public static bool HaveSavedGame() {
+        string path = Application.persistentDataPath + "/player.data";
+        if(File.Exists(path))
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 }

@@ -9,11 +9,29 @@ public class menuHandler : MonoBehaviour
     public GameObject mainMenu;
     public void StartGame()
     {
+        // Verificar se existe load
+        PlayerInfo playerInfo = SaveSystem.LoadGame();
+        if (playerInfo != null)
+        {
+            //VOCE TEM CERTEZA QUE QUR COMECAR UM NOVO DESAFIO, VOCE PERDERA OS SEU ULTIMO PROGRESSO
+            //Y/N
+            // aparecer o prompt 
+         
+        }
         SceneManager.LoadScene(1);
     }
     public void LoadScene()
     {
-        SceneManager.LoadScene(1);
+        PlayerInfo playerInfo = SaveSystem.LoadGame();
+        if (playerInfo == null)
+        {
+            //VOCE NÃO POSSUI DADOS SALVOS
+        }else
+        {
+
+            SceneManager.LoadScene(1);
+        }
+        
     }
     public void OpenSettingsMenu()
     {

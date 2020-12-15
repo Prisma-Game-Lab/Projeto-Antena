@@ -7,17 +7,18 @@ public class menuHandler : MonoBehaviour
 {
     public GameObject settingsMenu;
     public GameObject mainMenu;
+
     public void StartGame()
     {
-        // Verificar se existe load
-        PlayerInfo playerInfo = SaveSystem.LoadGame();
-        if (playerInfo != null)
-        {
-            //VOCE TEM CERTEZA QUE QUR COMECAR UM NOVO DESAFIO, VOCE PERDERA OS SEU ULTIMO PROGRESSO
-            //Y/N
-            // aparecer o prompt 
+        //// Verificar se existe load
+        //PlayerInfo playerInfo = SaveSystem.LoadGame();
+        //if (playerInfo != null)
+        //{
+        //    //VOCE TEM CERTEZA QUE QUR COMECAR UM NOVO DESAFIO, VOCE PERDERA OS SEU ULTIMO PROGRESSO
+        //    //Y/N
+        //    // aparecer o prompt 
          
-        }
+        //}
         SceneManager.LoadScene(1);
     }
     public void LoadScene()

@@ -15,7 +15,6 @@ public class playerMovement : MonoBehaviour
 
     //SAVE GAME 
     public bool enableMovement = false;
-    public int checkpointCount = 0;
 
     [HideInInspector]
     public bool isMoving;
@@ -183,9 +182,9 @@ public class playerMovement : MonoBehaviour
             lastCheckpointPos = collision.gameObject.transform.position;
             lastCheckpointRot = transform.rotation;
             collision.gameObject.GetComponent<BoxCollider>().enabled = false;
-            checkpointCount += 1;
             Player playerToSave = new Player();
-            playerToSave.checkpointsCount = checkpointCount;
+            playerToSave.checkpointsCount = 1;
+            playerToSave.position = collision.gameObject.transform.position;
             SaveSystem.SaveGame(playerToSave);
         }
         else if (collision.gameObject.CompareTag("button"))

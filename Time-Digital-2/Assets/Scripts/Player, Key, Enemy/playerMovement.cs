@@ -13,7 +13,9 @@ public class playerMovement : MonoBehaviour
     public AudioSource morte;
     public AudioSource safeSpot;
 
-    public bool enableMovement = false; 
+    //SAVE GAME 
+    public bool enableMovement = false;
+    public int checkpointCount = 0;
 
     [HideInInspector]
     public bool isMoving;
@@ -41,6 +43,7 @@ public class playerMovement : MonoBehaviour
     private int triggerCount;
     private CharacterController controller;
     private Vector3 moveDir;
+
 
 
 
@@ -180,7 +183,10 @@ public class playerMovement : MonoBehaviour
             lastCheckpointPos = collision.gameObject.transform.position;
             lastCheckpointRot = transform.rotation;
             collision.gameObject.GetComponent<BoxCollider>().enabled = false;
-            Player.SavePlayer();
+            checkpointCount += 1;
+            Player playerToSave = new Player();
+            playerToSave.checkpointsCount = checkpointCount;
+            SaveSystem.SaveGame(playerToSave);
         }
         else if (collision.gameObject.CompareTag("button"))
         {

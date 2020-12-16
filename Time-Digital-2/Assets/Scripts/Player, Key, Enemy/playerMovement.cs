@@ -39,6 +39,7 @@ public class playerMovement : MonoBehaviour
     private float turnSmoothTime=0.1f;
     private float turnSmoothVelocity;
     private bool thirdPersonMode;
+    private int time;
     private int triggerCount;
     private CharacterController controller;
     private Vector3 moveDir;
@@ -65,10 +66,11 @@ public class playerMovement : MonoBehaviour
         isSafe = false;
         thirdPersonMode = true;
         isDead = false;
-        Physics.gravity *= 2;
         thirdPersonCam.SetActive(thirdPersonMode);
         firstPersonCam.SetActive(!thirdPersonMode);
+        Physics.gravity *= 2;
         triggerCount = 0;
+        safeSpotLight.intensity = flashLight_Intensity;
     }
     private void Update()
     {
@@ -160,8 +162,8 @@ public class playerMovement : MonoBehaviour
         {
             triggerCount++;
             Debug.Log("Entrou esconderijo");
-            safeSpotLight.enabled = true;
-            safeSpotLight.intensity = flashLight_Intensity;
+            //safeSpotLight.enabled = true;
+            //safeSpotLight.intensity = flashLight_Intensity;
             thirdPersonCam.SetActive(!thirdPersonMode);
             firstPersonCam.SetActive(thirdPersonMode);
             isSafe = true;
@@ -202,7 +204,7 @@ public class playerMovement : MonoBehaviour
             triggerCount--;
             if (triggerCount <= 0)
             {
-                safeSpotLight.enabled = false;
+                //safeSpotLight.enabled = false;
                 thirdPersonCam.SetActive(thirdPersonMode);
                 firstPersonCam.SetActive(!thirdPersonMode);
                 isSafe = false;

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8732162876022000085}
   - component: {fileID: 3161113592841711841}
   - component: {fileID: 3161113592791713547}
+  - component: {fileID: 2491425055076189642}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -104,3 +105,19 @@ MonoBehaviour:
   checkpoints:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &2491425055076189642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675385776480809380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1013e6a16eb8fbe4188d9840a4faafb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicAudio: {fileID: 24100000, guid: 6881d61081354c146979cb716f378b75, type: 2}
+  effectsAudio: {fileID: 24100000, guid: 0928d2401f30e2043ac3118518d1efac, type: 2}
+  sfxSlider: {fileID: 0}
+  musicSlider: {fileID: 0}

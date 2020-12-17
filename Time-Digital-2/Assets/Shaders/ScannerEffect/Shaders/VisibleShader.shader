@@ -16,7 +16,7 @@
         {
             Cull Off
             ZWrite On
-            ZTest Always
+            ZTest Greater
 
             CGPROGRAM
             #pragma vertex vert

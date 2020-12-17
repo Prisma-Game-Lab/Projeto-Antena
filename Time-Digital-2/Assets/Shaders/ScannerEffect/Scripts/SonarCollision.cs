@@ -7,6 +7,7 @@ public class SonarCollision : MonoBehaviour
     public float enemyLightTime;
     public Material normalMaterial;
     public Material spottedMaterial;
+    public GameObject enemyModel;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,13 +17,12 @@ public class SonarCollision : MonoBehaviour
             if (this.gameObject.CompareTag("Enemy"))
             {
 
-                GameObject body = this.gameObject.transform.GetChild(1).gameObject;
+                GameObject body = enemyModel;
 
                 StartCoroutine(DisableEnemyLight(body));
             }
             else if(this.gameObject.CompareTag("key"))
             {
-                Debug.Log("OBAAAA");
                 GameObject body = this.gameObject.transform.GetChild(0).gameObject;
 
                 StartCoroutine(DisableKeyLight(body));
@@ -33,7 +33,6 @@ public class SonarCollision : MonoBehaviour
 
     private IEnumerator DisableKeyLight(GameObject body)
     {
-        Debug.Log("OBAAAA22222222");
         GameObject bodyPart = body.gameObject;
         Renderer renderer = bodyPart.GetComponent<Renderer>();
         if (renderer)
@@ -53,54 +52,63 @@ public class SonarCollision : MonoBehaviour
 
     private IEnumerator DisableEnemyLight(GameObject body)
     {
-        for (int i = 0; i < body.transform.childCount - 1; i++)
-        {
-            // TEMPORARIO DADO A FORMA COMO A FORMIGA E FEITA 
-            GameObject bodyPart = body.gameObject.transform.GetChild(i).gameObject;
-            Renderer renderer = bodyPart.GetComponent<Renderer>();
-
-            if (renderer)
+        for (int i = 0; i < body.transform.childCount; i++)
+        {   
+            if(i!=2)
             {
-                renderer.material = spottedMaterial;
-
-            }
-            else
-            {
-                for (int j = 0; j < bodyPart.transform.childCount - 1; j++)
+                // TEMPORARIO DADO A FORMA COMO A FORMIGA E FEITA 
+                GameObject bodyPart = body.gameObject.transform.GetChild(i).gameObject;
+                Renderer renderer = bodyPart.GetComponent<Renderer>();
+                if (renderer)
                 {
-                    GameObject miniBodyPart = bodyPart.gameObject.transform.GetChild(j).gameObject;
-                    Renderer miniRenderer = miniBodyPart.GetComponent<Renderer>();
-
-                    if (miniRenderer)
+                    Material[] materials = renderer.materials;
+                    if(materials.Length > 1)
                     {
-                        miniRenderer.material = spottedMaterial;
+                        int k = 0;
+                        foreach (Material mat in materials)
+                        {
+
+                            materials[k] = spottedMaterial;
+                            k++;
+                        }
+                        renderer.materials = materials;
                     }
+                    else
+                    {
+                        renderer.material = spottedMaterial;
+                    }
+                    
                 }
             }
         }
 
         yield return new WaitForSeconds(enemyLightTime);
 
-        for (int i = 0; i < body.transform.childCount - 1; i++)
+        for (int i = 0; i < body.transform.childCount; i++)
         {
             // TEMPORARIO DADO A FORMA COMO A FORMIGA E FEITA 
-            GameObject bodyPart = body.gameObject.transform.GetChild(i).gameObject;
-            Renderer renderer = bodyPart.GetComponent<Renderer>();
-
-            if (renderer)
+            if(i != 2)
             {
-                renderer.material = normalMaterial;
-
-            }else
-            {
-                for (int j = 0; j < bodyPart.transform.childCount - 1; j++)
+                GameObject bodyPart = body.gameObject.transform.GetChild(i).gameObject;
+                Renderer renderer = bodyPart.GetComponent<Renderer>();
+                Material material = bodyPart.GetComponent<MyRealSkin>().myRealMaterial;
+                Material[] materials = bodyPart.GetComponent<MyRealSkin>().myMaterials;
+                if (renderer)
                 {
-                    GameObject miniBodyPart = bodyPart.gameObject.transform.GetChild(j).gameObject;
-                    Renderer miniRenderer = miniBodyPart.GetComponent<Renderer>();
-
-                    if (miniRenderer)
+    
+                    if (materials.Length > 1)
                     {
-                        miniRenderer.material = normalMaterial;
+                        Material[] rendererMaterials = renderer.materials;
+                        for (int k = 0; k < materials.Length; k++)
+                        {
+                            rendererMaterials[k] = materials[k];
+                        }
+                        renderer.materials = rendererMaterials;
+                    }
+
+                    else
+                    {
+                        renderer.material = material;
                     }
                 }
             }

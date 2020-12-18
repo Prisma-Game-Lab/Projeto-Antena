@@ -7,6 +7,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: mesa1.003
+    second: {fileID: 2100000, guid: b18956eca7c9eb94b9a2f219ee4f164a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mesa1.004
+    second: {fileID: 2100000, guid: 15a94431a249e374fa50cb73d415a14e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: mesa1.012
     second: {fileID: 2100000, guid: bfcfba21be86a1b4ab9f682964a4238a, type: 2}
   - first:

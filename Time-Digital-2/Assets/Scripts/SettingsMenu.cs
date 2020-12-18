@@ -37,7 +37,7 @@ public class SettingsMenu : MonoBehaviour
             musicSlider.value = musicVolume;
         }
 
-        if (sensibility != null) {
+        if (sensibility != null && cinemachine != null) {
             cinemachine.m_XAxis.m_MaxSpeed = sensibility;
             sensibilityValue.text = sensibility.ToString("F2");
             sensibilitySlider.value = sensibility;

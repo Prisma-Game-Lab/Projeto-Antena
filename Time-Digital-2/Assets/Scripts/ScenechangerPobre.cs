@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ScenechangerPobre : MonoBehaviour
 {
-    public void LoadB(int sceneANumber)
+    public void LoadB()
     {
-        SceneManager.LoadScene(sceneANumber);
+        SceneManager.LoadScene(1);
     }
 }

@@ -9,7 +9,6 @@ public class TheEnd : MonoBehaviour
     // Start is called before the first frame update
     public GameObject player;
     public Image image;
-    public GameObject canvas;
     public bool reachedTheEnd = false;
 
     // Update is called once per frame
@@ -17,7 +16,7 @@ public class TheEnd : MonoBehaviour
     {
         if (reachedTheEnd)
         {
-            canvas.SetActive(true);
+            image.enabled = true;
             float diff = player.gameObject.transform.position.y - gameObject.transform.position.y;
             Color tempColor = image.color;
             tempColor.a = diff / 3;

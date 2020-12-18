@@ -3,7 +3,47 @@ guid: 2fa9e811f9d386440a7511f69673e9d7
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 8c07b722b612b5f439e04bb80ab8fd53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: agua
+    second: {fileID: 2100000, guid: 94a9f131dabea8142899a13c308bcba6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clonevat.1
+    second: {fileID: 2100000, guid: 23725a89931cb214d8aae79c30f8af33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clonevat.2
+    second: {fileID: 2100000, guid: a868faeb1d9f4794cacc35f6adea7a47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clonevat.3
+    second: {fileID: 2100000, guid: 4088b0020f383d94dbaec96927b44797, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: corda tubo
+    second: {fileID: 2100000, guid: 85d9c3400667db04b817be6edac6ff6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: telapc
+    second: {fileID: 2100000, guid: c87430bb0e4f8be4481ae01baf8e4cda, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: telapc.2
+    second: {fileID: 2100000, guid: 17b54a07578972a48b87062a1f602a10, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2273515423928013268}
   - component: {fileID: 2273515423928013266}
   - component: {fileID: 5794225171388315887}
+  - component: {fileID: 6958833296806696368}
   m_Layer: 0
   m_Name: ButtonDoor
   m_TagString: door
@@ -76,6 +77,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alarme: {fileID: 103314597751913312}
+--- !u!95 &6958833296806696368
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2273515423928013269}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bef8cd010298e0d4fb13ec0ac4b31cc3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2273515424786404694
 GameObject:
   m_ObjectHideFlags: 0

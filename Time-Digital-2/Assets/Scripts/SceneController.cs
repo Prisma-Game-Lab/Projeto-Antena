@@ -25,14 +25,14 @@ public class SceneController : MonoBehaviour
             if(gameIsPause)
             {
                 //Trava e deixa o cursor invisivel
-                //Cursor.lockState = CursorLockMode.Locked;
-                //Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 Resume();
             } else
             {
                 //Destrava e deixa o cursor visivel
-                //Cursor.visible = true;
-                //Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.Confined;
                 Pause();
             }
         }
@@ -53,6 +53,8 @@ public class SceneController : MonoBehaviour
         Time.timeScale = 1f;
         gameIsPause = false;
         doorSounds.resumeAlarme();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void LoadScene(int sceneName)

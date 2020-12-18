@@ -33,6 +33,8 @@ public class Manager : MonoBehaviour
         sceneController = this.GetComponent<SceneController>();
         enemys = new List<EnemyAI>();
         fillEnemysList();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

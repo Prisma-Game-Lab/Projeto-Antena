@@ -145,7 +145,7 @@ public class playerMovement : MonoBehaviour
         }
 
         //Guarda o input em um vetor direção
-        Vector3 direction = new Vector3(vertical, 0f, 0).normalized;
+        Vector3 direction = new Vector3(0f, 0f, -vertical).normalized;
         //Se o player esta se movendo
         if (direction.magnitude >= 0.1f)
         {

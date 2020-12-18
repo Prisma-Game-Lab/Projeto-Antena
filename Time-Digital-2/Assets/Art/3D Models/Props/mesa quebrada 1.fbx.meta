@@ -73,7 +73,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Tela
-    second: {fileID: 2100000, guid: 8db99f145a5bc7449ae00f07732d7b95, type: 2}
+    second: {fileID: 2100000, guid: 0a2aac97bc192894b961a5a1d2fa03c2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

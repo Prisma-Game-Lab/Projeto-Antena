@@ -20,6 +20,10 @@ public class caveSounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //RandomAudio();
+    }
+
+    private void RandomAudio(){
         if (timer >= timeLimit)
         {
             timeLimit = Random.Range(40.0f, 60.0f);

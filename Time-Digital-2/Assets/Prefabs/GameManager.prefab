@@ -64,7 +64,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2758280601d268b4ba71e36e83c7050f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionDuration: 0.3
+  SFXtransitionDuration: 3
+  musicTransitionDuration: 5
   sfxMixer: {fileID: 24100000, guid: 0928d2401f30e2043ac3118518d1efac, type: 2}
   normal: {fileID: 24500006, guid: 0928d2401f30e2043ac3118518d1efac, type: 2}
   persegMorte: {fileID: -7825714334890643161, guid: 0928d2401f30e2043ac3118518d1efac,
@@ -72,6 +73,9 @@ MonoBehaviour:
   proximidade: {fileID: -7490092978579388664, guid: 0928d2401f30e2043ac3118518d1efac,
     type: 2}
   safeSpot: {fileID: -5592070246270331467, guid: 0928d2401f30e2043ac3118518d1efac,
+    type: 2}
+  musicNormal: {fileID: 24500006, guid: 6881d61081354c146979cb716f378b75, type: 2}
+  musicBaixo: {fileID: 1450849706881604313, guid: 6881d61081354c146979cb716f378b75,
     type: 2}
 --- !u!114 &3161113592841711841
 MonoBehaviour:
@@ -121,3 +125,6 @@ MonoBehaviour:
   effectsAudio: {fileID: 24100000, guid: 0928d2401f30e2043ac3118518d1efac, type: 2}
   sfxSlider: {fileID: 0}
   musicSlider: {fileID: 0}
+  sensibilitySlider: {fileID: 0}
+  sensibilityValue: {fileID: 0}
+  cinemachine: {fileID: 0}

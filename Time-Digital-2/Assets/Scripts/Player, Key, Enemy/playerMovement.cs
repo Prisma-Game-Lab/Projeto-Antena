@@ -13,6 +13,7 @@ public class playerMovement : MonoBehaviour
 
     public AudioSource morte;
     public AudioSource safeSpot;
+    public AudioSource butao;
 
     //END OFF THE GAME
     [HideInInspector]
@@ -80,6 +81,7 @@ public class playerMovement : MonoBehaviour
         {
             print("pressionado");
             button.GetComponent<button>().buttonPressed = true;
+            butao.Play();
         }
     }
 

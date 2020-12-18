@@ -27,7 +27,8 @@ public class AudioManager : MonoBehaviour
     private Dictionary<SoundType, AudioMixerSnapshot> soundSnapshot;
   
 
-    public float transitionDuration;
+    public float SFXtransitionDuration;
+    public float musicTransitionDuration;
     public AudioMixer sfxMixer;
     public AudioMixerSnapshot normal;
     public AudioMixerSnapshot persegMorte;
@@ -37,6 +38,12 @@ public class AudioManager : MonoBehaviour
     private AudioMixerSnapshot currentSnapshot;
 
     Dictionary<AudioMixerSnapshot, int> snapshotPriority;
+
+
+    //music
+
+    public AudioMixerSnapshot musicNormal;
+    public AudioMixerSnapshot musicBaixo;
 
     void Awake()
     {
@@ -160,7 +167,11 @@ public class AudioManager : MonoBehaviour
     private void FixedUpdate() {
         if (currentSnapshot != null)
         {
-            currentSnapshot.TransitionTo(transitionDuration);
+            if (currentSnapshot != normal)
+                musicBaixo.TransitionTo(musicTransitionDuration);
+            else
+                musicNormal.TransitionTo(musicTransitionDuration);
+            currentSnapshot.TransitionTo(SFXtransitionDuration);
             currentSnapshot = null;
         }
     }

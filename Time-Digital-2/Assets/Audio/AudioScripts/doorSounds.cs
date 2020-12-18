@@ -6,6 +6,13 @@ public class doorSounds : MonoBehaviour
 {
     public AudioSource alarme;
 
+    public AudioSource open;
+
+    private bool hasPlayedOpen = false;
+
+    public static AudioSource [] alarmeInstances = new AudioSource [10];
+    public static int alarmeQnt = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +27,10 @@ public class doorSounds : MonoBehaviour
 
     public IEnumerator PlayAlarme(float totalTime)
     {
-        float fadeOut = 5.0f;
+        float fadeOut = 6.0f;
+        if (alarme == null){
+            Debug.Log("aqui");
+        }
         float clipDuration = alarme.clip.length - fadeOut;
         if (clipDuration > totalTime)
         {
@@ -33,5 +43,40 @@ public class doorSounds : MonoBehaviour
             yield return new WaitForSeconds(offset);
         }
         alarme.Play();
+        alarmeInstances[alarmeQnt] = alarme;
+        alarmeQnt++;
+        open.Play();
+    }
+
+    public void EndAlarme(){
+        alarmeQnt--;
+    }
+
+    public void PlayOpen(){
+        if (!open.isPlaying && !hasPlayedOpen){
+            hasPlayedOpen = true;
+            open.Play();
+        }
+    }
+
+    public static void pauseAlarme(){
+        //foreach (AudioSource audio in alarmeInstances){
+        //    audio.Pause();
+        //}
+
+        for (int i = 0; i < alarmeQnt; i++){
+            alarmeInstances[i].Pause();
+        }
+        
+    }
+
+    public static void resumeAlarme(){
+        //foreach (AudioSource audio in alarmeInstances){
+        //    audio.Play();
+        //}
+
+        for (int i = 0; i < alarmeQnt; i++){
+            alarmeInstances[i].Play();
+        }
     }
 }

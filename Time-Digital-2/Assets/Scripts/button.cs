@@ -48,6 +48,7 @@ public class button : MonoBehaviour
             //door.transform.GetChild(0).gameObject.SetActive(true);
             //door.transform.GetChild(1).gameObject.SetActive(true);
             door.GetComponent<Animator>().SetTrigger("close");
+            door.GetComponent<doorSounds>().EndAlarme();
             foreach (GameObject path in paths)
             {
                 path.GetComponent<Renderer>().material = mFechado;

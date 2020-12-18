@@ -1,16 +1,22 @@
 ﻿using UnityEngine;
+using Cinemachine;
 
 public class playerMovement : MonoBehaviour
 {
     public GameObject mainCam;
     public GameObject thirdPersonCam;
     public GameObject firstPersonCam;
+    public GameObject endCameraPoint;
     public Light safeSpotLight;
     public float flashLight_Intensity;
     public float movementSpeed;
 
     public AudioSource morte;
     public AudioSource safeSpot;
+
+    //END OFF THE GAME
+    [HideInInspector]
+    public bool inTheEnd = false;
 
     //SAVE GAME 
     public bool enableMovement = false;
@@ -82,7 +88,10 @@ public class playerMovement : MonoBehaviour
         if (enableMovement)
         {
             if (!isDead)
-                Movement();
+                if (inTheEnd)
+                    MovementUp();
+                else
+                    Movement();
             else
                 transform.position = lastCheckpointPos;
         }
@@ -119,6 +128,33 @@ public class playerMovement : MonoBehaviour
         if (!thirdPersonCam.activeSelf)
             transform.rotation = Quaternion.AngleAxis(mainCam.transform.rotation.eulerAngles.y * Time.fixedDeltaTime * 50, Vector3.up);
     }
+
+    //USING FOR ENDO OF THE GAME 
+    private void MovementUp()
+    {
+        isMoving = false;
+        //Pega input horizontal e vertical
+        bool goingUp = Input.GetKey("w");
+        float vertical = 0.0f;
+
+        if (goingUp)
+        {
+            vertical = 1.0f;
+        }
+
+        //Guarda o input em um vetor direção
+        Vector3 direction = new Vector3(vertical, 0f, 0).normalized;
+        //Se o player esta se movendo
+        if (direction.magnitude >= 0.1f)
+        {
+            isMoving = true;
+        }
+        else
+            direction = Vector3.zero;
+
+        controller.SimpleMove(direction.normalized * Time.fixedDeltaTime * movementSpeed/2 * 10f);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("SafeSpot"))
@@ -190,6 +226,15 @@ public class playerMovement : MonoBehaviour
             print("botao em area");
             button = collision.gameObject;
 
+        }
+        else if (collision.gameObject.CompareTag("End"))
+        {
+            endCameraPoint.gameObject.transform.position = this.gameObject.transform.position;
+            this.gameObject.transform.rotation = endCameraPoint.gameObject.transform.rotation;
+            collision.GetComponent<TheEnd>().reachedTheEnd = true;
+            thirdPersonCam.GetComponent<CinemachineFreeLook>().Follow = endCameraPoint.gameObject.transform;
+            thirdPersonCam.GetComponent<CinemachineFreeLook>().LookAt = gameObject.transform;
+            inTheEnd = true;
         }
     }
     private void OnTriggerExit(Collider collision)

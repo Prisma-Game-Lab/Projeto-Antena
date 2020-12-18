@@ -7,8 +7,9 @@ public class playerMovement : MonoBehaviour
     public GameObject thirdPersonCam;
     public GameObject firstPersonCam;
     public GameObject endCameraPoint;
-    public Light safeSpotLight;
-    public float flashLight_Intensity;
+    public Light lanterna;
+    public Light luzCabecaEsconderijo;
+    public float safeSpotLightIntensity;
     public float movementSpeed;
 
     public AudioSource morte;
@@ -44,11 +45,13 @@ public class playerMovement : MonoBehaviour
     //Velocidade de rotação do player
     private float turnSmoothTime=0.1f;
     private float turnSmoothVelocity;
+    private float lanternaInicial;
     private bool thirdPersonMode;
     private int time;
     private int triggerCount;
     private CharacterController controller;
     private Vector3 moveDir;
+    
 
     private void Awake()
     {
@@ -73,7 +76,7 @@ public class playerMovement : MonoBehaviour
         firstPersonCam.SetActive(!thirdPersonMode);
         Physics.gravity *= 2;
         triggerCount = 0;
-        safeSpotLight.intensity = flashLight_Intensity;
+        lanternaInicial = lanterna.intensity;
     }
     private void Update()
     {
@@ -196,8 +199,8 @@ public class playerMovement : MonoBehaviour
         {
             triggerCount++;
             Debug.Log("Entrou esconderijo");
-            //safeSpotLight.enabled = true;
-            //safeSpotLight.intensity = flashLight_Intensity;
+            luzCabecaEsconderijo.enabled = true;
+            lanterna.intensity = safeSpotLightIntensity;
             thirdPersonCam.SetActive(!thirdPersonMode);
             firstPersonCam.SetActive(thirdPersonMode);
             isSafe = true;
@@ -247,7 +250,8 @@ public class playerMovement : MonoBehaviour
             triggerCount--;
             if (triggerCount <= 0)
             {
-                //safeSpotLight.enabled = false;
+                luzCabecaEsconderijo.enabled = false;
+                lanterna.intensity = lanternaInicial;
                 thirdPersonCam.SetActive(thirdPersonMode);
                 firstPersonCam.SetActive(!thirdPersonMode);
                 isSafe = false;

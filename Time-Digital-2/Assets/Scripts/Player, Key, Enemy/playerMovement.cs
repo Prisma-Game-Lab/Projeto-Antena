@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public class playerMovement : MonoBehaviour
 {
     public GameObject mainCam;
@@ -43,9 +42,6 @@ public class playerMovement : MonoBehaviour
     private int triggerCount;
     private CharacterController controller;
     private Vector3 moveDir;
-
-
-
 
     private void Awake()
     {

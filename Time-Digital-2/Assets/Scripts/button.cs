@@ -7,8 +7,10 @@ public class button : MonoBehaviour
     public float openTime;
     public List<GameObject> doors = new List<GameObject>();
     public List<GameObject> paths = new List<GameObject>();
+    public GameObject enemiesCollection;
     public GameObject botaoCor;
     public Material mFechado, mAberto;
+    public bool deactivateDoor = false;
     [HideInInspector]
     public bool buttonPressed = false;
     private bool oneTime = true;
@@ -19,8 +21,12 @@ public class button : MonoBehaviour
         {
             oneTime = false;
             buttonPressed = false;
-            StartCoroutine("closeDoors");
-        }else if (buttonPressed)
+            if (deactivateDoor)
+                StartCoroutine("DeactivateEnemies");
+            else
+                StartCoroutine("closeDoors");
+        }
+        else if (buttonPressed)
         {
             buttonPressed = false;
         }
@@ -58,4 +64,19 @@ public class button : MonoBehaviour
         oneTime = true;
         print("Porta fechada");
     }
+
+    private IEnumerator DeactivateEnemies()
+    {
+        int enemiesCount = enemiesCollection.transform.childCount;
+        for (int i = 0; i < enemiesCount; ++i)
+        {
+            GameObject enemy = enemiesCollection.transform.GetChild(i).gameObject;
+            enemy.GetComponent<EnemyAI>().turnedOff = true;
+        }
+          
+
+        print("Porta aberta");
+        yield return new WaitForEndOfFrame();
+    }
+
 }

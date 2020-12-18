@@ -8,10 +8,20 @@ public class menuHandler : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject mainMenu;
     public GameObject hasSavedGameAlert;
+
+    public AudioSource menuMusic;
+
+    public AudioSource playMusic;
+
+    private void Start() {
+        AudioManager.sharedInstance.ChangeMusic(menuMusic);
+    }
    
     public void LoadScene()
     {
         PlayerInfo playerInfo = SaveSystem.LoadGame();
+        //AudioManager.sharedInstance.ChangeMusic(playMusic);
+
         if (playerInfo == null)
         {
             //VOCE NÃO POSSUI DADOS SALVOS
@@ -58,9 +68,11 @@ public class menuHandler : MonoBehaviour
 
     public void NewSaveGame()
     {
+        //AudioManager.sharedInstance.ChangeMusic(playMusic);
         Player newPlayer = new Player();
         SaveSystem.SaveGame(newPlayer);
         SceneManager.LoadScene(2);
+        
     }
 
     public void DisableSavedGameAlert()

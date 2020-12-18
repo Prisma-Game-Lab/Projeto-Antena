@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class playerTutorial : MonoBehaviour
 {
+    private tutorialObject tutorialScript;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("tutorial"))
         {
-            tutorialObject tutorialScript = other.GetComponent<tutorialObject>();
+            tutorialScript = other.GetComponent<tutorialObject>();
             tutorialScript.Object.SetActive(true);
             if (tutorialScript.lightObject!=null)
                 tutorialScript.lightObject.SetActive(true);

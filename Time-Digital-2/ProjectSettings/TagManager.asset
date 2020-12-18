@@ -13,6 +13,7 @@ TagManager:
   - door
   - button
   - tutorial
+  - End
   layers:
   - Default
   - TransparentFX

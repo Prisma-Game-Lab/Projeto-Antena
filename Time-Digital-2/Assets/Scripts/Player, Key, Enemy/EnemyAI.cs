@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    //Variavel que controla se o inimigo está desligado ou ligado
+    public bool turnedOff = false;
     //Distancia do player para entrar em modo de ataque
     public float viewRange;
     //Distancia para sair do modo de ataque
@@ -14,7 +16,7 @@ public class EnemyAI : MonoBehaviour
     //Velocidade de perseguição
     public float followSpeed;
     //Estados que definem comportamentos da AI
-    public enum stateMachine { isWaiting, isReadyToWander, isMoving, isAttacking }
+    public enum stateMachine { isWaiting, isReadyToWander, isMoving, isAttacking, isOff }
     [HideInInspector]
     public stateMachine myState;
     [HideInInspector]
@@ -56,34 +58,41 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        //Se já não estiver em modo de ataque checa se a distancia entre este objeto e o player é menor ou igual a ViewRange 
-        if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= viewRange && !player.isSafe)
+        if (!turnedOff) { 
+            //Se já não estiver em modo de ataque checa se a distancia entre este objeto e o player é menor ou igual a ViewRange 
+            if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= viewRange && !player.isSafe)
+            {
+                myState = stateMachine.isAttacking;
+            }
+            //Se estiver preparado para pratulhar, patrulha
+            if (myState == stateMachine.isReadyToWander)
+            {
+                wander();
+                checkProximidade();
+            }
+            //Se estiver patrulhando checa se ja chegou ao seu destino
+            else if (myState == stateMachine.isMoving)
+            {
+                checkIfReachedDestination();
+                checkProximidade();
+            }
+            //Se estiver esperando entre uma patrulha e outra, calcula o tempo que tem que esperar
+            else if (myState == stateMachine.isWaiting)
+            {
+                waitForTime();
+                checkProximidade();
+            }
+            //Se estiver em modo de ataque, executa comportamento de ataque
+            else if (myState == stateMachine.isAttacking)
+            {
+                followAndAttack();
+            }
+        }else
         {
-            myState = stateMachine.isAttacking;
+            navMeshAgent.isStopped = true;
+            myState = stateMachine.isOff;
         }
-        //Se estiver preparado para pratulhar, patrulha
-        if (myState == stateMachine.isReadyToWander)
-        {
-            wander();
-            checkProximidade();
-        }
-        //Se estiver patrulhando checa se ja chegou ao seu destino
-        else if (myState == stateMachine.isMoving)
-        {
-            checkIfReachedDestination();
-            checkProximidade();
-        }
-        //Se estiver esperando entre uma patrulha e outra, calcula o tempo que tem que esperar
-        else if (myState == stateMachine.isWaiting)
-        {
-            waitForTime();
-            checkProximidade();
-        }
-        //Se estiver em modo de ataque, executa comportamento de ataque
-        else if (myState == stateMachine.isAttacking)
-        {
-            followAndAttack();
-        }
+
     }
     //Persegue e ataca o player se estiver a uma distancia minima, muda comportamento caso esteja muito longe do player
     private void followAndAttack()

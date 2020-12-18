@@ -60,15 +60,23 @@ public class doorSounds : MonoBehaviour
     }
 
     public static void pauseAlarme(){
-        foreach (AudioSource audio in alarmeInstances){
-            audio.Pause();
+        //foreach (AudioSource audio in alarmeInstances){
+        //    audio.Pause();
+        //}
+
+        for (int i = 0; i < alarmeQnt; i++){
+            alarmeInstances[i].Pause();
         }
         
     }
 
     public static void resumeAlarme(){
-        foreach (AudioSource audio in alarmeInstances){
-            audio.Play();
+        //foreach (AudioSource audio in alarmeInstances){
+        //    audio.Play();
+        //}
+
+        for (int i = 0; i < alarmeQnt; i++){
+            alarmeInstances[i].Play();
         }
     }
 }

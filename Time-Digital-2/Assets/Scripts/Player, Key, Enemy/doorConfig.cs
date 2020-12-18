@@ -27,6 +27,7 @@ public class doorConfig : MonoBehaviour
             rendererMaterials2[1] = vermelhoApagado;
             ledVerde.GetComponent<Renderer>().materials = rendererMaterials;
             ledVermelho.GetComponent<Renderer>().materials = rendererMaterials2;
+            this.GetComponent<doorSounds>().PlayOpen();
             //gameObject.SetActive(false);
         }
     }

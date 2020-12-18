@@ -6,6 +6,10 @@ public class doorSounds : MonoBehaviour
 {
     public AudioSource alarme;
 
+    public AudioSource open;
+
+    private bool hasPlayedOpen = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +24,10 @@ public class doorSounds : MonoBehaviour
 
     public IEnumerator PlayAlarme(float totalTime)
     {
-        float fadeOut = 5.0f;
+        float fadeOut = 6.0f;
+        if (alarme == null){
+            Debug.Log("aqui");
+        }
         float clipDuration = alarme.clip.length - fadeOut;
         if (clipDuration > totalTime)
         {
@@ -33,5 +40,13 @@ public class doorSounds : MonoBehaviour
             yield return new WaitForSeconds(offset);
         }
         alarme.Play();
+        open.Play();
+    }
+
+    public void PlayOpen(){
+        if (!open.isPlaying && !hasPlayedOpen){
+            hasPlayedOpen = true;
+            open.Play();
+        }
     }
 }

@@ -8,6 +8,8 @@ public class playerKeyHolder : MonoBehaviour
     [HideInInspector]
     public List<keyConfig> keysHolding = new List<keyConfig>();
 
+    public AudioSource keySound;
+
 
     //checa se alguma chave tem a mesma senha da porta
     private void checkKeyCode(doorConfig door)
@@ -36,6 +38,7 @@ public class playerKeyHolder : MonoBehaviour
             keyConfig key = other.gameObject.GetComponent<keyConfig>();
             if (key != null)
             {
+                keySound.Play();
                 
                 Debug.Log("Senha da chave: ");
                 Debug.Log(key.keyPassword);

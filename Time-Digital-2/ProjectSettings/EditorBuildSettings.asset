@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Prisma.unity
+    guid: d027fd5b6c154b147bbfcca42caf8fb4
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 73ad5deef0242ed498896c77ccb22e76
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: c58623c107785ff4faf37172879c52ef
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: 10f20bfb7503a53498ba3da3f4fc9de3
   m_configObjects: {}

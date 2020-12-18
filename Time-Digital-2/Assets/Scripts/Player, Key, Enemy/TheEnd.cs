@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TheEnd : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class TheEnd : MonoBehaviour
 
         if (image.color.a >= 1.0f)
         {
-            //ir para os créditos
+            SceneManager.LoadScene(3);
             Debug.Log("ACABOU O JOGO");
         }
 

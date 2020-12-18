@@ -60,7 +60,7 @@ public class menuHandler : MonoBehaviour
     {
         Player newPlayer = new Player();
         SaveSystem.SaveGame(newPlayer);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void DisableSavedGameAlert()

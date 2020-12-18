@@ -45,6 +45,8 @@ public class AudioManager : MonoBehaviour
     public AudioMixerSnapshot musicNormal;
     public AudioMixerSnapshot musicBaixo;
 
+    private static AudioSource musicAudio;
+
     void Awake()
     {
         if (sharedInstance == null)
@@ -177,6 +179,12 @@ public class AudioManager : MonoBehaviour
     }
 
     
-
+    public void ChangeMusic(AudioSource music){
+        if (musicAudio != null)
+            musicAudio.Stop();
+        musicAudio = AudioSource.Instantiate(music);
+        musicAudio.Play();
+        Debug.Log("Play Music");
+    }
 
 }

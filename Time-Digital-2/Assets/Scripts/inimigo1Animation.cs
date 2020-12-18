@@ -46,6 +46,12 @@ public class inimigo1Animation : MonoBehaviour
         {
             anim.SetTrigger("attack");
         }
+
+        if (eA.turnedOff)
+        {
+            anim.SetBool("run", false);
+            anim.SetBool("walk", false);
+        }
     }
 
 

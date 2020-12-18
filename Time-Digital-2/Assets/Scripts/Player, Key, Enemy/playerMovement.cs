@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using Cinemachine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class playerMovement : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class playerMovement : MonoBehaviour
     public AudioSource morte;
     public AudioSource safeSpot;
     public AudioSource butao;
+    public AudioSource musicFinal;
+    public AudioSource musicTema;
 
     //END OFF THE GAME
     [HideInInspector]
@@ -77,7 +81,17 @@ public class playerMovement : MonoBehaviour
         Physics.gravity *= 2;
         triggerCount = 0;
         lanternaInicial = lanterna.intensity;
+
+        StartCoroutine(WaitForMusic());
     }
+
+    public IEnumerator WaitForMusic()
+    {
+        yield return new WaitForSeconds(10.0f);
+        AudioManager.sharedInstance.ChangeMusic(musicTema);
+    }
+
+
     private void Update()
     {
         if (Input.GetKeyDown("e") && button)
@@ -240,6 +254,8 @@ public class playerMovement : MonoBehaviour
             thirdPersonCam.GetComponent<CinemachineFreeLook>().Follow = endCameraPoint.gameObject.transform;
             thirdPersonCam.GetComponent<CinemachineFreeLook>().LookAt = gameObject.transform;
             inTheEnd = true;
+
+            AudioManager.sharedInstance.ChangeMusic(musicFinal);
         }
     }
     private void OnTriggerExit(Collider collision)

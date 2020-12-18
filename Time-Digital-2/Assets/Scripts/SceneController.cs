@@ -43,6 +43,7 @@ public class SceneController : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPause = true;
+        doorSounds.pauseAlarme();
     }
 
     public void Resume()
@@ -51,6 +52,7 @@ public class SceneController : MonoBehaviour
         settingsMenu.SetActive(false);
         Time.timeScale = 1f;
         gameIsPause = false;
+        doorSounds.resumeAlarme();
     }
 
     public void LoadScene(int sceneName)

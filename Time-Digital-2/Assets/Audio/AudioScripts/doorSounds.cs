@@ -10,6 +10,9 @@ public class doorSounds : MonoBehaviour
 
     private bool hasPlayedOpen = false;
 
+    public static AudioSource [] alarmeInstances = new AudioSource [10];
+    public static int alarmeQnt = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,13 +43,32 @@ public class doorSounds : MonoBehaviour
             yield return new WaitForSeconds(offset);
         }
         alarme.Play();
+        alarmeInstances[alarmeQnt] = alarme;
+        alarmeQnt++;
         open.Play();
+    }
+
+    public void EndAlarme(){
+        alarmeQnt--;
     }
 
     public void PlayOpen(){
         if (!open.isPlaying && !hasPlayedOpen){
             hasPlayedOpen = true;
             open.Play();
+        }
+    }
+
+    public static void pauseAlarme(){
+        foreach (AudioSource audio in alarmeInstances){
+            audio.Pause();
+        }
+        
+    }
+
+    public static void resumeAlarme(){
+        foreach (AudioSource audio in alarmeInstances){
+            audio.Play();
         }
     }
 }

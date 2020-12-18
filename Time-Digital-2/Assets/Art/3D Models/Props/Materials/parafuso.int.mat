@@ -69,6 +69,7 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _QueueOffset: 0
+    - _RECEIVE_SHADOWS: 1
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -79,7 +80,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_126C6F33: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0}
-    - Color_B9F825DD: {r: 1, g: 0, b: 0, a: 0}
+    - Color_B9F825DD: {r: 0, g: 0.44705883, b: 1, a: 0}
     - _BaseColor: {r: 0.01341052, g: 0.01341052, b: 0.01341052, a: 1}
     - _Color: {r: 0.01341052, g: 0.01341052, b: 0.01341052, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

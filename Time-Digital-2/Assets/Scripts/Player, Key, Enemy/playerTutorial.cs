@@ -13,6 +13,7 @@ public class playerTutorial : MonoBehaviour
             tutorialScript.Object.SetActive(true);
             if (tutorialScript.lightObject!=null)
                 tutorialScript.lightObject.SetActive(true);
+            Destroy(tutorialScript.Object, 20f);
             Destroy(other.gameObject, 20f);
         }
     }
@@ -20,7 +21,8 @@ public class playerTutorial : MonoBehaviour
     {
         if (other.gameObject.CompareTag("tutorial"))
         {
-            other.GetComponent<tutorialObject>().Object.SetActive(false);
+            tutorialScript.Object.SetActive(false);
+            //other.GetComponent<tutorialObject>().Object.SetActive(false);
         }
     }
 }

@@ -27,8 +27,7 @@ public class menuHandler : MonoBehaviour
             //VOCE NÃO POSSUI DADOS SALVOS
         }else
         {
-
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
         
     }

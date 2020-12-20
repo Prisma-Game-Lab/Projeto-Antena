@@ -209,10 +209,11 @@ public class EnemyAI : MonoBehaviour
             hasPlayed = false;
         }
     }
+    //Desenha esfera mostrando o range que o inimigo enxerga o player
     void OnDrawGizmosSelected()
     {
         // Draw a yellow sphere at the transform's position
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.yellow+new Color(0f,0f,0f,-0.9f);
         Gizmos.DrawSphere(transform.position, viewRange);
     }
 }

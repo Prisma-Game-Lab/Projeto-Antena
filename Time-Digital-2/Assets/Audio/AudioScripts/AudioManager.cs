@@ -39,6 +39,9 @@ public class AudioManager : MonoBehaviour
 
     Dictionary<AudioMixerSnapshot, int> snapshotPriority;
 
+    public AudioSource uiSelect;
+    public AudioSource uiBack;
+
 
     //music
 
@@ -209,6 +212,18 @@ public class AudioManager : MonoBehaviour
         musicAudio = musicAudioSource[music];//AudioSource.Instantiate(music);
         musicAudio.Play();
         Debug.Log("Play Music");
+    }
+
+    public void UISelect()
+    {
+        if (uiSelect != null)
+            uiSelect.Play();
+    }
+
+    public void UIBack()
+    {
+        if (uiBack != null)
+            uiBack.Play();
     }
 
 }

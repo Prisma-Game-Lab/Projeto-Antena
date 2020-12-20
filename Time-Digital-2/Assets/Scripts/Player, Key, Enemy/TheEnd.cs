@@ -25,7 +25,7 @@ public class TheEnd : MonoBehaviour
 
         if (image.color.a >= 1.0f)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(4);
             Debug.Log("ACABOU O JOGO");
         }
 

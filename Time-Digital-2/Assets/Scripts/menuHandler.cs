@@ -29,20 +29,24 @@ public class menuHandler : MonoBehaviour
     }
     public void OpenSettingsMenu()
     {
+        AudioManager.sharedInstance.UISelect();
         settingsMenu.SetActive(true);
         mainMenu.SetActive(false);
     }
     public void Credits()
     {
+        AudioManager.sharedInstance.UISelect();
         SceneManager.LoadScene(3);
     }
     public void Exit()
     {
+        AudioManager.sharedInstance.UISelect();
         print("Quitting...");
         Application.Quit();
     }
     public void back()
     {
+        AudioManager.sharedInstance.UIBack();
         settingsMenu.SetActive(false);
         mainMenu.SetActive(true);
     }

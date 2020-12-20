@@ -16,6 +16,7 @@ public class button : MonoBehaviour
     private bool oneTime = true;
 
     public AudioSource audioButaoFinal;
+    public bool alavancaDesce = false;
 
     private void Update()
     {
@@ -24,7 +25,9 @@ public class button : MonoBehaviour
             oneTime = false;
             buttonPressed = false;
             if (deactivateDoor)
+            {
                 StartCoroutine("DeactivateEnemies");
+            }
             else
                 StartCoroutine("closeDoors");
         }
@@ -75,11 +78,16 @@ public class button : MonoBehaviour
         {
             GameObject enemy = enemiesCollection.transform.GetChild(i).gameObject;
             enemy.GetComponent<EnemyAI>().turnedOff = true;
+            enemy.GetComponentInChildren<Animator>().SetTrigger("morto");
+            alavancaDesce = true;
         }
-          
-
         print("Porta aberta");
         yield return new WaitForEndOfFrame();
+        foreach (GameObject path in paths)
+        {
+            path.GetComponent<Renderer>().material = mAberto;
+            botaoCor.GetComponent<Renderer>().material = mAberto;
+        }
     }
 
 }

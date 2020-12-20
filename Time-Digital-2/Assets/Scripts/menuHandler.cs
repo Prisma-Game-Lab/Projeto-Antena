@@ -38,7 +38,7 @@ public class menuHandler : MonoBehaviour
     }
     public void Credits()
     {
-
+        SceneManager.LoadScene(3);
     }
     public void Exit()
     {

@@ -14,6 +14,7 @@ TagManager:
   - button
   - tutorial
   - End
+  - FinalMusic
   layers:
   - Default
   - TransparentFX

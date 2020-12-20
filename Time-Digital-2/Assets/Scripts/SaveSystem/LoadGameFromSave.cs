@@ -22,18 +22,13 @@ public class LoadGameFromSave : MonoBehaviour
         LoadGame();
     }
 
-
     public void LoadGame()
     {
         PlayerInfo playerInfo = SaveSystem.LoadGame();
         if(playerInfo.checkpointsCount != 0)
         {
             Vector3 checkpointPosition = new Vector3(playerInfo.position[0], playerInfo.position[1], playerInfo.position[2]);
-            Debug.Log("checkpoint pos");
-            Debug.Log(checkpointPosition);
             player.transform.position = checkpointPosition;
-            Debug.Log("PLAYER");
-            Debug.Log(this.gameObject.transform.position);
         }
         StartCoroutine(EnableMovement());
 

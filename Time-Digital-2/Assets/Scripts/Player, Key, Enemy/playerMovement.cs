@@ -16,7 +16,8 @@ public class playerMovement : MonoBehaviour
     [HideInInspector]
     public bool inTheEnd = false;
 
-    //SAVE GAME 
+    //SAVE GAME
+    [HideInInspector]
     public bool enableMovement = false;
 
     [HideInInspector]
@@ -61,7 +62,9 @@ public class playerMovement : MonoBehaviour
         isMoving = false;
         isSafe = false;
         isDead = false;
-        Physics.gravity *= 2;
+        enableMovement = false;
+
+    Physics.gravity *= 2;
         StartCoroutine(WaitForMusic());
     }
 

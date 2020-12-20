@@ -15,7 +15,8 @@ public static class SaveSystem
         PlayerInfo data = new PlayerInfo(player);
         formatter.Serialize(stream, data);
         stream.Close();
-
+        
+        Debug.Log("SAVING THE GAME");
     }
 
     public static PlayerInfo LoadGame()
@@ -28,7 +29,10 @@ public static class SaveSystem
             FileStream stream = new FileStream(path, FileMode.Open);
             PlayerInfo info = formatter.Deserialize(stream) as PlayerInfo;
             stream.Close();
+
+            Debug.Log("LOADING THE GAME");
             return info;
+
         }
         else
         {

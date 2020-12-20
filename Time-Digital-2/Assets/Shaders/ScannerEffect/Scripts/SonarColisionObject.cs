@@ -107,9 +107,11 @@ public class SonarColisionObject : MonoBehaviour
     {
         if (body.transform.childCount > 0)
         {
+
             for (int i = 0; i < body.transform.childCount - 1; i++)
             {
-                // TEMPORARIO DADO A FORMA COMO A FORMIGA E FEITA 
+                // TEMPORARIO DADO A FORMA COMO A FORMIGA E FEITA
+                
                 GameObject bodyPart = body.gameObject.transform.GetChild(i).gameObject;
                 Renderer renderer = bodyPart.GetComponent<Renderer>();
 
@@ -121,6 +123,7 @@ public class SonarColisionObject : MonoBehaviour
                         foreach (Material mat in materials)
                         {
                             mat.SetFloat("Vector1_C0B001A6", 0.5f);
+                            Debug.Log("TA ATIVANDO");
                         }
                     }
                     else

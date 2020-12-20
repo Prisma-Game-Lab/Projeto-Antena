@@ -13,12 +13,13 @@ public class TriggerDetection : MonoBehaviour
 
     public AudioSource safeSpot;
     public AudioSource morte;
-    public AudioSource musicFinal;
 
     private int triggerCount;
     private float lanternaInicial;
     private bool thirdPersonMode;
     private playerMovement playerStats;
+
+    private bool isPlayingFinalMusic = false;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,15 @@ public class TriggerDetection : MonoBehaviour
         else if (collision.gameObject.CompareTag("End"))
         {
             theEnd(collision);
+        }
+        else if (collision.gameObject.CompareTag("FinalMusic"))
+        {
+            if (!isPlayingFinalMusic)
+            {
+                isPlayingFinalMusic = true;
+                musicFinal();
+            }
+            
         }
     }
     private void OnTriggerExit(Collider collision)
@@ -126,7 +136,10 @@ public class TriggerDetection : MonoBehaviour
         thirdPersonCam.GetComponent<CinemachineFreeLook>().Follow = endCameraPoint.gameObject.transform;
         thirdPersonCam.GetComponent<CinemachineFreeLook>().LookAt = gameObject.transform;
         playerStats.inTheEnd = true;
+    }
 
-        AudioManager.sharedInstance.ChangeMusic(musicFinal);
+    private void musicFinal()
+    {
+        AudioManager.sharedInstance.ChangeMusic(AudioManager.MusicType.Final);
     }
 }

@@ -28,7 +28,10 @@ public class AudioManager : MonoBehaviour
   
 
     public float SFXtransitionDuration;
-    public float musicTransitionDuration;
+    public float temaTransitionDuration;
+    public float menuTransitionDuration;
+    public float finalTransitionDuration;
+    public float otherTransitionDuration;
     public AudioMixer sfxMixer;
     public AudioMixerSnapshot normal;
     public AudioMixerSnapshot persegMorte;
@@ -39,19 +42,43 @@ public class AudioManager : MonoBehaviour
 
     Dictionary<AudioMixerSnapshot, int> snapshotPriority;
 
+    public AudioSource uiSelect;
+    public AudioSource uiBack;
+
 
     //music
 
-    public AudioMixerSnapshot musicNormal;
-    public AudioMixerSnapshot musicBaixo;
+     public enum MusicType
+    {
+        Menu,
+        Play,
+        Final,
+        Tema
+    }
 
-    private static AudioSource musicAudio;
+    public AudioMixerSnapshot temaNormal;
+    public AudioMixerSnapshot temaBaixo;
+    public AudioMixerSnapshot menu;
+    public AudioMixerSnapshot play;
+    public AudioMixerSnapshot final;
+
+    public AudioSource musicAudioMenu;
+    public AudioSource musicAudioPlay;
+    public AudioSource musicAudioFinal;
+    public AudioSource musicAudioTema;
+
+    public bool hasPlayedFinal = false;
+
+    private Dictionary<MusicType, AudioSource> musicAudioSource;
+    private Dictionary<MusicType, AudioMixerSnapshot> musicAudioSnapshot;
+
 
     void Awake()
     {
         if (sharedInstance == null)
         {
             sharedInstance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -59,7 +86,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        //DontDestroyOnLoad(gameObject);
 
         soundRequest = new Dictionary<SoundType, int>();
         soundCurrentAudioSource = new Dictionary<SoundType, AudioSource>();
@@ -84,7 +110,20 @@ public class AudioManager : MonoBehaviour
             [safeSpot] = 1
         };
 
-        //audioMixer = Resources.Load<AudioMixer>("audioMixer");
+        musicAudioSource = new Dictionary<MusicType, AudioSource> {
+            {MusicType.Menu ,musicAudioMenu},
+            {MusicType.Play , musicAudioPlay},
+            {MusicType.Final , musicAudioFinal},
+            {MusicType.Tema , musicAudioTema}
+        };
+
+        musicAudioSnapshot = new Dictionary<MusicType, AudioMixerSnapshot> {
+            {MusicType.Menu ,menu},
+            {MusicType.Play , play},
+            {MusicType.Final , final},
+            {MusicType.Tema , temaNormal}
+        };
+
     }
 
 
@@ -167,24 +206,66 @@ public class AudioManager : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        //Debug.Log(musicAudio);
+
         if (currentSnapshot != null)
         {
-            if (currentSnapshot != normal)
-                musicBaixo.TransitionTo(musicTransitionDuration);
-            else
-                musicNormal.TransitionTo(musicTransitionDuration);
+            if (!hasPlayedFinal)
+            {
+                if (currentSnapshot != normal)
+                    temaBaixo.TransitionTo(temaTransitionDuration);
+                else
+                    temaNormal.TransitionTo(temaTransitionDuration);
+            }
             currentSnapshot.TransitionTo(SFXtransitionDuration);
             currentSnapshot = null;
         }
     }
 
     
-    public void ChangeMusic(AudioSource music){
-        if (musicAudio != null)
+    public void ChangeMusic(MusicType music){
+
+        /*foreach (MusicType type in Enum.GetValues(typeof(MusicType)))
+        {
+            AudioSource audio = musicAudioSource[type];
+            if (audio.isPlaying)
+            {
+                //fade
+                musicAudioSnapshot[type].
+            }
+        }*/
+
+        AudioSource musicAudio = musicAudioSource[music];
+        if (musicAudio.isPlaying)
             musicAudio.Stop();
-        musicAudio = AudioSource.Instantiate(music);
+        musicAudio.time = 0.0f;
+
+        float duration = otherTransitionDuration;
+        if (music == MusicType.Final)
+        {
+            duration = finalTransitionDuration;
+            hasPlayedFinal = true;
+        }
+        else if (music == MusicType.Menu)
+            duration = menuTransitionDuration;
+        else if (music == MusicType.Play)
+            hasPlayedFinal = false;
+
+        musicAudioSnapshot[music].TransitionTo(duration);
         musicAudio.Play();
-        Debug.Log("Play Music");
+        //fadeIn
+    }
+
+    public void UISelect()
+    {
+        if (uiSelect != null)
+            uiSelect.Play();
+    }
+
+    public void UIBack()
+    {
+        if (uiBack != null)
+            uiBack.Play();
     }
 
 }

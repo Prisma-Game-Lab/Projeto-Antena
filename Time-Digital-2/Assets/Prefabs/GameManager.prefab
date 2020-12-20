@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1675385776480809306}
   - component: {fileID: 1675385776480809381}
-  - component: {fileID: 8732162876022000085}
   - component: {fileID: 3161113592841711841}
   - component: {fileID: 3161113592791713547}
   - component: {fileID: 2491425055076189642}
@@ -52,31 +51,6 @@ MonoBehaviour:
   currentScene:
     m_Handle: 0
   settingsMenu: {fileID: 0}
---- !u!114 &8732162876022000085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1675385776480809380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2758280601d268b4ba71e36e83c7050f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SFXtransitionDuration: 3
-  musicTransitionDuration: 5
-  sfxMixer: {fileID: 24100000, guid: 0928d2401f30e2043ac3118518d1efac, type: 2}
-  normal: {fileID: 24500006, guid: 0928d2401f30e2043ac3118518d1efac, type: 2}
-  persegMorte: {fileID: -7825714334890643161, guid: 0928d2401f30e2043ac3118518d1efac,
-    type: 2}
-  proximidade: {fileID: -7490092978579388664, guid: 0928d2401f30e2043ac3118518d1efac,
-    type: 2}
-  safeSpot: {fileID: -5592070246270331467, guid: 0928d2401f30e2043ac3118518d1efac,
-    type: 2}
-  musicNormal: {fileID: 24500006, guid: 6881d61081354c146979cb716f378b75, type: 2}
-  musicBaixo: {fileID: 1450849706881604313, guid: 6881d61081354c146979cb716f378b75,
-    type: 2}
 --- !u!114 &3161113592841711841
 MonoBehaviour:
   m_ObjectHideFlags: 0

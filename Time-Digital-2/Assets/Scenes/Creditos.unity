@@ -190,7 +190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Rodrigo Malh\xE3es Bukowitz\nVitor Meirelles Salek\nRaphael Ponce"
+  m_Text: "Raphael Ponce\nRodrigo Malh\xE3es Bukowitz\nVitor Meirelles Salek"
 --- !u!222 &53358049
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -347,7 +347,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Raquel Olhovetchi\nPedro Fernando\nGabi Valen\xE7a"
+  m_Text: "Gabi Valen\xE7a\nPedro Fernando\nRaquel Olhovetchi"
 --- !u!222 &86089514
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1055,7 +1055,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "L\xE9on de Carvalho\nEduardo Gandra"
+  m_Text: "Eduardo Gandra\nL\xE9on de Carvalho"
 --- !u!222 &1198509156
 CanvasRenderer:
   m_ObjectHideFlags: 0

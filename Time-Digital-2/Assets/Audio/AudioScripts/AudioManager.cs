@@ -28,7 +28,10 @@ public class AudioManager : MonoBehaviour
   
 
     public float SFXtransitionDuration;
-    public float musicTransitionDuration;
+    public float temaTransitionDuration;
+    public float menuTransitionDuration;
+    public float finalTransitionDuration;
+    public float otherTransitionDuration;
     public AudioMixer sfxMixer;
     public AudioMixerSnapshot normal;
     public AudioMixerSnapshot persegMorte;
@@ -53,17 +56,21 @@ public class AudioManager : MonoBehaviour
         Tema
     }
 
-    public AudioMixerSnapshot musicNormal;
-    public AudioMixerSnapshot musicBaixo;
-
-    private AudioSource musicAudio;
+    public AudioMixerSnapshot temaNormal;
+    public AudioMixerSnapshot temaBaixo;
+    public AudioMixerSnapshot menu;
+    public AudioMixerSnapshot play;
+    public AudioMixerSnapshot final;
 
     public AudioSource musicAudioMenu;
     public AudioSource musicAudioPlay;
     public AudioSource musicAudioFinal;
     public AudioSource musicAudioTema;
 
+    public bool hasPlayedFinal = false;
+
     private Dictionary<MusicType, AudioSource> musicAudioSource;
+    private Dictionary<MusicType, AudioMixerSnapshot> musicAudioSnapshot;
 
 
     void Awake()
@@ -108,6 +115,13 @@ public class AudioManager : MonoBehaviour
             {MusicType.Play , musicAudioPlay},
             {MusicType.Final , musicAudioFinal},
             {MusicType.Tema , musicAudioTema}
+        };
+
+        musicAudioSnapshot = new Dictionary<MusicType, AudioMixerSnapshot> {
+            {MusicType.Menu ,menu},
+            {MusicType.Play , play},
+            {MusicType.Final , final},
+            {MusicType.Tema , temaNormal}
         };
 
     }
@@ -196,10 +210,13 @@ public class AudioManager : MonoBehaviour
 
         if (currentSnapshot != null)
         {
-            if (currentSnapshot != normal)
-                musicBaixo.TransitionTo(musicTransitionDuration);
-            else
-                musicNormal.TransitionTo(musicTransitionDuration);
+            if (!hasPlayedFinal)
+            {
+                if (currentSnapshot != normal)
+                    temaBaixo.TransitionTo(temaTransitionDuration);
+                else
+                    temaNormal.TransitionTo(temaTransitionDuration);
+            }
             currentSnapshot.TransitionTo(SFXtransitionDuration);
             currentSnapshot = null;
         }
@@ -207,11 +224,36 @@ public class AudioManager : MonoBehaviour
 
     
     public void ChangeMusic(MusicType music){
-        if (musicAudio != null)
+
+        /*foreach (MusicType type in Enum.GetValues(typeof(MusicType)))
+        {
+            AudioSource audio = musicAudioSource[type];
+            if (audio.isPlaying)
+            {
+                //fade
+                musicAudioSnapshot[type].
+            }
+        }*/
+
+        AudioSource musicAudio = musicAudioSource[music];
+        if (musicAudio.isPlaying)
             musicAudio.Stop();
-        musicAudio = musicAudioSource[music];//AudioSource.Instantiate(music);
+        musicAudio.time = 0.0f;
+
+        float duration = otherTransitionDuration;
+        if (music == MusicType.Final)
+        {
+            duration = finalTransitionDuration;
+            hasPlayedFinal = true;
+        }
+        else if (music == MusicType.Menu)
+            duration = menuTransitionDuration;
+        else if (music == MusicType.Play)
+            hasPlayedFinal = false;
+
+        musicAudioSnapshot[music].TransitionTo(duration);
         musicAudio.Play();
-        Debug.Log("Play Music");
+        //fadeIn
     }
 
     public void UISelect()

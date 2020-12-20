@@ -15,6 +15,8 @@ public class button : MonoBehaviour
     public bool buttonPressed = false;
     private bool oneTime = true;
 
+    public AudioSource audioButaoFinal;
+
     private void Update()
     {
         if (buttonPressed && oneTime)
@@ -67,6 +69,7 @@ public class button : MonoBehaviour
 
     private IEnumerator DeactivateEnemies()
     {
+        audioButaoFinal.Play();
         int enemiesCount = enemiesCollection.transform.childCount;
         for (int i = 0; i < enemiesCount; ++i)
         {

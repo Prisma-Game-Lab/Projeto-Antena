@@ -149,7 +149,7 @@ public class playerMovement : MonoBehaviour
 
     public IEnumerator WaitForMusic()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(20.0f);
         AudioManager.sharedInstance.ChangeMusic(AudioManager.MusicType.Tema);
     }
 }

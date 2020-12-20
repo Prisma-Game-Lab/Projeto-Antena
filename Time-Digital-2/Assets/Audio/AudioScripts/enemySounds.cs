@@ -9,6 +9,9 @@ public class enemySounds : MonoBehaviour
     private AudioSource [] formigaAudioList;
     //private const int qntAudio = 4;
     private bool isPlayingAny = false;
+    private bool isWaitingToPlay = false;
+
+    public float maxDuration;
 
     public AudioSource perseguicao;
     private bool isPlayingPerseguicao = false;
@@ -34,7 +37,6 @@ public class enemySounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         isPlayingAny = false;
         foreach (AudioSource audio in formigaAudioList)
         {
@@ -45,11 +47,11 @@ public class enemySounds : MonoBehaviour
             }
         }
         
-        if (!isPlayingAny)
+        if (!isPlayingAny && !isWaitingToPlay)
         {
             int i = (int)Random.Range(0, formigaAudioList.Length);
             if(formigaAudioList[i].isActiveAndEnabled)
-                formigaAudioList[i].Play();
+                StartCoroutine(WaitForPlay(formigaAudioList[i]));
         }
 
         if (eAI.myState == EnemyAI.stateMachine.isAttacking)
@@ -72,5 +74,15 @@ public class enemySounds : MonoBehaviour
                 AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.Perseguicao);
             }
         }
+    }
+
+    public IEnumerator WaitForPlay(AudioSource audio)
+    {
+        isWaitingToPlay = true;
+        float offset = (float)Random.Range(0, maxDuration);
+        yield return new WaitForSeconds(offset);
+        isWaitingToPlay = false;
+        audio.Play();
+        //Debug.Log("play");
     }
 }

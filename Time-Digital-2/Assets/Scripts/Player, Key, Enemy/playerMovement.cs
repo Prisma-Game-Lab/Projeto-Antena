@@ -10,7 +10,6 @@ public class playerMovement : MonoBehaviour
     public float movementSpeed;
 
     public AudioSource butao;
-    public AudioSource musicTema;
 
     //END OFF THE GAME
     [HideInInspector]
@@ -151,6 +150,6 @@ public class playerMovement : MonoBehaviour
     public IEnumerator WaitForMusic()
     {
         yield return new WaitForSeconds(10.0f);
-        AudioManager.sharedInstance.ChangeMusic(musicTema);
+        AudioManager.sharedInstance.ChangeMusic(AudioManager.MusicType.Tema);
     }
 }

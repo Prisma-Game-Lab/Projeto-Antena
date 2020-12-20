@@ -9,18 +9,14 @@ public class menuHandler : MonoBehaviour
     public GameObject mainMenu;
     public GameObject hasSavedGameAlert;
 
-    public AudioSource menuMusic;
-
-    public AudioSource playMusic;
-
     private void Start() {
-        AudioManager.sharedInstance.ChangeMusic(menuMusic);
+        AudioManager.sharedInstance.ChangeMusic(AudioManager.MusicType.Menu);
     }
    
     public void LoadScene()
     {
         PlayerInfo playerInfo = SaveSystem.LoadGame();
-        //AudioManager.sharedInstance.ChangeMusic(playMusic);
+        AudioManager.sharedInstance.ChangeMusic(AudioManager.MusicType.Play);
 
         if (playerInfo == null)
         {
@@ -67,7 +63,7 @@ public class menuHandler : MonoBehaviour
 
     public void NewSaveGame()
     {
-        //AudioManager.sharedInstance.ChangeMusic(playMusic);
+        AudioManager.sharedInstance.ChangeMusic(AudioManager.MusicType.Play);
         Player newPlayer = new Player();
         SaveSystem.SaveGame(newPlayer);
         SceneManager.LoadScene(2);

@@ -42,16 +42,33 @@ public class AudioManager : MonoBehaviour
 
     //music
 
+     public enum MusicType
+    {
+        Menu,
+        Play,
+        Final,
+        Tema
+    }
+
     public AudioMixerSnapshot musicNormal;
     public AudioMixerSnapshot musicBaixo;
 
-    private static AudioSource musicAudio;
+    private AudioSource musicAudio;
+
+    public AudioSource musicAudioMenu;
+    public AudioSource musicAudioPlay;
+    public AudioSource musicAudioFinal;
+    public AudioSource musicAudioTema;
+
+    private Dictionary<MusicType, AudioSource> musicAudioSource;
+
 
     void Awake()
     {
         if (sharedInstance == null)
         {
             sharedInstance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -59,7 +76,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        //DontDestroyOnLoad(gameObject);
 
         soundRequest = new Dictionary<SoundType, int>();
         soundCurrentAudioSource = new Dictionary<SoundType, AudioSource>();
@@ -84,7 +100,13 @@ public class AudioManager : MonoBehaviour
             [safeSpot] = 1
         };
 
-        //audioMixer = Resources.Load<AudioMixer>("audioMixer");
+        musicAudioSource = new Dictionary<MusicType, AudioSource> {
+            {MusicType.Menu ,musicAudioMenu},
+            {MusicType.Play , musicAudioPlay},
+            {MusicType.Final , musicAudioFinal},
+            {MusicType.Tema , musicAudioTema}
+        };
+
     }
 
 
@@ -167,6 +189,8 @@ public class AudioManager : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        //Debug.Log(musicAudio);
+
         if (currentSnapshot != null)
         {
             if (currentSnapshot != normal)
@@ -179,10 +203,10 @@ public class AudioManager : MonoBehaviour
     }
 
     
-    public void ChangeMusic(AudioSource music){
+    public void ChangeMusic(MusicType music){
         if (musicAudio != null)
             musicAudio.Stop();
-        musicAudio = AudioSource.Instantiate(music);
+        musicAudio = musicAudioSource[music];//AudioSource.Instantiate(music);
         musicAudio.Play();
         Debug.Log("Play Music");
     }

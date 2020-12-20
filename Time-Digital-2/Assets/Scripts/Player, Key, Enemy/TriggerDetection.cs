@@ -13,7 +13,6 @@ public class TriggerDetection : MonoBehaviour
 
     public AudioSource safeSpot;
     public AudioSource morte;
-    public AudioSource musicFinal;
 
     private int triggerCount;
     private float lanternaInicial;
@@ -127,6 +126,6 @@ public class TriggerDetection : MonoBehaviour
         thirdPersonCam.GetComponent<CinemachineFreeLook>().LookAt = gameObject.transform;
         playerStats.inTheEnd = true;
 
-        AudioManager.sharedInstance.ChangeMusic(musicFinal);
+        AudioManager.sharedInstance.ChangeMusic(AudioManager.MusicType.Final);
     }
 }

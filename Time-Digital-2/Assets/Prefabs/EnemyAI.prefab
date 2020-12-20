@@ -347,7 +347,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 2259300168939464590a60400ccd337a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.254
+  m_Volume: 0.332
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -563,7 +563,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 645464c5b65c43143a1855c8c9402c86, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.254
+  m_Volume: 0.337
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -982,7 +982,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 5277d098073d9434bbe84d75872c8906, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.309
+  m_Volume: 0.442
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1706,7 +1706,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 7caa73f55f9e03449993e9c9c4ff499b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.254
+  m_Volume: 0.37
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2985,6 +2985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1621195e41269fb45a5bd42854f7e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnedOff: 0
   viewRange: 7
   disengageDistance: 8
   wanderSpeed: 3.5
@@ -3052,6 +3053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   formigaAudioListGameObject: {fileID: 3022650182394634083}
+  maxDuration: 5
   perseguicao: {fileID: 2047242768473716627}
 --- !u!114 &130159141396999113
 MonoBehaviour:

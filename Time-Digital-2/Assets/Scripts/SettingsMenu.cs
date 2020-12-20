@@ -25,19 +25,14 @@ public class SettingsMenu : MonoBehaviour
         musicVolume = PlayerPrefs.GetFloat("musicVolume");
         sensibility = PlayerPrefs.GetFloat("sensibility");
 
-        if(sfxVolume != null)
-        {
-            effectsAudio.SetFloat("volume", sfxVolume);
-            sfxSlider.value = sfxVolume;
-        }
+        effectsAudio.SetFloat("volume", sfxVolume);
+        sfxSlider.value = sfxVolume;
 
-        if (musicVolume != null)
-        {
-            musicAudio.SetFloat("volume", musicVolume);
-            musicSlider.value = musicVolume;
-        }
+        musicAudio.SetFloat("volume", musicVolume);
+        musicSlider.value = musicVolume;
 
-        if (sensibility != null && cinemachine != null) {
+        if (cinemachine != null)
+        {
             cinemachine.m_XAxis.m_MaxSpeed = sensibility;
             sensibilityValue.text = sensibility.ToString("F2");
             sensibilitySlider.value = sensibility;

@@ -15,27 +15,24 @@ public class doorConfig : MonoBehaviour
     private void Start()
     {
         anim = this.GetComponent<Animator>();
-        rendererMaterials = ledVermelho.GetComponent<Renderer>().materials;
-        rendererMaterials2 = ledVerde.GetComponent<Renderer>().materials;
+        if (ledVermelho != null && ledVerde != null)
+        {
+            rendererMaterials = ledVermelho.GetComponent<Renderer>().materials;
+            rendererMaterials2 = ledVerde.GetComponent<Renderer>().materials;
+        }
     }
     private void Update()
     {
         if (openDoor)
         {
             anim.SetTrigger("open");
-            if(rendererMaterials!= null)
+            if (ledVermelho != null && ledVerde != null)
             {
                 rendererMaterials[1] = verdeAceso;
-                ledVerde.GetComponent<Renderer>().materials = rendererMaterials;
-            }
-
-            if (rendererMaterials2 != null)
-            {
                 rendererMaterials2[1] = vermelhoApagado;
+                ledVerde.GetComponent<Renderer>().materials = rendererMaterials;
                 ledVermelho.GetComponent<Renderer>().materials = rendererMaterials2;
             }
-           
-            
             this.GetComponent<doorSounds>().PlayOpen();
             //gameObject.SetActive(false);
         }

@@ -30,7 +30,7 @@ public class EnemyAI : MonoBehaviour
     private Vector3 navMeshPosition;
     //Referencia ao script playerMovement
     private playerMovement player;
-    
+
     private NavMeshHit navHit;
     [HideInInspector]
     public EnemyFollowPath pathManager;
@@ -58,7 +58,8 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (!turnedOff) { 
+        if (!turnedOff)
+        {
             //Se já não estiver em modo de ataque checa se a distancia entre este objeto e o player é menor ou igual a ViewRange 
             if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= viewRange && !player.isSafe)
             {
@@ -87,7 +88,8 @@ public class EnemyAI : MonoBehaviour
             {
                 followAndAttack();
             }
-        }else
+        }
+        else
         {
             navMeshAgent.isStopped = true;
             myState = stateMachine.isOff;
@@ -206,6 +208,11 @@ public class EnemyAI : MonoBehaviour
             AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.Proximidade);
             hasPlayed = false;
         }
-
+    }
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, viewRange);
     }
 }

@@ -23,10 +23,19 @@ public class doorConfig : MonoBehaviour
         if (openDoor)
         {
             anim.SetTrigger("open");
-            rendererMaterials[1] = verdeAceso;
-            rendererMaterials2[1] = vermelhoApagado;
-            ledVerde.GetComponent<Renderer>().materials = rendererMaterials;
-            ledVermelho.GetComponent<Renderer>().materials = rendererMaterials2;
+            if(rendererMaterials!= null)
+            {
+                rendererMaterials[1] = verdeAceso;
+                ledVerde.GetComponent<Renderer>().materials = rendererMaterials;
+            }
+
+            if (rendererMaterials2 != null)
+            {
+                rendererMaterials2[1] = vermelhoApagado;
+                ledVermelho.GetComponent<Renderer>().materials = rendererMaterials2;
+            }
+           
+            
             this.GetComponent<doorSounds>().PlayOpen();
             //gameObject.SetActive(false);
         }

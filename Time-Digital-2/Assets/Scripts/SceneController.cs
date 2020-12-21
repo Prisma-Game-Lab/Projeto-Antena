@@ -12,23 +12,29 @@ public class SceneController : MonoBehaviour
     public Scene currentScene;
     public GameObject settingsMenu;
 
+    private playerMovement player;
+
     void Start()
     {
+        player = playerMovement.current;
         gameIsPause = false;
         currentScene = SceneManager.GetActiveScene();
+        if (player)
+            print("caralho ele ta ai");
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (player != null && Input.GetKeyDown(KeyCode.Escape))
         {
-            if(gameIsPause)
+            if (gameIsPause)
             {
                 //Trava e deixa o cursor invisivel
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 Resume();
-            } else
+            }
+            else
             {
                 //Destrava e deixa o cursor visivel
                 Cursor.visible = true;

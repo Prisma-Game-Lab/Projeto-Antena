@@ -93,6 +93,7 @@ public class EnemyAI : MonoBehaviour
         {
             navMeshAgent.isStopped = true;
             myState = stateMachine.isOff;
+            GetComponent<BoxCollider>().enabled = false;
         }
 
     }

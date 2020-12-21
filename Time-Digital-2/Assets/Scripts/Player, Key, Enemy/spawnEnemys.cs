@@ -8,7 +8,6 @@ public class spawnEnemys : MonoBehaviour
     public int quantity;
     public float spawnRate;
     public GameObject Path;
-    public int pathSize;
 
     private float counter;
     private int enemyNumber;
@@ -25,7 +24,7 @@ public class spawnEnemys : MonoBehaviour
     {
         if (onetime)
         {
-            randomRate = Random.Range(spawnRate - 0.8f, spawnRate + 0.8f);
+            randomRate = Random.Range(spawnRate - 1f, spawnRate + 2f);
             onetime = false;
         }
         counter += Time.deltaTime;
@@ -36,7 +35,6 @@ public class spawnEnemys : MonoBehaviour
             enemyNumber++;
             GameObject enemy = Instantiate(Enemy,transform.position,Quaternion.identity);
             enemy.GetComponent<EnemyFollowPath>().path = Path;
-            enemy.GetComponent<EnemyFollowPath>().pathPoints.Capacity=pathSize;
             enemy.transform.parent = Pai.transform;
         }
     }

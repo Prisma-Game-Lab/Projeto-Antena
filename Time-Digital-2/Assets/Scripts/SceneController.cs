@@ -19,8 +19,6 @@ public class SceneController : MonoBehaviour
         player = playerMovement.current;
         gameIsPause = false;
         currentScene = SceneManager.GetActiveScene();
-        if (player)
-            print("caralho ele ta ai");
     }
 
     void Update()

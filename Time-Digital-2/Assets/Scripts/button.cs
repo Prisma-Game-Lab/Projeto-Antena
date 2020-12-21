@@ -77,10 +77,13 @@ public class button : MonoBehaviour
         for (int i = 0; i < enemiesCount; ++i)
         {
             GameObject enemy = enemiesCollection.transform.GetChild(i).gameObject;
-            enemy.GetComponent<EnemyAI>().turnedOff = true;
-            enemy.GetComponentInChildren<Animator>().SetTrigger("morto");
-            alavancaDesce = true;
+            if (enemy.GetComponent<EnemyAI>())
+            {
+                enemy.GetComponent<EnemyAI>().turnedOff = true;
+                enemy.GetComponentInChildren<Animator>().SetTrigger("morto");
+            }
         }
+        alavancaDesce = true;
         print("Porta aberta");
         yield return new WaitForEndOfFrame();
         foreach (GameObject path in paths)

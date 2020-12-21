@@ -6,7 +6,6 @@ public class EnemyFollowPath : MonoBehaviour
 {
     //Lista do caminho que a AI deve fazer
     public List<AIPath> pathPoints = new List<AIPath>();
-    [Tooltip("Segue um caminho baseado nas posições dos filhos desse GameObject, ordem da hierarquia representa a ordem do caminho a ser seguido.")]
     public GameObject path;
     [HideInInspector]
     public int pathIndex;
@@ -29,7 +28,7 @@ public class EnemyFollowPath : MonoBehaviour
     }
 
     //Preenche a lista do caminho com as posições dos gameObjects filhos de path 
-    private void fillPathPoints()
+    public void fillPathPoints()
     {
         int i = 0;
         int pathPointsCount = pathPoints.Count;

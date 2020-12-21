@@ -7,6 +7,8 @@ public class doorConfig : MonoBehaviour
     public int doorPassword;
     [HideInInspector]
     public bool openDoor = false;
+    [HideInInspector]
+    public bool closeDooor = false;
     private Animator anim;
     public GameObject ledVerde, ledVermelho;
     public Material verdeAceso, vermelhoApagado;
@@ -34,7 +36,13 @@ public class doorConfig : MonoBehaviour
                 ledVermelho.GetComponent<Renderer>().materials = rendererMaterials2;
             }
             this.GetComponent<doorSounds>().PlayOpen();
+            openDoor = false;
             //gameObject.SetActive(false);
+        }else if (closeDooor)
+        {
+            anim.SetTrigger("close");
+            this.GetComponent<doorSounds>().PlayClose();
+            closeDooor = false;
         }
     }
 }

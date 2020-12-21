@@ -52,9 +52,19 @@ public class doorSounds : MonoBehaviour
         alarmeQnt--;
     }
 
-    public void PlayOpen(){
-        if (!open.isPlaying && !hasPlayedOpen){
+    public void PlayOpen()
+    {
+        if (!open.isPlaying && !hasPlayedOpen)
+        {
             hasPlayedOpen = true;
+            open.Play();
+        }
+    }
+
+    public void PlayClose()
+    {
+        if (!open.isPlaying)
+        {
             open.Play();
         }
     }

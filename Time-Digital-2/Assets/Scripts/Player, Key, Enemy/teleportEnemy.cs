@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class teleportEnemy : MonoBehaviour
 {
@@ -10,7 +8,8 @@ public class teleportEnemy : MonoBehaviour
     {
         if (other.gameObject.transform.tag == "Enemy")
         {
-            other.gameObject.transform.position = teleportPlace.transform.position;
+            //other.gameObject.transform.position = teleportPlace.transform.position;
+            other.gameObject.GetComponent<EnemyAI>().navMeshAgent.Warp(teleportPlace.transform.position);
             other.gameObject.GetComponent<EnemyFollowPath>().pathIndex = 1;
         }
     }

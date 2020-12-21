@@ -88,6 +88,11 @@ public class TriggerDetection : MonoBehaviour
     {
         AudioManager.sharedInstance.PlayRequest(morte, AudioManager.SoundType.Morte);
         playerStats.isDead = true;
+        if (playerStats.inTheEnd)
+        {
+            playerStats.inTheEnd = false;
+            thirdPersonCam.GetComponent<CinemachineFreeLook>().Follow = gameObject.transform;
+        }
         //gameObject.GetComponent<ScannerGenerator>().canUseSonar = true;
     }
     private void inSafeSpot()
@@ -134,7 +139,6 @@ public class TriggerDetection : MonoBehaviour
         this.gameObject.transform.rotation = endCameraPoint.gameObject.transform.rotation;
         collision.GetComponent<TheEnd>().reachedTheEnd = true;
         thirdPersonCam.GetComponent<CinemachineFreeLook>().Follow = endCameraPoint.gameObject.transform;
-        thirdPersonCam.GetComponent<CinemachineFreeLook>().LookAt = gameObject.transform;
         playerStats.inTheEnd = true;
     }
 

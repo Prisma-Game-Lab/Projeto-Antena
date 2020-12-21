@@ -26,6 +26,8 @@ public class button : MonoBehaviour
             buttonPressed = false;
             if (deactivateDoor)
             {
+                if(doors!=null && doors.Count>0)
+                    StartCoroutine("closeDoors");
                 StartCoroutine("DeactivateEnemies");
             }
             else
@@ -37,12 +39,11 @@ public class button : MonoBehaviour
         }
     }
     private IEnumerator closeDoors()
-    {
+    { 
         foreach (GameObject door in doors)
         {
-            //door.transform.GetChild(0).gameObject.SetActive(false);
-            //door.transform.GetChild(1).gameObject.SetActive(false);
-            door.GetComponent<Animator>().SetTrigger("open");
+            print("tenta");
+            door.GetComponent<doorConfig>().openDoor = true;
             StartCoroutine(door.GetComponent<doorSounds>().PlayAlarme(openTime));
             foreach (GameObject path in paths)
             {
@@ -55,10 +56,7 @@ public class button : MonoBehaviour
 
         foreach (GameObject door in doors)
         {
-            //door.SetActive(true);
-            //door.transform.GetChild(0).gameObject.SetActive(true);
-            //door.transform.GetChild(1).gameObject.SetActive(true);
-            door.GetComponent<Animator>().SetTrigger("close");
+            door.GetComponent<doorConfig>().closeDooor = true;
             door.GetComponent<doorSounds>().EndAlarme();
             foreach (GameObject path in paths)
             {

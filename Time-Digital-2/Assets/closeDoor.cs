@@ -4,18 +4,38 @@ using UnityEngine;
 
 public class closeDoor : MonoBehaviour
 {
-    public List<GameObject> door = new List<GameObject>();
+    public List<GameObject> doors = new List<GameObject>();
+    private bool doorNotOpen=false;
     // Start is called before the first frame update
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            for (int i = 0; i < door.Count; i++)
+            for (int i = 0; i < doors.Count; i++)
             {
-                door[i].GetComponent<doorConfig>().closeDooor = true;
+                //print("porta" + i);
+                doorConfig door = doors[i].GetComponent<doorConfig>();
+                if (door.openDoor || door.startOpen)
+                {
+                    //print("porta" + i + "Fechar");
+                    door.closeDooor = true;
+                }
+                //else
+                //{
+                //    //print("porta" + i + "Nao aberta");
+                //    doorNotOpen = true;
+                //}
+
             }
-            Destroy(this);
+            //if (!doorNotOpen)
+            //{
+            //    print("Destrua");
+            //    Destroy(this);
+
+            //}
+            //else
+            //    doorNotOpen = false;
         }
     }
 }

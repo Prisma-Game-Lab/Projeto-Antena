@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class doorConfig : MonoBehaviour
 {
+    public bool startOpen;
     public int doorPassword;
     [HideInInspector]
     public bool openDoor = false;
@@ -13,6 +14,8 @@ public class doorConfig : MonoBehaviour
     public GameObject ledVerde, ledVermelho;
     public Material verdeAceso, vermelhoApagado;
     private Material[] rendererMaterials, rendererMaterials2;
+    private bool oneTime = true;
+    private bool oneTime2 = true;
 
     private void Start()
     {
@@ -25,7 +28,7 @@ public class doorConfig : MonoBehaviour
     }
     private void Update()
     {
-        if (openDoor)
+        if ((openDoor || startOpen) && oneTime)
         {
             anim.SetTrigger("open");
             if (ledVermelho != null && ledVerde != null)
@@ -36,13 +39,19 @@ public class doorConfig : MonoBehaviour
                 ledVermelho.GetComponent<Renderer>().materials = rendererMaterials2;
             }
             this.GetComponent<doorSounds>().PlayOpen();
-            openDoor = false;
-            //gameObject.SetActive(false);
-        }else if (closeDooor)
+            oneTime = false;
+            closeDooor = false;
+            oneTime2 = true;
+            //print("abriu");
+        }else if (closeDooor && oneTime2)
         {
             anim.SetTrigger("close");
             this.GetComponent<doorSounds>().PlayClose();
-            closeDooor = false;
+            openDoor = false;
+            startOpen = false;
+            oneTime2 = false;
+            oneTime = true;
+            //print("fechou");
         }
     }
 }

@@ -123,7 +123,7 @@ public class SonarColisionObject : MonoBehaviour
                         foreach (Material mat in materials)
                         {
                             mat.SetFloat("Vector1_C0B001A6", 0.5f);
-                            Debug.Log("TA ATIVANDO");
+                            //Debug.Log("TA ATIVANDO");
                         }
                     }
                     else

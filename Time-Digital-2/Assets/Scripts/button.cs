@@ -10,7 +10,8 @@ public class button : MonoBehaviour
     public GameObject enemiesCollection;
     public GameObject botaoCor;
     public Material mFechado, mAberto;
-    public bool deactivateDoor = false;
+    public bool energyButton = false;
+    public bool noTimer = false;
     [HideInInspector]
     public bool buttonPressed = false;
     private bool oneTime = true;
@@ -24,25 +25,29 @@ public class button : MonoBehaviour
         {
             oneTime = false;
             buttonPressed = false;
-            if (deactivateDoor)
+            if (energyButton)
             {
-                if(doors!=null && doors.Count>0)
-                    StartCoroutine("closeDoors");
+                if (doors != null && doors.Count > 0)
+                    openDoor();
                 StartCoroutine("DeactivateEnemies");
             }
+            else if (noTimer)
+            {
+                openDoor();
+            }
             else
-                StartCoroutine("closeDoors");
+                StartCoroutine("openDoors");
         }
         else if (buttonPressed)
         {
             buttonPressed = false;
         }
     }
-    private IEnumerator closeDoors()
-    { 
+    private IEnumerator openDoors()
+    {
         foreach (GameObject door in doors)
         {
-            print("tenta");
+            //print("tenta");
             door.GetComponent<doorConfig>().openDoor = true;
             StartCoroutine(door.GetComponent<doorSounds>().PlayAlarme(openTime));
             foreach (GameObject path in paths)
@@ -51,7 +56,7 @@ public class button : MonoBehaviour
                 botaoCor.GetComponent<Renderer>().material = mAberto;
             }
         }
-        print("Porta aberta");
+        //print("Porta aberta");
         yield return new WaitForSeconds(openTime);
 
         foreach (GameObject door in doors)
@@ -65,12 +70,26 @@ public class button : MonoBehaviour
             }
         }
         oneTime = true;
-        print("Porta fechada");
+        //print("Porta fechada");
+    }
+    private void openDoor()
+    {
+        foreach (GameObject door in doors)
+        {
+            //print("tenta");
+            door.GetComponent<doorConfig>().openDoor = true;
+            foreach (GameObject path in paths)
+            {
+                path.GetComponent<Renderer>().material = mAberto;
+                botaoCor.GetComponent<Renderer>().material = mAberto;
+            }
+        }
+        oneTime = true;
     }
 
     private IEnumerator DeactivateEnemies()
     {
-        audioButaoFinal.Play();
+
         int enemiesCount = enemiesCollection.transform.childCount;
         for (int i = 0; i < enemiesCount; ++i)
         {
@@ -81,8 +100,9 @@ public class button : MonoBehaviour
                 enemy.GetComponentInChildren<Animator>().SetTrigger("morto");
             }
         }
+        audioButaoFinal.Play();
         alavancaDesce = true;
-        print("Porta aberta");
+        //print("Porta aberta");
         yield return new WaitForEndOfFrame();
         foreach (GameObject path in paths)
         {

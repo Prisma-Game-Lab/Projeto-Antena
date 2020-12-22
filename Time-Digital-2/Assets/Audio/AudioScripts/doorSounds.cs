@@ -29,7 +29,7 @@ public class doorSounds : MonoBehaviour
     {
         float fadeOut = 6.0f;
         if (alarme == null){
-            Debug.Log("aqui");
+            Debug.Log("sem alarme na porta");
         }
         float clipDuration = alarme.clip.length - fadeOut;
         if (clipDuration > totalTime)
@@ -54,7 +54,7 @@ public class doorSounds : MonoBehaviour
 
     public void PlayOpen()
     {
-        if (!open.isPlaying && !hasPlayedOpen)
+        if (!open.isPlaying)
         {
             hasPlayedOpen = true;
             open.Play();

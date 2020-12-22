@@ -42,8 +42,9 @@ public class doorConfig : MonoBehaviour
             oneTime = false;
             closeDooor = false;
             oneTime2 = true;
-            //print("abriu");
-        }else if (closeDooor && oneTime2)
+            print("abriu");
+        }
+        else if (closeDooor && oneTime2)
         {
             anim.SetTrigger("close");
             this.GetComponent<doorSounds>().PlayClose();
@@ -51,7 +52,7 @@ public class doorConfig : MonoBehaviour
             startOpen = false;
             oneTime2 = false;
             oneTime = true;
-            //print("fechou");
+            print("fechou");
         }
     }
 }

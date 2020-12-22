@@ -7,6 +7,8 @@ public class ScenechangerPobre : MonoBehaviour
 {
     public void LoadB()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         SceneManager.LoadScene(1);
     }
 }

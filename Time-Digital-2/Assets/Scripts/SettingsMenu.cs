@@ -11,6 +11,7 @@ public class SettingsMenu : MonoBehaviour
     public Slider sfxSlider;
     public Slider musicSlider;
     public Slider sensibilitySlider;
+    public float defaultSensibilityValue = 400; 
 
     public Text sensibilityValue;
     public CinemachineFreeLook cinemachine;
@@ -24,6 +25,11 @@ public class SettingsMenu : MonoBehaviour
         sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
         musicVolume = PlayerPrefs.GetFloat("musicVolume");
         sensibility = PlayerPrefs.GetFloat("sensibility");
+        if(sensibility == 0.0f)
+        {
+            sensibility = defaultSensibilityValue; 
+        }
+        
 
         effectsAudio.SetFloat("volume", sfxVolume);
         sfxSlider.value = sfxVolume;
@@ -41,7 +47,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetSensibilityValue()
     {
-        sensibilityValue.text = sensibilitySlider.value.ToString("F2");
+        sensibilityValue.text = (sensibilitySlider.value/100).ToString("F2");
         cinemachine.m_XAxis.m_MaxSpeed = sensibilitySlider.value;
         PlayerPrefs.SetFloat("sensibility", sensibilitySlider.value);
         PlayerPrefs.Save();

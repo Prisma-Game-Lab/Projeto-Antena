@@ -16,17 +16,22 @@ public class playerKeyHolder : MonoBehaviour
     {
         if (door != null)
         {
-            for (int i = 0; i < keysHolding.Count; i++)
+            if (!door.openDoor)
             {
-                
-                Debug.Log("Testando chave: ");
-                Debug.Log(keysHolding[i].keyPassword);
-                if (keysHolding[i].keyPassword == door.doorPassword)
+                for (int i = 0; i < keysHolding.Count; i++)
                 {
-                    door.openDoor = true;
-                    keysHolding.RemoveAt(i);
+
+                    Debug.Log("Testando chave: ");
+                    Debug.Log(keysHolding[i].keyPassword);
+                    if (keysHolding[i].keyPassword == door.doorPassword)
+                    {
+                        door.openDoor = true;
+                        keysHolding.RemoveAt(i);
+                        return;
+                    }
                 }
             }
+            
         }
     }
 

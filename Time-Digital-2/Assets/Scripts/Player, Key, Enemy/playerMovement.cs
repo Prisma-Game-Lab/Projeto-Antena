@@ -117,6 +117,21 @@ public class playerMovement : MonoBehaviour
         }
         else
             moveDir = Vector3.zero;
+
+        //Checa se esta no chao ou nao e manipula gravidade de acordo
+        RaycastHit hit;
+        float distance = 0.4f;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, distance))
+        {
+            Physics.gravity = new Vector3(0, -78.4f, 0);
+            //Debug.DrawRay(transform.position, Vector3.down * distance, Color.green);
+        }
+        else
+        {
+            Physics.gravity = new Vector3(0, -19.6f, 0);
+            //Debug.DrawRay(transform.position, Vector3.down * distance, Color.red);
+        }
+
         controller.SimpleMove(moveDir.normalized * Time.fixedDeltaTime * movementSpeed * 10f);
 
         if (!tDetection.thirdPersonCam.activeSelf)

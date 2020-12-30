@@ -24,9 +24,10 @@ public class inimigo1Animation : MonoBehaviour
 
     void enemyAnimation(){
 
-        if(eA.navMeshAgent.speed == eA.followSpeed){
+        if(eA.navMeshAgent.speed == eA.followSpeed && !eA.navMeshAgent.isStopped){
             anim.SetBool("run", true);
-        }else if (eA.navMeshAgent.speed == eA.wanderSpeed){
+        }else if (eA.navMeshAgent.speed == eA.wanderSpeed || eA.navMeshAgent.isStopped)
+        {
             anim.SetBool("run", false);
         }
 

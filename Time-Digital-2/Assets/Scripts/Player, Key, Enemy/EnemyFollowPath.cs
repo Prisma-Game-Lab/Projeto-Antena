@@ -7,7 +7,6 @@ public class EnemyFollowPath : MonoBehaviour
     //Lista do caminho que a AI deve fazer
     public List<AIPath> pathPoints = new List<AIPath>();
     public GameObject path;
-    [HideInInspector]
     public int pathIndex;
     [HideInInspector]
     public Vector3 initialPos;
@@ -22,7 +21,6 @@ public class EnemyFollowPath : MonoBehaviour
             //Preenche as posições da lista do caminho
             fillPathPoints();
         }
-        pathIndex = 0;
         initialPos = transform.position;
         initialRot = transform.rotation;
     }

@@ -8,14 +8,17 @@ public class Manager : MonoBehaviour
     public static Manager current;
     public GameObject fadeImage;
     public float fadeSmoth;
-
     public GameObject eButton;
     public float respawnTime;
+
     private bool oneTime;
     private bool canShow;
     private bool canHide;
+    [HideInInspector]
+    public bool turnOff;
     private playerMovement player;
     private List<EnemyAI> enemys;
+    private List<int> pathIndex;
     private SceneController sceneController;
 
 
@@ -32,6 +35,7 @@ public class Manager : MonoBehaviour
         player = playerMovement.current;
         sceneController = this.GetComponent<SceneController>();
         enemys = new List<EnemyAI>();
+        pathIndex = new List<int>();
         fillEnemysList();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -95,7 +99,7 @@ public class Manager : MonoBehaviour
     {
         for (int i = 0; i < enemys.Count; i++)
         {
-            enemys[i].pathManager.pathIndex = 0;
+            enemys[i].pathManager.pathIndex = pathIndex[i];
             enemys[i].transform.position = enemys[i].pathManager.initialPos;
             enemys[i].transform.rotation = enemys[i].pathManager.initialRot;
             enemys[i].myState = EnemyAI.stateMachine.isReadyToWander;
@@ -109,6 +113,7 @@ public class Manager : MonoBehaviour
         for (int i = 0; i < enemysObject.Length; i++)
         {
             enemys.Add(enemysObject[i].GetComponent<EnemyAI>());
+            pathIndex.Add(enemys[i].pathManager.pathIndex);
         }
     }
 

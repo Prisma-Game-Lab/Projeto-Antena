@@ -14,10 +14,17 @@ public class button : MonoBehaviour
     public bool noTimer = false;
     [HideInInspector]
     public bool buttonPressed = false;
-    private bool oneTime = true;
 
     public AudioSource audioButaoFinal;
     public bool alavancaDesce = false;
+
+    private bool oneTime = true;
+    private Manager manager;
+
+    private void Start()
+    {
+        manager = Manager.current;
+    }
 
     private void Update()
     {
@@ -89,17 +96,7 @@ public class button : MonoBehaviour
 
     private IEnumerator DeactivateEnemies()
     {
-
-        int enemiesCount = enemiesCollection.transform.childCount;
-        for (int i = 0; i < enemiesCount; ++i)
-        {
-            GameObject enemy = enemiesCollection.transform.GetChild(i).gameObject;
-            if (enemy.GetComponent<EnemyAI>())
-            {
-                enemy.GetComponent<EnemyAI>().turnedOff = true;
-                enemy.GetComponentInChildren<Animator>().SetTrigger("morto");
-            }
-        }
+        manager.turnOff = true;
         audioButaoFinal.Play();
         alavancaDesce = true;
         //print("Porta aberta");
@@ -110,5 +107,4 @@ public class button : MonoBehaviour
             botaoCor.GetComponent<Renderer>().material = mAberto;
         }
     }
-
 }

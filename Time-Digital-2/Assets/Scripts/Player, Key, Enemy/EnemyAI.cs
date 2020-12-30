@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     //Variavel que controla se o inimigo está desligado ou ligado
-    public bool turnedOff = false;
+    public bool turnedOff;
     //Distancia do player para entrar em modo de ataque
     public float viewRange;
     //Distancia para sair do modo de ataque
@@ -17,10 +17,17 @@ public class EnemyAI : MonoBehaviour
     public float followSpeed;
     //Estados que definem comportamentos da AI
     public enum stateMachine { isWaiting, isReadyToWander, isMoving, isAttacking, isOff }
+
     [HideInInspector]
     public stateMachine myState;
     [HideInInspector]
     public NavMeshAgent navMeshAgent;
+    [HideInInspector]
+    public EnemyFollowPath pathManager;
+
+    public AudioSource proximidade;
+    public float proximidadeDist;
+    public bool canTurnOff;
 
 
     //Contador de tempo
@@ -30,15 +37,11 @@ public class EnemyAI : MonoBehaviour
     private Vector3 navMeshPosition;
     //Referencia ao script playerMovement
     private playerMovement player;
-
     private NavMeshHit navHit;
-    [HideInInspector]
-    public EnemyFollowPath pathManager;
     private Collider[] attackBox;
+    private Manager manager;
 
-    public AudioSource proximidade;
 
-    public float proximidadeDist;
     private bool hasPlayed = false;
 
     void Start()
@@ -46,6 +49,7 @@ public class EnemyAI : MonoBehaviour
         pathManager = GetComponent<EnemyFollowPath>();
         attackBox = GetComponents<BoxCollider>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        manager = Manager.current;
         //Guarda referencia para a instancia do script playerMovement
         player = playerMovement.current;
         //Define estado inicial para patrulhar
@@ -58,7 +62,16 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (!turnedOff)
+        if (manager.turnOff && canTurnOff)
+        {
+            if(!navMeshAgent.isStopped)
+                GetComponentInChildren<Animator>().SetTrigger("morto");
+            navMeshAgent.isStopped = true;
+            myState = stateMachine.isOff;
+            attackBox[0].enabled = false;
+            attackBox[1].enabled = false;
+        }
+        else
         {
             //Se já não estiver em modo de ataque checa se a distancia entre este objeto e o player é menor ou igual a ViewRange 
             if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= viewRange && !player.isSafe)
@@ -89,14 +102,8 @@ public class EnemyAI : MonoBehaviour
                 followAndAttack();
             }
         }
-        else
-        {
-            navMeshAgent.isStopped = true;
-            myState = stateMachine.isOff;
-            GetComponent<BoxCollider>().enabled = false;
-        }
-
     }
+
     //Persegue e ataca o player se estiver a uma distancia minima, muda comportamento caso esteja muito longe do player
     private void followAndAttack()
     {
@@ -146,7 +153,7 @@ public class EnemyAI : MonoBehaviour
         //Pega distancia do destino
         float destinationDistance = Vector3.Distance(transform.position, pathManager.pathPoints[index].destinationPos);
         //Checa se chegou minimamente perto do destino
-        if (destinationDistance <= 1f)
+        if (destinationDistance <= 1.1f)
         {
             //Caso deva esperar, pega o tempo que se deve esperar antes de iniciar nova patrulha
             if (pathManager.pathPoints[index].shouldWait)

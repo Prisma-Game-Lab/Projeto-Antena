@@ -7,6 +7,7 @@ public class ScenechangerPobre : MonoBehaviour
 {
     public void LoadB()
     {
+        AudioManager.sharedInstance.UIBack();
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         SceneManager.LoadScene(1);

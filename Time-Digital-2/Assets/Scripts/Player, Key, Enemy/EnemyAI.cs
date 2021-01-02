@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     //Variavel que controla se o inimigo está desligado ou ligado
+    [HideInInspector]
     public bool turnedOff;
     //Distancia do player para entrar em modo de ataque
     public float viewRange;
@@ -44,9 +45,12 @@ public class EnemyAI : MonoBehaviour
 
     private bool hasPlayed = false;
 
-    void Start()
+    private void Awake()
     {
         pathManager = GetComponent<EnemyFollowPath>();
+    }
+    void Start()
+    {
         attackBox = GetComponents<BoxCollider>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         manager = Manager.current;
@@ -76,6 +80,18 @@ public class EnemyAI : MonoBehaviour
             //Se já não estiver em modo de ataque checa se a distancia entre este objeto e o player é menor ou igual a ViewRange 
             if (myState != stateMachine.isAttacking && Vector3.Distance(player.transform.position, transform.position) <= viewRange && !player.isSafe)
             {
+                ////Checa se esta no chao ou nao e manipula gravidade de acordo
+                //RaycastHit hit;
+                //float distance = viewRange;
+                //if (Physics.Raycast(transform.position, transform.TransformDirection((player.transform.position-transform.position)), out hit, distance) && hit.transform.CompareTag("Player"))
+                //{
+                //    Debug.DrawRay(transform.position, transform.TransformDirection((player.transform.position - transform.position)) * viewRange, Color.green);
+                //    myState = stateMachine.isAttacking;
+                //}
+                //else
+                //{
+                //    Debug.DrawRay(transform.position, transform.TransformDirection((player.transform.position - transform.position)) * viewRange, Color.red);
+                //}
                 myState = stateMachine.isAttacking;
             }
             //Se estiver preparado para pratulhar, patrulha

@@ -60,7 +60,7 @@ public class playerSounds : MonoBehaviour
         {
             sonarPlayed = true;
             //toca sonar
-            int i = (int)Random.Range(0, eco.Length);
+            int i = Random.Range(0, eco.Length);
             AudioSource randEco = eco[i];
             randEco.Play();
         }

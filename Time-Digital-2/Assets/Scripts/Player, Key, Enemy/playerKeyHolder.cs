@@ -10,7 +10,6 @@ public class playerKeyHolder : MonoBehaviour
 
     public AudioSource keySound;
 
-
     //checa se alguma chave tem a mesma senha da porta
     private void checkKeyCode(doorConfig door)
     {
@@ -20,9 +19,6 @@ public class playerKeyHolder : MonoBehaviour
             {
                 for (int i = 0; i < keysHolding.Count; i++)
                 {
-
-                    Debug.Log("Testando chave: ");
-                    Debug.Log(keysHolding[i].keyPassword);
                     if (keysHolding[i].keyPassword == door.doorPassword)
                     {
                         door.openDoor = true;
@@ -44,9 +40,6 @@ public class playerKeyHolder : MonoBehaviour
             if (key != null)
             {
                 keySound.Play();
-                
-                Debug.Log("Senha da chave: ");
-                Debug.Log(key.keyPassword);
                 keysHolding.Add(key);
                 other.gameObject.SetActive(false);
             }
@@ -54,10 +47,6 @@ public class playerKeyHolder : MonoBehaviour
         else if (other.gameObject.CompareTag("door"))
         {
             doorConfig door = other.gameObject.GetComponent<doorConfig>();
-            
-            Debug.Log("Senha da porta: ");
-            Debug.Log(door.doorPassword);
-
             checkKeyCode(door);
         }
     }

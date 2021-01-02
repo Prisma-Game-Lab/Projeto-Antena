@@ -52,6 +52,7 @@ public class SceneController : MonoBehaviour
 
     public void Resume()
     {
+        AudioManager.sharedInstance.UISelect();
         pauseMenuUI.SetActive(false);
         settingsMenu.SetActive(false);
         Time.timeScale = 1f;
@@ -63,29 +64,34 @@ public class SceneController : MonoBehaviour
 
     public void LoadScene(int sceneName)
     {
+        AudioManager.sharedInstance.UISelect();
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
     }
 
     public void QuitGame()
     {
+        AudioManager.sharedInstance.UIBack();
         Debug.Log("Quitting Game...");
         Application.Quit();
     }
 
     public void OpenSettingsMenu(GameObject menuToDisable)
     {
+        AudioManager.sharedInstance.UISelect();
         settingsMenu.SetActive(true);
         menuToDisable.SetActive(false);
     }
 
     public void OpenMenu(GameObject menuToEnable)
     {
+        AudioManager.sharedInstance.UISelect();
         settingsMenu.SetActive(false);
         menuToEnable.SetActive(true);
     }
     public void back()
     {
+        AudioManager.sharedInstance.UIBack();
         settingsMenu.SetActive(false);
         pauseMenuUI.SetActive(true);
     }

@@ -44,9 +44,14 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player == null)
+        //if (player == null)
+        //{
+        //    player = playerMovement.current;
+        //}
+        if (player.isStarting && oneTime)
         {
-            player = playerMovement.current;
+            oneTime = false;
+            StartCoroutine("startLevel", 0f);
         }
         //Se player morreu, rodar uma só vez
         if (player.isDead && oneTime)
@@ -82,6 +87,17 @@ public class Manager : MonoBehaviour
         player.isDead = false;
         oneTime = true;
         fadeImage.SetActive(false);
+        player.isStarting = false;
+    }
+    private IEnumerator startLevel(float time)
+    {
+        fadeImage.SetActive(true);
+        yield return new WaitForSeconds(time);
+        oneTime = true;
+        player.isStarting = false;
+        //player.transform.position = player.lastCheckpointPos;
+        //player.transform.rotation = player.lastCheckpointRot;
+        fadeImage.SetActive(false);
     }
     private void resetKeys()
     {
@@ -97,12 +113,15 @@ public class Manager : MonoBehaviour
     //Reinicia posição, estado e caminho dos inimigos
     private void resetEnemys()
     {
-        for (int i = 0; i < enemys.Count; i++)
+        if (!turnOff)
         {
-            enemys[i].pathManager.pathIndex = pathIndex[i];
-            enemys[i].transform.position = enemys[i].pathManager.initialPos;
-            enemys[i].transform.rotation = enemys[i].pathManager.initialRot;
-            enemys[i].myState = EnemyAI.stateMachine.isReadyToWander;
+            for (int i = 0; i < enemys.Count; i++)
+            {
+                enemys[i].pathManager.pathIndex = pathIndex[i];
+                enemys[i].transform.position = enemys[i].pathManager.initialPos;
+                enemys[i].transform.rotation = enemys[i].pathManager.initialRot;
+                enemys[i].myState = EnemyAI.stateMachine.isReadyToWander;
+            }
         }
     }
     //Preenche lista do tipo EnemyAI

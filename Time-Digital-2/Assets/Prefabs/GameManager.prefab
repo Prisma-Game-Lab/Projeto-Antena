@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1675385776480809306}
   - component: {fileID: 1675385776480809381}
   - component: {fileID: 3161113592841711841}
-  - component: {fileID: 3161113592791713547}
   - component: {fileID: 2491425055076189642}
   m_Layer: 0
   m_Name: GameManager
@@ -67,22 +66,7 @@ MonoBehaviour:
   fadeSmoth: 1
   eButton: {fileID: 0}
   respawnTime: 1
---- !u!114 &3161113592791713547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1675385776480809380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09f637c3c4f2a4f628bc3795ed5a8fdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  checkpoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  turnOff: 0
 --- !u!114 &2491425055076189642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,5 +84,6 @@ MonoBehaviour:
   sfxSlider: {fileID: 0}
   musicSlider: {fileID: 0}
   sensibilitySlider: {fileID: 0}
+  defaultSensibilityValue: 400
   sensibilityValue: {fileID: 0}
   cinemachine: {fileID: 0}

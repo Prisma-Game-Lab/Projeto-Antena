@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class menuHandler : MonoBehaviour
@@ -8,24 +9,22 @@ public class menuHandler : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject mainMenu;
     public GameObject hasSavedGameAlert;
+    public Button continuarButton;
 
     private void Start() {
         AudioManager.sharedInstance.ChangeMusic(AudioManager.MusicType.Menu);
+        if (!ES3.KeyExists("posicao"))
+        {
+            continuarButton.interactable = false;
+        }
     }
-   
+
+
     public void LoadScene()
     {
-        PlayerInfo playerInfo = SaveSystem.LoadGame();
+        AudioManager.sharedInstance.UISelect();
         AudioManager.sharedInstance.ChangeMusic(AudioManager.MusicType.Play);
-
-        if (playerInfo == null)
-        {
-            //VOCE NÃO POSSUI DADOS SALVOS
-        }else
-        {
-            SceneManager.LoadScene(2);
-        }
-        
+        SceneManager.LoadScene(2);
     }
     public void OpenSettingsMenu()
     {
@@ -40,7 +39,7 @@ public class menuHandler : MonoBehaviour
     }
     public void Exit()
     {
-        AudioManager.sharedInstance.UISelect();
+        AudioManager.sharedInstance.UIBack();
         print("Quitting...");
         Application.Quit();
     }
@@ -51,31 +50,33 @@ public class menuHandler : MonoBehaviour
         mainMenu.SetActive(true);
     }
 
-    public void CheckSavedGame()
+    public void NewGame()
     {
-        if (SaveSystem.HaveSavedGame())
+        AudioManager.sharedInstance.UISelect();
+        if (ES3.KeyExists("posicao"))
         {
             hasSavedGameAlert.SetActive(true);
         }
         else
         {
-            hasSavedGameAlert.SetActive(false);
-            NewSaveGame();
-            
+            AudioManager.sharedInstance.ChangeMusic(AudioManager.MusicType.Play);
+            SceneManager.LoadScene(2);
+
         }
     }
-
-    public void NewSaveGame()
+    public void StartNewGame()
     {
-        AudioManager.sharedInstance.ChangeMusic(AudioManager.MusicType.Play);
-        Player newPlayer = new Player();
-        SaveSystem.SaveGame(newPlayer);
+        AudioManager.sharedInstance.UISelect();
+        ES3.DeleteKey("posicao");
+        ES3.DeleteKey("rotacao");
+        ES3.DeleteKey("energia");
         SceneManager.LoadScene(2);
-        
     }
+
 
     public void DisableSavedGameAlert()
     {
+        AudioManager.sharedInstance.UIBack();
         hasSavedGameAlert.SetActive(false);
     }
 }

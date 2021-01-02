@@ -5,7 +5,7 @@ using UnityEngine;
 public class button : MonoBehaviour
 {
     public float openTime;
-    public List<GameObject> doors = new List<GameObject>();
+    public List<doorConfig> doors = new List<doorConfig>();
     public List<GameObject> paths = new List<GameObject>();
     public GameObject enemiesCollection;
     public GameObject botaoCor;
@@ -28,34 +28,38 @@ public class button : MonoBehaviour
 
     private void Update()
     {
-        if (buttonPressed && oneTime)
+        if (!manager.turnOff)
         {
-            oneTime = false;
-            buttonPressed = false;
-            if (energyButton)
+            if (buttonPressed && oneTime)
             {
-                if (doors != null && doors.Count > 0)
+                oneTime = false;
+                buttonPressed = false;
+                if (energyButton)
+                {
+                    if (doors != null && doors.Count > 0)
+                        openDoor();
+                    StartCoroutine("DeactivateEnemies");
+                }
+                else if (noTimer)
+                {
                     openDoor();
-                StartCoroutine("DeactivateEnemies");
+                }
+                else
+                    StartCoroutine("openDoors");
             }
-            else if (noTimer)
+            else if (buttonPressed)
             {
-                openDoor();
+                buttonPressed = false;
             }
-            else
-                StartCoroutine("openDoors");
-        }
-        else if (buttonPressed)
-        {
-            buttonPressed = false;
+            checkClosedDoor();
         }
     }
     private IEnumerator openDoors()
     {
-        foreach (GameObject door in doors)
+        foreach (doorConfig door in doors)
         {
             //print("tenta");
-            door.GetComponent<doorConfig>().openDoor = true;
+            door.openDoor = true;
             StartCoroutine(door.GetComponent<doorSounds>().PlayAlarme(openTime));
             foreach (GameObject path in paths)
             {
@@ -66,9 +70,9 @@ public class button : MonoBehaviour
         //print("Porta aberta");
         yield return new WaitForSeconds(openTime);
 
-        foreach (GameObject door in doors)
+        foreach (doorConfig door in doors)
         {
-            door.GetComponent<doorConfig>().closeDooor = true;
+            door.closeDooor = true;
             door.GetComponent<doorSounds>().EndAlarme();
             foreach (GameObject path in paths)
             {
@@ -77,14 +81,12 @@ public class button : MonoBehaviour
             }
         }
         oneTime = true;
-        //print("Porta fechada");
     }
     private void openDoor()
     {
-        foreach (GameObject door in doors)
+        foreach (doorConfig door in doors)
         {
-            //print("tenta");
-            door.GetComponent<doorConfig>().openDoor = true;
+            door.openDoor = true;
             foreach (GameObject path in paths)
             {
                 path.GetComponent<Renderer>().material = mAberto;
@@ -99,12 +101,25 @@ public class button : MonoBehaviour
         manager.turnOff = true;
         audioButaoFinal.Play();
         alavancaDesce = true;
-        //print("Porta aberta");
         yield return new WaitForEndOfFrame();
         foreach (GameObject path in paths)
         {
             path.GetComponent<Renderer>().material = mAberto;
             botaoCor.GetComponent<Renderer>().material = mAberto;
+        }
+    }
+    private void checkClosedDoor()
+    {
+        foreach (doorConfig door in doors)
+        {
+            if (door.closeDooor == true && !door.openDoor)
+            {
+                foreach (GameObject path in paths)
+                {
+                    path.GetComponent<Renderer>().material = mFechado;
+                    botaoCor.GetComponent<Renderer>().material = mFechado;
+                }
+            }
         }
     }
 }

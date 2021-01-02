@@ -21,6 +21,7 @@ public class TriggerDetection : MonoBehaviour
 
     private bool isPlayingFinalMusic = false;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -97,15 +98,16 @@ public class TriggerDetection : MonoBehaviour
     }
     private void inSafeSpot()
     {
+        if (triggerCount <= 0)
+        {
+            luzCabecaEsconderijo.enabled = true;
+            lanterna.intensity = playerStats.safeSpotLightIntensity;
+            thirdPersonCam.SetActive(!thirdPersonMode);
+            firstPersonCam.SetActive(thirdPersonMode);
+            AudioManager.sharedInstance.PlayRequest(safeSpot, AudioManager.SoundType.SafeSpot);
+            playerStats.isSafe = true;
+        }
         triggerCount++;
-        Debug.Log("Entrou esconderijo");
-        luzCabecaEsconderijo.enabled = true;
-        lanterna.intensity = playerStats.safeSpotLightIntensity;
-        thirdPersonCam.SetActive(!thirdPersonMode);
-        firstPersonCam.SetActive(thirdPersonMode);
-        playerStats.isSafe = true;
-
-        AudioManager.sharedInstance.PlayRequest(safeSpot, AudioManager.SoundType.SafeSpot);
     }
 
     private void outSafeSpot()
@@ -127,10 +129,9 @@ public class TriggerDetection : MonoBehaviour
         playerStats.lastCheckpointPos = collision.gameObject.transform.position;
         playerStats.lastCheckpointRot = transform.rotation;
         collision.gameObject.GetComponent<BoxCollider>().enabled = false;
-        Player playerToSave = new Player();
-        playerToSave.checkpointsCount = 1;
-        playerToSave.position = collision.gameObject.transform.position;
-        SaveSystem.SaveGame(playerToSave);
+        ES3.Save<Vector3>("posicao", playerStats.lastCheckpointPos);
+        ES3.Save<Quaternion>("rotacao", playerStats.lastCheckpointRot);
+        ES3.Save<bool>("energia", Manager.current.turnOff);
     }
 
     private void theEnd(Collider collision)

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,16 +16,14 @@ public class playerMovement : MonoBehaviour
     [HideInInspector]
     public bool inTheEnd = false;
 
-    //SAVE GAME
-    [HideInInspector]
-    public bool enableMovement = false;
-
     [HideInInspector]
     public bool isMoving;
     [HideInInspector]
     public bool isSafe;
     [HideInInspector]
     public bool isDead;
+    [HideInInspector]
+    public bool isStarting;
     [HideInInspector]
     public Vector3 lastCheckpointPos;
     [HideInInspector]
@@ -44,6 +43,7 @@ public class playerMovement : MonoBehaviour
     private Vector3 moveDir;
     private CharacterController controller;
     private TriggerDetection tDetection;
+    private CharacterController playerController;
 
     private void Awake()
     {
@@ -52,26 +52,38 @@ public class playerMovement : MonoBehaviour
 
     private void Start()
     {
+        playerController = GetComponent<CharacterController>();
+        playerController.enabled = false;
         tDetection = GetComponent<TriggerDetection>();
         keys = GetComponent<playerKeyHolder>();
         playerRb = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
-        lastCheckpointPos = transform.position;
-        lastCheckpointRot = transform.rotation;
         isMoving = false;
         isSafe = false;
         isDead = false;
-        enableMovement = false;
-
-    Physics.gravity *= 2;
+        isStarting = true;
+        Physics.gravity *= 2;
         StartCoroutine(WaitForMusic());
+        if (ES3.KeyExists("posicao") && ES3.KeyExists("energia"))
+        {
+            lastCheckpointPos = ES3.Load<Vector3>("posicao");
+            lastCheckpointRot = ES3.Load<Quaternion>("rotacao");
+            Manager.current.turnOff = ES3.Load<bool>("energia");
+            transform.position = lastCheckpointPos;
+            transform.rotation = lastCheckpointRot;
+        }
+        else
+        {
+            lastCheckpointPos = transform.position;
+            lastCheckpointRot = transform.rotation;
+        }
+        playerController.enabled = true;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown("e") && button)
         {
-            print("pressionado");
             button.GetComponent<button>().buttonPressed = true;
             butao.Play();
         }
@@ -79,7 +91,8 @@ public class playerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (enableMovement)
+        //print("posicao fix antes " + transform.position);
+        if (!isStarting)
         {
             if (!isDead)
                 if (inTheEnd)
@@ -89,7 +102,7 @@ public class playerMovement : MonoBehaviour
             else
                 transform.position = lastCheckpointPos;
         }
-
+        //print("posicao fix dps " + transform.position);
     }
 
     private void Movement()

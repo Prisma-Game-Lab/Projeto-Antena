@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class enemySounds : MonoBehaviour
 {
-
     public GameObject formigaAudioListGameObject;
     private AudioSource [] formigaAudioList;
-    //private const int qntAudio = 4;
     private bool isPlayingAny = false;
     private bool isWaitingToPlay = false;
 
@@ -28,7 +26,6 @@ public class enemySounds : MonoBehaviour
         {
             formigaAudioList[i] = formigaAudioListGameObject.transform.GetChild(i).GetComponent<AudioSource>();
             formigaAudioList[i].loop = false;
-            //print("For loop: " + transform.GetChild(i));
         }
 
         eAI = this.GetComponent<EnemyAI>();
@@ -47,9 +44,9 @@ public class enemySounds : MonoBehaviour
             }
         }
         
-        if (!isPlayingAny && !isWaitingToPlay)
+        if (!isPlayingAny && !isWaitingToPlay && !Manager.current.turnOff)
         {
-            int i = (int)Random.Range(0, formigaAudioList.Length);
+            int i = Random.Range(0, formigaAudioList.Length);
             if(formigaAudioList[i].isActiveAndEnabled)
                 StartCoroutine(WaitForPlay(formigaAudioList[i]));
         }
@@ -59,8 +56,6 @@ public class enemySounds : MonoBehaviour
             if (!isPlayingPerseguicao)
             {
                 isPlayingPerseguicao = true;
-                //perseguicao.Play();
-                //FindObjectOfType<AudioManager>().PlayRequest(perseguicao, AudioManager.SoundType.Perseguicao);
                 AudioManager.sharedInstance.PlayRequest(perseguicao, AudioManager.SoundType.Perseguicao);
             }
         }
@@ -69,8 +64,6 @@ public class enemySounds : MonoBehaviour
             if (isPlayingPerseguicao)
             {
                 isPlayingPerseguicao = false;
-                //perseguicao.Stop();
-                //FindObjectOfType<AudioManager>().StopRequest(AudioManager.SoundType.Perseguicao);
                 AudioManager.sharedInstance.StopRequest(AudioManager.SoundType.Perseguicao);
             }
         }
@@ -83,6 +76,5 @@ public class enemySounds : MonoBehaviour
         yield return new WaitForSeconds(offset);
         isWaitingToPlay = false;
         audio.Play();
-        //Debug.Log("play");
     }
 }

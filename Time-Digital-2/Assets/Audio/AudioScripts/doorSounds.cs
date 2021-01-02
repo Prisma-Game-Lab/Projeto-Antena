@@ -8,8 +8,6 @@ public class doorSounds : MonoBehaviour
 
     public AudioSource open;
 
-    private bool hasPlayedOpen = false;
-
     public static AudioSource [] alarmeInstances = new AudioSource [10];
     public static int alarmeQnt = 0;
 
@@ -54,19 +52,12 @@ public class doorSounds : MonoBehaviour
 
     public void PlayOpen()
     {
-        if (!open.isPlaying)
-        {
-            hasPlayedOpen = true;
-            open.Play();
-        }
+        open.Play();
     }
 
     public void PlayClose()
     {
-        if (!open.isPlaying)
-        {
-            open.Play();
-        }
+        open.Play();
     }
 
     public static void pauseAlarme(){
